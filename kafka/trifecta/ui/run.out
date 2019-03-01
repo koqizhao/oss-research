@@ -1,0 +1,231 @@
+[[33mwarn[0m] application - Logger configuration in conf files is deprecated and has no effect. Use a logback configuration file instead.
+[[37minfo[0m] p.a.l.c.ActorSystemProvider - Starting application default Akka system: application
+[[37minfo[0m] application - Application has started
+[[37minfo[0m] play.api.Play$ - Application started (Prod)
+[[37minfo[0m] p.c.s.NettyServer$ - Listening for HTTP on /0:0:0:0:0:0:0:0:9000
+[[37minfo[0m] application - created actor com.github.ldaniels528.trifecta.ui.actors.SSEClientHandlingActor
+[[37minfo[0m] application - Registering new SSE session '2150f15da1594c2b93861535a8a6a869'...
+[[37minfo[0m] application - GET /api/sse/connect => 200 [437.4 ms]
+[[37minfo[0m] application - Loading Trifecta configuration...
+[[37minfo[0m] application - Starting Zookeeper client...
+[[37minfo[0m] application - created actor com.github.ldaniels528.trifecta.ui.actors.SSEClientHandlingActor
+[[37minfo[0m] application - Registering new SSE session '370f4a769eed43a89a4833b77319f7f6'...
+[[37minfo[0m] application - GET /api/sse/connect => 200 [27.4 ms]
+[[37minfo[0m] application - GET /api/consumers => 200 [753.7 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/ => 200 [622.3 ms]
+[[37minfo[0m] application - GET /api/config => 200 [836.1 ms]
+[[37minfo[0m] application - GET /api/brokers/grouped => 200 [816.4 ms]
+[[37minfo[0m] application - GET /api/config => 200 [16.5 ms]
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/ => 200 [86.9 ms]
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/1, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/2, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/3, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/5, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/7, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/8, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/9, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/11, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/13, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/14, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/15, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/17, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/19, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/20, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/21, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/23, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/25, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/26, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/27, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/29, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/31, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/1, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/2, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/3, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/5, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/7, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/8, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/9, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/11, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/13, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/14, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/15, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/17, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/19, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/20, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/21, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/23, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/25, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/26, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/27, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/29, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/31, error: 9
+[[37minfo[0m] application - GET /api/topics/details => 200 [1262.4 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [182.5 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [17.8 ms]
+[[37minfo[0m] application - GET /api/decoders => 200 [8.1 ms]
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/ => 200 [21.2 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/ => 200 [33.4 ms]
+[[37minfo[0m] application - GET /api/config => 200 [5.6 ms]
+[[37minfo[0m] application - GET /api/consumer/KafkaOffsetMonitor-1524723071664 => 200 [35.5 ms]
+[[37minfo[0m] application - GET /api/consumer/KafkaOffsetMonitor-1524726867443 => 200 [10.5 ms]
+[[37minfo[0m] application - GET /api/consumer/KafkaOffsetMonitor-1524730459664 => 200 [13.7 ms]
+[[37minfo[0m] application - GET /api/consumer/kafka.eagle.system.group => 500 [209.1 ms]
+[[37minfo[0m] application - GET /api/replicas/__CruiseControlMetrics => 200 [18.7 ms]
+[[37minfo[0m] application - GET /api/replicas/__KafkaCruiseControlModelTrainingSamples => 200 [95.2 ms]
+[[37minfo[0m] application - GET /api/replicas/__KafkaCruiseControlPartitionMetricSamples => 200 [114.0 ms]
+[[37minfo[0m] application - GET /api/replicas/_schemas => 200 [8.1 ms]
+[[37minfo[0m] application - GET /api/replicas/test => 200 [12.7 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/schema_registry => 200 [4.8 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/schema_registry/schema_id_counter => 200 [7.6 ms]
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/schema_registry/schema_id_counter => 200 [8.9 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/cluster => 200 [5.4 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/cluster/id => 200 [4.8 ms]
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/cluster => 200 [4.7 ms]
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/cluster/id => 200 [9.7 ms]
+[[37minfo[0m] application - GET /api/zookeeper/data?path=/cluster/id&format=plain-text => 200 [12.3 ms]
+[[37minfo[0m] application - GET /api/zookeeper/data?path=/cluster/id&format=auto => 200 [27.0 ms]
+[[37minfo[0m] application - GET /api/zookeeper/data?path=/cluster/id&format=binary => 200 [4.9 ms]
+[[37minfo[0m] application - GET /api/zookeeper/data?path=/cluster/id&format=plain-text => 200 [11.1 ms]
+[[37minfo[0m] application - GET /api/zookeeper/data?path=/cluster/id&format=json => 200 [4.5 ms]
+[[37minfo[0m] application - GET /api/zookeeper/data?path=/cluster/id&format=binary => 200 [5.3 ms]
+[[37minfo[0m] application - GET /api/zookeeper/data?path=/cluster/id&format=plain-text => 200 [6.3 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/controller => 200 [2.2 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [27.5 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [32.4 ms]
+[[37minfo[0m] application - GET /api/message/data/__CruiseControlMetrics/0/0?decode=true => 200 [24.6 ms]
+[[37minfo[0m] application - GET /api/message/data/__KafkaCruiseControlModelTrainingSamples/0/0?decode=true => 200 [25.4 ms]
+[[37minfo[0m] application - GET /api/message/data/__CruiseControlMetrics/0/0?decode=true => 200 [17.2 ms]
+[[37minfo[0m] application - GET /api/message/data/__KafkaCruiseControlModelTrainingSamples/0/0?decode=true => 200 [18.0 ms]
+[[37minfo[0m] application - GET /api/message/data/__KafkaCruiseControlModelTrainingSamples/0/0?decode=true => 200 [12.9 ms]
+[[37minfo[0m] application - GET /api/message/data/__KafkaCruiseControlModelTrainingSamples/0/0?decode=true => 200 [12.0 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [22.6 ms]
+[[37minfo[0m] application - PUT /api/sse/sampling => 200 [128.0 ms]
+[[31merror[0m] a.d.TaskInvocation - No content to map due to end-of-input
+ at [Source: ; line: 1, column: 1]
+com.fasterxml.jackson.databind.JsonMappingException: No content to map due to end-of-input
+ at [Source: ; line: 1, column: 1]
+	at com.fasterxml.jackson.databind.JsonMappingException.from(JsonMappingException.java:148) ~[com.fasterxml.jackson.core.jackson-databind-2.5.4.jar:2.5.4]
+	at com.fasterxml.jackson.databind.ObjectMapper._initForReading(ObjectMapper.java:3609) ~[com.fasterxml.jackson.core.jackson-databind-2.5.4.jar:2.5.4]
+	at com.fasterxml.jackson.databind.ObjectMapper._readValue(ObjectMapper.java:3522) ~[com.fasterxml.jackson.core.jackson-databind-2.5.4.jar:2.5.4]
+	at com.fasterxml.jackson.databind.ObjectMapper.readValue(ObjectMapper.java:1872) ~[com.fasterxml.jackson.core.jackson-databind-2.5.4.jar:2.5.4]
+	at play.api.libs.json.jackson.JacksonJson$.parseJsValue(JacksonJson.scala:226) ~[com.typesafe.play.play-json_2.11-2.4.8.jar:2.4.8]
+	at play.api.libs.json.Json$.parse(Json.scala:21) ~[com.typesafe.play.play-json_2.11-2.4.8.jar:2.4.8]
+	at com.github.ldaniels528.trifecta.ui.controllers.KafkaPlayRestFacade.com$github$ldaniels528$trifecta$ui$controllers$KafkaPlayRestFacade$$toMessage(KafkaPlayRestFacade.scala:425) ~[com.github.ldaniels528.trifecta-ui-0.22.0rc10c-0.8.2.0.jar:0.22.0rc10c-0.8.2.0]
+	at com.github.ldaniels528.trifecta.ui.controllers.KafkaPlayRestFacade$$anonfun$com$github$ldaniels528$trifecta$ui$controllers$KafkaPlayRestFacade$$decodeMessageData$2$$anonfun$apply$35$$anonfun$apply$36.apply(KafkaPlayRestFacade.scala:389) ~[com.github.ldaniels528.trifecta-ui-0.22.0rc10c-0.8.2.0.jar:0.22.0rc10c-0.8.2.0]
+	at com.github.ldaniels528.trifecta.ui.controllers.KafkaPlayRestFacade$$anonfun$com$github$ldaniels528$trifecta$ui$controllers$KafkaPlayRestFacade$$decodeMessageData$2$$anonfun$apply$35$$anonfun$apply$36.apply(KafkaPlayRestFacade.scala:389) ~[com.github.ldaniels528.trifecta-ui-0.22.0rc10c-0.8.2.0.jar:0.22.0rc10c-0.8.2.0]
+	at scala.Option.map(Option.scala:146) ~[org.scala-lang.scala-library-2.11.8.jar:na]
+[[37minfo[0m] application - DELETE /api/sse/sampling/e8f5f70fea7346c08e07c9861b53db94 => 200 [1.6 ms]
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/ => 200 [8.8 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/ => 200 [27.5 ms]
+[[37minfo[0m] application - GET /api/config => 200 [3.0 ms]
+[[37minfo[0m] application - GET /api/message/data/__KafkaCruiseControlModelTrainingSamples/0/0?decode=true => 200 [16.4 ms]
+[[37minfo[0m] application - GET /api/message/data/__KafkaCruiseControlModelTrainingSamples/0/0?decode=true => 200 [13.3 ms]
+[[37minfo[0m] application - GET /api/decoders => 200 [8.4 ms]
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/1, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/2, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/3, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/5, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/7, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/8, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/9, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/11, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/13, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/14, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/15, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/17, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/19, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/20, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/21, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/23, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/25, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/26, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/27, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/29, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/31, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/1, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/2, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/3, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/5, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/7, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/8, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/9, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/11, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/13, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/14, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/15, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/17, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/19, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/20, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/21, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/23, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/25, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/26, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/27, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/29, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/31, error: 9
+[[37minfo[0m] application - GET /api/config => 200 [36.6 ms]
+[[37minfo[0m] application - GET /api/consumers => 200 [42.1 ms]
+[[37minfo[0m] application - GET /api/brokers/grouped => 200 [66.0 ms]
+[[37minfo[0m] application - created actor com.github.ldaniels528.trifecta.ui.actors.SSEClientHandlingActor
+[[37minfo[0m] application - GET /api/sse/connect => 200 [7.8 ms]
+[[37minfo[0m] application - Registering new SSE session '2c1513ca59564fe79df68dadf2f0fcf0'...
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/ => 200 [33.9 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/ => 200 [25.6 ms]
+[[37minfo[0m] application - GET /api/config => 200 [1.2 ms]
+[[37minfo[0m] application - GET /api/topics/details => 200 [509.6 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [19.1 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [18.1 ms]
+[[37minfo[0m] application - GET /api/config => 200 [2.5 ms]
+[[37minfo[0m] application - GET /api/consumers => 200 [13.4 ms]
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/1, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/2, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/3, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/5, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/7, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/8, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/9, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/11, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/13, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/14, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/15, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/17, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/19, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/20, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/21, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/23, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/25, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/26, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/27, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/29, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlPartitionMetricSamples/31, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/1, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/2, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/3, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/5, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/7, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/8, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/9, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/11, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/13, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/14, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/15, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/17, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/19, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/20, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/21, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/23, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/25, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/26, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/27, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/29, error: 9
+[[33mwarn[0m] c.g.l.t.i.k.KafkaMicroConsumer$ - Could not read partition __KafkaCruiseControlModelTrainingSamples/31, error: 9
+[[37minfo[0m] application - GET /api/brokers/grouped => 200 [30.7 ms]
+[[37minfo[0m] application - created actor com.github.ldaniels528.trifecta.ui.actors.SSEClientHandlingActor
+[[37minfo[0m] application - Registering new SSE session '56e185efe81f44bba64e3b04517646b3'...
+[[37minfo[0m] application - GET /api/sse/connect => 200 [13.8 ms]
+[[37minfo[0m] application - GET /api/zookeeper/path?path=/ => 200 [14.7 ms]
+[[37minfo[0m] application - GET /api/zookeeper/info?path=/ => 200 [31.7 ms]
+[[37minfo[0m] application - GET /api/config => 200 [4.5 ms]
+[[37minfo[0m] application - GET /api/topics/details => 200 [459.2 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [31.1 ms]
+[[37minfo[0m] application - GET /api/message/data/_schemas/0/0?decode=true => 500 [30.8 ms]

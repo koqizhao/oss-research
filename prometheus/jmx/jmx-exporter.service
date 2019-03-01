@@ -1,0 +1,10 @@
+[Unit]
+Description=kafka jmx exporter
+
+[Service]
+ExecStart=/bin/sh /home/koqizhao/kafka/jmx-exporter/start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

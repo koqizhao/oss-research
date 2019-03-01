@@ -1,0 +1,12 @@
+[Unit]
+Description=Exhibitor Service
+After=network.target
+
+[Service]
+WorkingDirectory=/home/koqizhao/zookeeper/exhibitor
+ExecStart=/bin/bash -c "java -jar exhibitor-1.6.0.jar --hostname `cat hostip` --port 28080 -c zookeeper --zkconfigconnect 192.168.56.1:2181 --zkconfigzpath /exhibitor/config"
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
