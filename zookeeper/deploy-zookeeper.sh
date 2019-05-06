@@ -12,6 +12,8 @@ fi
 
 deploy()
 {
+    echo "deploy $1 started"
+
     ssh $1 "mkdir -p ~/zookeeper/data"
 
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl stop zookeeper.service"
@@ -32,6 +34,8 @@ deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl start zookeeper.service"
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl enable zookeeper.service"
+
+    echo "deploy $1 finished"
 }
 
 source ~/Research/servers.sh
@@ -43,4 +47,3 @@ do
     deploy ${servers[$i]} $i
     echo
 done
-
