@@ -13,8 +13,8 @@ echo -e "deploy server started: $server\n"
 ssh $server "echo '$PASSWORD' | sudo -S systemctl stop kafka-manager.service"
 ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/kafka-manager"
 
-scp ~/Software/kafka/${deploy_file}.tar.gz $server:./
-ssh $server "tar xf ${deploy_file}.tar.gz; mv $deploy_file kafka-manager; rm ${deploy_file}.tar.gz"
+scp ~/Software/kafka/${deploy_file}.zip $server:./
+ssh $server "unzip ${deploy_file}.zip; mv $deploy_file kafka-manager; rm ${deploy_file}.zip"
 
 scp kafka-manager.service $server:./kafka-manager/
 sed "s/ZOOKEEPER_CONNECT/$zk_connect/g" application.conf > temp.conf
