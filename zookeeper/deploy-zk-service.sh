@@ -24,7 +24,7 @@ deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl enable zookeeper.service"
 }
 
-source ~/Share/servers.sh
+source ~/Research/servers.sh
 
 INDEX_MAX=`expr ${#servers[@]} - 1`
 for i in `seq 0 $INDEX_MAX`

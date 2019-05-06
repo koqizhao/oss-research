@@ -1,16 +1,22 @@
 #!/bin/bash
 
-MACHINES=(ubuntu-server ubuntu-server2 ubuntu-server3)
+action=$1
+machine_count=1
 
-for i in "${MACHINES[@]}"
+if [ -n "$2" ]
+then
+    machine_count=$2
+fi
+
+for i in `seq 1 $machine_count`
 do
-    case $1 in
+    machine="server$i"
+    case $action in
         stop)
-            VBoxManage controlvm $i poweroff
+            VBoxManage controlvm $machine poweroff
             ;;
         *)
-            VBoxManage startvm $i
+            VBoxManage startvm $machine
             ;;
     esac
 done
-

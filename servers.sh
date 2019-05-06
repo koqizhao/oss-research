@@ -1,4 +1,7 @@
-servers[0]=192.168.56.101
-servers[1]=192.168.56.102
-servers[2]=192.168.56.103
 
+server_count=5
+for i in `seq 1 $server_count`
+do
+    let "index=i-1"
+    servers[$index]="192.168.56.1$i"
+done

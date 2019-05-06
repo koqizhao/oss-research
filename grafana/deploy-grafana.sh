@@ -2,7 +2,6 @@
 
 echo -n "password: "
 read -s PASSWORD
-echo '$PASSWORD'
 echo
 
 deploy_file=grafana-5.2.4.linux-amd64.tar.gz

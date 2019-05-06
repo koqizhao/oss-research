@@ -36,7 +36,7 @@ deploy()
     echo -e "\ndeploy server finished: $server"
 }
 
-source ~/Share/servers.sh
+source ~/Research/servers.sh
 
 for i in `seq 0 2`
 do

@@ -7,7 +7,7 @@ WORK_DIR=zookeeper/exhibitor
 SERVICE=exhibitor.service
 JAR=exhibitor-1.6.0.jar
 
-source ~/Share/servers.sh
+source ~/Research/servers.sh
 
 deploy()
 {

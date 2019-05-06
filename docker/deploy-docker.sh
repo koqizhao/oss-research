@@ -4,7 +4,7 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-source ~koqizhao/Share/servers.sh
+source ~/Research/servers.sh
 
 deploy()
 {

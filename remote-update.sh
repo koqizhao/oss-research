@@ -4,7 +4,7 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-source ~/Share/servers.sh
+source ~/Research/servers.sh
 
 for i in ${servers[@]}
 do

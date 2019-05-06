@@ -5,7 +5,7 @@ read -s PASSWORD
 
 JAVA_DIR=~koqizhao/java/1.8.0_161
 
-source ~/Share/servers.sh
+source ~/Research/servers.sh
 
 for i in ${servers[@]}
 do
