@@ -3,7 +3,7 @@ Description=Zookeeper Service
 After=network.target
 
 [Service]
-WorkingDirectory=/home/koqizhao/zookeeper/3.4.11
+WorkingDirectory=/home/koqizhao/zookeeper/zookeeper
 ExecStart=/bin/bash bin/zkServer.sh start-foreground
 Restart=always
 RestartSec=10
