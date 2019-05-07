@@ -2,7 +2,7 @@
 Description=Prometheus Metric System
 
 [Service]
-ExecStart=/home/koqizhao/prometheus/prometheus/prometheus --config.file=/home/koqizhao/prometheus/prometheus/prometheus.yml --storage.tsdb.path=/home/koqizhao/prometheus/prometheus/data
+ExecStart=/home/koqizhao/prometheus/prometheus/prometheus --config.file=/home/koqizhao/prometheus/prometheus/prometheus.yml --storage.tsdb.path=/home/koqizhao/prometheus/data
 Restart=always
 RestartSec=10
 

@@ -3,9 +3,9 @@ Description=Kafka Exporter Service
 After=network.target zookeeper.service
 
 [Service]
-WorkingDirectory=/home/koqizhao/kafka/kafka-exporter
-ExecStart=/home/koqizhao/kafka/kafka-exporter/start.sh
-ExecStop=/home/koqizhao/kafka/kafka-exporter/stop.sh
+WorkingDirectory=/home/koqizhao/kafka-exporter
+ExecStart=/bin/sh /home/koqizhao/kafka-exporter/start.sh
+ExecStop=/bin/sh /home/koqizhao/kafka-exporter/stop.sh
 Restart=always
 RestartSec=10
 TimeoutSec=360

@@ -9,4 +9,3 @@ if [ -z "$PIDS" ]; then
 else
   kill -s $SIGNAL $PIDS
 fi
-

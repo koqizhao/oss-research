@@ -2,8 +2,8 @@
 
 echo -n "password: "
 read -s PASSWORD
-echo '$PASSWORD'
-echo
+
+deploy_file=jmx_prometheus_httpserver-0.11.1-SNAPSHOT-jar-with-dependencies.jar
 
 deploy()
 {
@@ -12,16 +12,17 @@ deploy()
     echo -e "deploy server started: $server\n"
 
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop jmx-exporter.service"
-    ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/kafka/jmx-exporter"
-    ssh $server "mkdir -p ~/kafka/jmx-exporter"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/jmx-exporter"
 
-    scp jmx_exporter.jar $server:./kafka/jmx-exporter/
-    scp kafka.yml $server:./kafka/jmx-exporter/
-    scp start.sh $server:./kafka/jmx-exporter/
-    scp stop.sh $server:./kafka/jmx-exporter/
-    scp jmx-exporter.service $server:./kafka/jmx-exporter/
+    ssh $server "mkdir -p ~/jmx-exporter"
 
-    ssh $server "echo '$PASSWORD' | sudo -S mv ~/kafka/jmx-exporter/jmx-exporter.service /etc/systemd/system/"
+    scp ~/Software/kafka/$deploy_file $server:./jmx-exporter/jmx_exporter.jar
+    scp kafka.yml $server:./jmx-exporter/
+    scp start.sh $server:./jmx-exporter/
+    scp stop.sh $server:./jmx-exporter/
+    scp jmx-exporter.service $server:./jmx-exporter/
+
+    ssh $server "echo '$PASSWORD' | sudo -S mv ~/jmx-exporter/jmx-exporter.service /etc/systemd/system/"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl start jmx-exporter.service"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl enable jmx-exporter.service"
@@ -30,4 +31,3 @@ deploy()
 }
 
 deploy $1
-

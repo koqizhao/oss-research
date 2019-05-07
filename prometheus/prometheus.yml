@@ -7,9 +7,9 @@ global:
 # Alertmanager configuration
 alerting:
   alertmanagers:
-  - static_configs:
-    - targets:
-      # - alertmanager:9093
+    - static_configs:
+      - targets:
+        # - alertmanager:9093
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -26,11 +26,29 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-    - targets: ['localhost:9090']
-  - job_name: 'kafka'
+      - targets: ['192.168.56.14:9090']
 
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
+  - job_name: 'grafana'
     static_configs:
-    - targets: ['192.168.56.101:5556']
+      - targets:
+        - '192.168.56.15:3000'
+
+  - job_name: 'kafka-exporter'
+    scrape_interval: 60s
+    scrape_timeout: 60s
+    static_configs:
+      - targets:
+        - 192.168.56.11:9308
+        labels:
+          cluster: 'cluster1'
+
+  - job_name: 'kafka-jmx-exporter'
+    scrape_interval: 60s
+    scrape_timeout: 60s
+    static_configs:
+      - targets:
+          - 192.168.56.11:5556
+          - 192.168.56.12:5556
+          - 192.168.56.13:5556
+        labels:
+          cluster: 'cluster1'
