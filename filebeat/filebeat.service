@@ -1,0 +1,11 @@
+[Unit]
+Description=FileBeat Log Collector
+
+[Service]
+WorkingDirectory=/home/koqizhao/filebeat/filebeat
+ExecStart=/home/koqizhao/filebeat/filebeat/filebeat -e
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

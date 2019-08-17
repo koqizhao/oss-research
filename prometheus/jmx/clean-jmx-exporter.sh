@@ -15,3 +15,5 @@ clean()
 }
 
 clean $1
+
+echo
