@@ -2,6 +2,7 @@
 
 echo -n "password: "
 read -s PASSWORD
+echo
 
 server=$1
 zk_connect=192.168.56.11:2181

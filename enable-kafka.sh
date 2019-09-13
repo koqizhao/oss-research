@@ -5,7 +5,7 @@ read -s PASSWORD
 echo
 
 ops="enable"
-if [ -n $1 ]
+if [ -n "$1" ]
 then
     ops=$1
 fi

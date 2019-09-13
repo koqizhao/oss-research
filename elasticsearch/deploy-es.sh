@@ -2,9 +2,10 @@
 
 echo -n "password: "
 read -s PASSWORD
+echo
 
-deploy_file=elasticsearch-oss-7.3.0-linux-x86_64.tar.gz
-deploy_file_extracted=elasticsearch-7.3.0
+deploy_file=elasticsearch-oss-7.3.2-linux-x86_64.tar.gz
+deploy_file_extracted=elasticsearch-7.3.2
 
 cluster_name=es-cluster
 http_port=9200

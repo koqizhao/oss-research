@@ -2,6 +2,7 @@
 
 echo -n "password: "
 read -s PASSWORD
+echo
 
 server=$1
 

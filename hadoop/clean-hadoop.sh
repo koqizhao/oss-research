@@ -2,6 +2,7 @@
 
 echo -n "password: "
 read -s PASSWORD
+echo
 
 name_node=192.168.56.12
 nodes=(192.168.56.12 192.168.56.13 192.168.56.15)
