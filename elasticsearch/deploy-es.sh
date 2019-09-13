@@ -36,6 +36,7 @@ deploy()
     scp temp.yml $server:./elasticsearch/elasticsearch/config/elasticsearch.yml
     rm temp.yml
 
+    scp elasticsearch-env $server:./elasticsearch/elasticsearch/bin/
     scp jvm.options $server:./elasticsearch/elasticsearch/config/
     scp elasticsearch.sh $server:./elasticsearch/elasticsearch/
     scp elasticsearch.service $server:./elasticsearch/elasticsearch/
