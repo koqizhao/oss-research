@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo -n "password: "
 read -s PASSWORD
 echo
@@ -14,4 +16,3 @@ do
     ssh $i "echo '$PASSWORD' | sudo -S reboot"
     echo
 done
-
