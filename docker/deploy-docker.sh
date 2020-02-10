@@ -6,7 +6,7 @@ echo
 
 source ~/Research/servers.sh
 
-prerequisites="curl apt-transport-https ca-certificates curl gnupg-agent software-properties-common"
+prerequisites="curl apt-transport-https ca-certificates gnupg-agent software-properties-common"
 #mirror_site=https://download.docker.com/linux/ubuntu
 mirror_site=https://mirrors.aliyun.com/docker-ce/linux/ubuntu
 docker_packages="docker-ce docker-ce-cli containerd.io"
