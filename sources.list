@@ -3,6 +3,3 @@ deb http://mirrors.aliyun.com/ubuntu/ eoan-security main restricted universe mul
 deb http://mirrors.aliyun.com/ubuntu/ eoan-updates main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ eoan-proposed main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ eoan-backports main restricted universe multiverse
-
-deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/ubuntu disco stable
-deb https://mirrors.aliyun.com/kubernetes/apt kubernetes-xenial main
