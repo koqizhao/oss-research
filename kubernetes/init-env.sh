@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo "vm.swappiness=0" >> /etc/sysctl.conf
+# must comment /swap in /etc/fstab instead
+#echo "vm.swappiness=0" >> /etc/sysctl.conf
 
 apt install -y -q iptables arptables ebtables iptables-persistent
 
