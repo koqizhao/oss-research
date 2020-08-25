@@ -21,6 +21,7 @@
       - [kubectl proxy](#kubectl-proxy)
       - [node](#node)
     - [dubbo admin](#dubbo-admin)
+    - [nacos](#nacos)
 
 ## Machines
 
@@ -35,6 +36,8 @@
 ### Zookeeper
 
 - 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
 
 ### zkui
 
@@ -132,3 +135,9 @@
 - 192.168.56.11
 
 [dubbo-admin](http://192.168.56.11:8080)
+
+### nacos
+
+- 192.168.56.11
+
+[nacos console](http://192.168.56.11:8848/nacos/index.html)
