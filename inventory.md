@@ -22,6 +22,8 @@
       - [node](#node)
     - [dubbo admin](#dubbo-admin)
     - [nacos](#nacos)
+    - [MySql](#mysql)
+    - [MySql Workbench](#mysql-workbench)
 
 ## Machines
 
@@ -141,3 +143,11 @@
 - 192.168.56.11
 
 [nacos console](http://192.168.56.11:8848/nacos/index.html)
+
+### MySql
+
+- 192.168.56.11:3306
+
+### MySql Workbench
+
+- 192.168.56.1
