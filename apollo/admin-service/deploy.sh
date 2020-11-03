@@ -1,6 +1,7 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/apollo/config-service
+component=$1
+deploy_path=/home/koqizhao/apollo/$component
 
 shutdown_script=$deploy_path/scripts/shutdown.sh
 if [ -f "$shutdown_script" ]; then
@@ -13,12 +14,12 @@ chmod -R 777 /opt/logs
 rm -rf $deploy_path
 mkdir $deploy_path
 
-mv apollo-configservice-*-github.zip $deploy_path
+mv apollo-$component-*-github.zip $deploy_path
 
 cd $deploy_path
 
 apt install -y unzip
-unzip $deploy_path/apollo-configservice-*-github.zip
+unzip $deploy_path/apollo-$component-*-github.zip
 
 mv -f ../app.properties config/
 mv -f ../application-github.properties config/

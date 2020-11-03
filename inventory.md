@@ -25,7 +25,9 @@
     - [MySql](#mysql)
     - [MySql Workbench](#mysql-workbench)
     - [Apollo](#apollo)
+      - [portal](#portal)
       - [config-service](#config-service)
+      - [admin-service](#admin-service)
 
 ## Machines
 
@@ -158,9 +160,22 @@ port: 2181, 2888, 3888, 21811, 21812
 
 ### Apollo
 
+#### portal
+
+- 192.168.56.11
+
+port: 38070
+
 #### config-service
 
 - 192.168.56.11
 - 192.168.56.12
 
 port: 38080
+
+#### admin-service
+
+- 192.168.56.11
+- 192.168.56.12
+
+port: 38090

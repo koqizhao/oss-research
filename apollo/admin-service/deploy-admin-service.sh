@@ -4,7 +4,7 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-component=configservice
+component=adminservice
 
 project_path=/home/koqizhao/Projects/ctripcorp/apollo
 deploy_file=$project_path/apollo-$component/target/apollo-$component-*-github.zip
