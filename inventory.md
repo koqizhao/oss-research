@@ -24,6 +24,8 @@
     - [nacos](#nacos)
     - [MySql](#mysql)
     - [MySql Workbench](#mysql-workbench)
+    - [Apollo](#apollo)
+      - [config-service](#config-service)
 
 ## Machines
 
@@ -153,3 +155,12 @@ port: 2181, 2888, 3888, 21811, 21812
 ### MySql Workbench
 
 - 192.168.56.1
+
+### Apollo
+
+#### config-service
+
+- 192.168.56.11
+- 192.168.56.12
+
+port: 38080
