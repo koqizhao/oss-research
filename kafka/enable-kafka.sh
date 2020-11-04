@@ -13,8 +13,9 @@ fi
 servers=(192.168.56.11 192.168.56.12 192.168.56.13)
 lead=192.168.56.11
 
-dir=`dirname $0`
-source $dir/remote-enable.sh
+rp=`realpath $0`
+dir=`dirname $rp`
+source $dir/../remote-enable.sh
 
 case $ops in 
     enable)

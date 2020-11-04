@@ -14,8 +14,9 @@ es_servers=(192.168.56.11 192.168.56.14)
 filebeat_servers=(192.168.56.11 192.168.56.12 192.168.56.13 192.168.56.14 192.168.56.15)
 kibana_server=192.168.56.15
 
-dir=`dirname $0`
-source $dir/remote-enable.sh
+rp=`realpath $0`
+dir=`dirname $rp`
+source $dir/../remote-enable.sh
 
 case $ops in 
     enable)
