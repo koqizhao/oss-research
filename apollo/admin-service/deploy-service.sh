@@ -9,7 +9,7 @@ component=adminservice
 project_path=/home/koqizhao/Projects/ctripcorp/apollo
 deploy_file=$project_path/apollo-$component/target/apollo-$component-*-github.zip
 deploy_path=/home/koqizhao/apollo
-servers=(192.168.56.11 192.168.56.12)
+servers=$@
 
 deploy()
 {

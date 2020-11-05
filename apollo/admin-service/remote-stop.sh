@@ -2,7 +2,7 @@
 
 component=adminservice
 deploy_path=/home/koqizhao/apollo
-servers=(192.168.56.11 192.168.56.12)
+servers=$@
 
 for server in ${servers[@]}
 do

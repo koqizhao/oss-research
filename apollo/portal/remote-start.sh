@@ -2,7 +2,7 @@
 
 component=portal
 deploy_path=/home/koqizhao/apollo
-servers=(192.168.56.11)
+servers=$@
 
 for server in ${servers[@]}
 do
