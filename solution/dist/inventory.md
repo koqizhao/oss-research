@@ -174,6 +174,7 @@ port: 2181, 2888, 3888, 21811, 21812
 - 192.168.56.11
 
 [sentinel-dashboard](http://192.168.56.11:8085)
+[sentinel-transport](http://192.168.56.11:8719)
 
 ### MySql
 
