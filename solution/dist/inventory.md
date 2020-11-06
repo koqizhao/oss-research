@@ -4,11 +4,13 @@
   - [Machines](#machines)
   - [Apps](#apps)
     - [Zookeeper](#zookeeper)
-    - [zkui](#zkui)
+      - [ZK Server](#zk-server)
+      - [zkui](#zkui)
     - [Kafka](#kafka)
-    - [Kafka Manager](#kafka-manager)
-    - [Kafka Exporter](#kafka-exporter)
-    - [Jmx Exporter](#jmx-exporter)
+      - [Kafka Server](#kafka-server)
+      - [Kafka Manager](#kafka-manager)
+      - [Kafka Exporter](#kafka-exporter)
+      - [Jmx Exporter](#jmx-exporter)
     - [Promethues](#promethues)
     - [Grafana](#grafana)
     - [ElasticSearch](#elasticsearch)
@@ -20,10 +22,13 @@
       - [master](#master)
       - [kubectl proxy](#kubectl-proxy)
       - [node](#node)
-    - [dubbo admin](#dubbo-admin)
-    - [nacos](#nacos)
+    - [dubbo](#dubbo)
+      - [dubbo admin](#dubbo-admin)
+      - [nacos](#nacos)
+      - [soul](#soul)
     - [MySql](#mysql)
-    - [MySql Workbench](#mysql-workbench)
+      - [MySql Server](#mysql-server)
+      - [MySql Workbench](#mysql-workbench)
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
@@ -41,13 +46,15 @@
 
 ### Zookeeper
 
+#### ZK Server
+
 - 192.168.56.11
 - 192.168.56.12
 - 192.168.56.13
 
 port: 2181, 2888, 3888, 21811, 21812
 
-### zkui
+#### zkui
 
 - 192.168.56.11
 
@@ -55,21 +62,23 @@ port: 2181, 2888, 3888, 21811, 21812
 
 ### Kafka
 
+#### Kafka Server
+
 - 192.168.56.11
 - 192.168.56.12
 - 192.168.56.13
 
-### Kafka Manager
+#### Kafka Manager
 
 - 192.168.56.11
 
 [kafka-manager](http://192.168.56.11:9000/)
 
-### Kafka Exporter
+#### Kafka Exporter
 
 - 192.168.56.11
 
-### Jmx Exporter
+#### Jmx Exporter
 
 - 192.168.56.11
 - 192.168.56.12
@@ -138,23 +147,34 @@ port: 2181, 2888, 3888, 21811, 21812
 
 - 192.168.56.12
 
-### dubbo admin
+### dubbo
+
+#### dubbo admin
 
 - 192.168.56.11
 
 [dubbo-admin](http://192.168.56.11:20881)
 
-### nacos
+#### nacos
 
 - 192.168.56.11
 
 [nacos console](http://192.168.56.11:8848/nacos/index.html)
 
+#### soul
+
+- 192.168.56.11
+
+[soul-admin](http://192.168.56.11:9095)
+[soul-gateway](http://192.168.56.11:9195)
+
 ### MySql
+
+#### MySql Server
 
 - 192.168.56.11:3306
 
-### MySql Workbench
+#### MySql Workbench
 
 - 192.168.56.1
 
