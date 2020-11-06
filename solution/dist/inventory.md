@@ -26,6 +26,7 @@
       - [dubbo admin](#dubbo-admin)
       - [nacos](#nacos)
       - [soul](#soul)
+      - [sentinel](#sentinel)
     - [MySql](#mysql)
       - [MySql Server](#mysql-server)
       - [MySql Workbench](#mysql-workbench)
@@ -167,6 +168,12 @@ port: 2181, 2888, 3888, 21811, 21812
 
 [soul-admin](http://192.168.56.11:9095)
 [soul-gateway](http://192.168.56.11:9195)
+
+#### sentinel
+
+- 192.168.56.11
+
+[sentinel-dashboard](http://192.168.56.11:8085)
 
 ### MySql
 
