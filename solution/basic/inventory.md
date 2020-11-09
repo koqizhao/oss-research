@@ -10,6 +10,9 @@
     - [kubernetes](#kubernetes)
       - [master](#master)
       - [node](#node)
+    - [ELK](#elk)
+      - [ElasticSearch](#elasticsearch)
+      - [FileBeat](#filebeat)
 
 ## Machines
 
@@ -51,4 +54,18 @@ port: 38080
 
 #### node
 
+- 192.168.56.12
+
+### ELK
+
+#### ElasticSearch
+
+- 192.168.56.11
+- 192.168.56.12
+
+[elasticsearch](http://192.168.56.11:9200/)
+
+#### FileBeat
+
+- 192.168.56.11
 - 192.168.56.12

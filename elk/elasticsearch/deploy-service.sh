@@ -7,10 +7,19 @@ echo
 deploy_file=elasticsearch-oss-7.3.2-linux-x86_64.tar.gz
 deploy_file_extracted=elasticsearch-7.3.2
 
+scale="dist"
+if [ -n "$1" ]
+then
+    scale=$1
+fi
+
+rp=`realpath $0`
+work_path=`dirname $rp`
+cd $work_path
+source servers-$scale.sh
+
 cluster_name=es-cluster
 http_port=9200
-seed_hosts='"192.168.56.11", "192.168.56.14"'
-initial_master_nodes='"server1", "server4"'
 
 deploy()
 {
@@ -50,5 +59,8 @@ deploy()
     echo -e "\ndeploy server finished: $server"
 }
 
-deploy 192.168.56.11 server1
-deploy 192.168.56.14 server4
+for k in ${servers[@]}
+do
+    v=${servers_map[$k]}
+    deploy $k $v
+done

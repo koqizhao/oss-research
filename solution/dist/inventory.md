@@ -13,9 +13,10 @@
       - [Jmx Exporter](#jmx-exporter)
     - [Promethues](#promethues)
     - [Grafana](#grafana)
-    - [ElasticSearch](#elasticsearch)
-    - [FileBeat](#filebeat)
-    - [Kibana](#kibana)
+    - [ELK](#elk)
+      - [ElasticSearch](#elasticsearch)
+      - [FileBeat](#filebeat)
+      - [Kibana](#kibana)
     - [HDFS](#hdfs)
     - [kubernetes](#kubernetes)
       - [docker registry](#docker-registry)
@@ -99,26 +100,26 @@ port: 2181, 2888, 3888, 21811, 21812
 
 [grafana](http://192.168.56.15:3000)
 
-### ElasticSearch
+### ELK
 
-- 192.168.56.11
-- 192.168.56.14
-
-[elasticsearch](http://192.168.56.14:9200/)
-
-### FileBeat
+#### ElasticSearch
 
 - 192.168.56.11
 - 192.168.56.12
-- 192.168.56.13
 - 192.168.56.14
-- 192.168.56.15
 
-### Kibana
+[elasticsearch](http://192.168.56.11:9200/)
 
-- 192.168.56.15
+#### FileBeat
 
-[kibana](http://192.168.56.15:5601/)
+- 192.168.56.11
+- 192.168.56.12
+
+#### Kibana
+
+- 192.168.56.11
+
+[kibana](http://192.168.56.11:5601/)
 
 ### HDFS
 

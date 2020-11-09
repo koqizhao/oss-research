@@ -7,6 +7,11 @@ echo
 deploy_file=filebeat-oss-7.3.0-linux-x86_64.tar.gz
 deploy_file_extracted=filebeat-7.3.0-linux-x86_64
 
+rp=`realpath $0`
+work_path=`dirname $rp`
+cd $work_path
+source servers.sh
+
 deploy()
 {
     server=$1
@@ -31,4 +36,7 @@ deploy()
     echo -e "\ndeploy server finished: $server"
 }
 
-deploy $1
+for server in ${servers[@]}
+do
+    deploy $server
+done
