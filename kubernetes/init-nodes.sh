@@ -6,7 +6,16 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-source ~/Research/servers.sh
+scale="dist"
+if [ -n "$1" ]
+then
+    scale=$1
+fi
+
+rp=`realpath $0`
+work_path=`dirname $rp`
+cd $work_path
+source servers-$scale.sh
 
 for i in "${servers[@]}"
 do

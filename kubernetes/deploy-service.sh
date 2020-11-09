@@ -6,7 +6,16 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-source ~/Research/servers.sh
+scale="dist"
+if [ -n "$1" ]
+then
+    scale=$1
+fi
+
+rp=`realpath $0`
+work_path=`dirname $rp`
+cd $work_path
+source servers-$scale.sh
 
 prerequisites="curl apt-transport-https"
 #mirror_site=https://apt.kubernetes.io
@@ -14,7 +23,7 @@ mirror_site=https://mirrors.aliyun.com/kubernetes/apt
 #gpg_site=https://packages.cloud.google.com/apt/doc/apt-key.gpg
 gpg_site=https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
 artifact=kubernetes-xenial
-kubernetes_packages="kubelet kubeadm kubectl"
+kubernetes_packages="kubelet kubectl kubeadm"
 
 deploy()
 {
