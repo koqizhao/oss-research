@@ -7,6 +7,9 @@
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
+    - [kubernetes](#kubernetes)
+      - [master](#master)
+      - [node](#node)
 
 ## Machines
 
@@ -37,3 +40,15 @@ port: 38070
 - 192.168.56.11
 
 port: 38080
+
+### kubernetes
+
+#### master
+
+- 192.168.56.11
+
+[k8s-master](https://10.0.2.11:6443)
+
+#### node
+
+- 192.168.56.12

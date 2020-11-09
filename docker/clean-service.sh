@@ -14,16 +14,11 @@ cd $work_path
 
 source servers-$scale.sh
 
-kubernetes_packages=(kubeadm kubectl kubelet)
-
 clean()
 {
     echo -e "clean started: $1"
-    for i in ${kubernetes_packages[@]}
-    do
-        ssh $1 "echo '$PASSWORD' | sudo -S apt-mark unhold $i"
-        ssh $1 "echo '$PASSWORD' | sudo -S apt remove -y $i"
-    done
+    ssh $1 "echo '$PASSWORD' | sudo -S apt remove -y containerd.io docker-ce-cli docker-ce"
+    ssh $1 "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
     ssh $1 "echo '$PASSWORD' | sudo -S apt autoremove -y --purge"
     echo -e "\nclean finished: $1"
