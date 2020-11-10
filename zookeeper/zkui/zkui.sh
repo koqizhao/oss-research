@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-PIDFILE=~/zkui.pid
+PIDFILE=~/zookeeper/zkui/zkui.pid
 ZKUIBINDIR=$(cd `dirname $0`; pwd)
-ZKUICLASSNAME="target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar"
+ZKUICLASSNAME="zkui-2.0-SNAPSHOT-jar-with-dependencies.jar"
 ZKUI_DAEMON_OUT=$ZKUIBINDIR/zkui.out
 
 start(){
@@ -13,7 +13,7 @@ start(){
             exit 0
         fi
     fi
-    cp config.cfg target
+    #cp config.cfg target
     nohup java -jar "$ZKUIBINDIR/$ZKUICLASSNAME" > "$ZKUI_DAEMON_OUT" 2>&1 < /dev/null &
     if [ $? -eq 0 ];
     then
