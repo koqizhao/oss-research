@@ -15,17 +15,19 @@ work_path=`dirname $rp`
 cd $work_path
 source ./servers-$scale.sh
 
+echo -e "\nservice\n"
 for server in ${service_servers[@]}
 do
-    echo  "remote server: $server"
+    echo -e "\nremote server: $server\n"
     ssh $server "cd $deploy_path/$service_app; ./start-$service_app.sh"
     ssh $server "ps aux | grep java | grep $service_app"
     echo
 done
 
+echo -e "\nclient\n"
 for server in ${client_servers[@]}
 do
-    echo  "remote server: $server"
+    echo -e "\nremote server: $server\n"
     ssh $server "cd $deploy_path/$client_app; ./start-$client_app.sh"
     ssh $server "ps aux | grep java | grep $client_app"
     echo

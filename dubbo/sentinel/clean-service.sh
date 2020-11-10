@@ -10,7 +10,7 @@ source ./servers.sh
 
 for server in ${servers[@]}
 do
-    echo -e "clean started: $server\n"
+    echo -e "\nclean started: $server\n"
     for c in ${components[@]}
     do
         component=sentinel-$c

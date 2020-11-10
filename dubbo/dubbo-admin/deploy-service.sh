@@ -30,7 +30,7 @@ deploy()
 
 for server in ${servers[@]}
 do
-    echo "remote server: $server"
+    echo -e "\nremote server: $server\n"
     deploy $server
     echo
 done

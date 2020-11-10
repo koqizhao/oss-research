@@ -22,7 +22,7 @@ deploy()
     component=$2
     deploy_file=$project_path/$component/target/io.study.$component-0.0.1.jar
 
-    echo -e "deploy started: $server/$component\n"
+    echo -e "\ndeploy started: $server/$component\n"
 
     ssh $server "mkdir -p $deploy_path/$component"
 
@@ -34,11 +34,13 @@ deploy()
     echo -e "\ndeploy finished: $server/$component"
 }
 
+echo -e "\nservice\n"
 for server in ${service_servers[@]}
 do
     deploy $server $service_app
 done
 
+echo -e "\nclient\n"
 for server in ${client_servers[@]}
 do
     deploy $server $client_app

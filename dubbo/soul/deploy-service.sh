@@ -15,7 +15,7 @@ deploy()
     component=soul-$2
     deploy_file=$project_path/$component/target/$component.jar
 
-    echo -e "deploy started: $server/$component\n"
+    echo -e "\ndeploy started: $server/$component\n"
 
     ssh $server "mkdir -p $deploy_path"
 

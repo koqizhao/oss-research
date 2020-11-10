@@ -15,17 +15,19 @@ work_path=`dirname $rp`
 cd $work_path
 source ./servers-$scale.sh
 
+echo -e "\nclient\n"
 for server in ${client_servers[@]}
 do
-    echo -e "clean started: $server\n"
+    echo -e "\nclean started: $server\n"
     ssh $server "pid=\`ps aux | grep java | grep $client_app | awk '{ print \$2 }'\`; kill \$pid;"
     ssh $server "rm -rf $deploy_path/$client_app;"
     echo -e "clean finished: $server\n"
 done
 
+echo -e "\nservice\n"
 for server in ${service_servers[@]}
 do
-    echo -e "clean started: $server\n"
+    echo -e "\nclean started: $server\n"
     ssh $server "pid=\`ps aux | grep java | grep $service_app | awk '{ print \$2 }'\`; kill \$pid;"
     ssh $server "rm -rf $deploy_path/$service_app;"
     echo -e "clean finished: $server\n"

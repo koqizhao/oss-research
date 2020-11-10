@@ -10,10 +10,10 @@ source ./servers.sh
 
 for server in ${servers[@]}
 do
-    echo  "remote server: $server"
+    echo -e "\nremote server: $server\n"
     for component in ${components[@]}
     do
-        echo -e "component: $component"
+        echo -e "\ncomponent: $component\n"
         ssh $server "cd $deploy_path; ./start-soul-$component.sh"
         ssh $server "ps aux | grep java | grep soul-$component"
         echo

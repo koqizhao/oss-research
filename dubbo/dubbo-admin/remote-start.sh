@@ -10,7 +10,7 @@ source ./servers.sh
 
 for server in ${servers[@]}
 do
-    echo  "remote server: $server"
+    echo -e "\nremote server: $server\n"
     for c in ${components[@]}
     do
         component=dubbo-$c

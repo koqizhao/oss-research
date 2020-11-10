@@ -16,17 +16,23 @@ then
     scale=$2
 fi
 
+echo -e "\n$ops started\n"
+
 case $ops in 
     enable)
+        echo -e "\ncomponent: dubbo-admin\n"
         cd ./dubbo-admin
         ./remote-start.sh
 
+        echo -e "\ncomponent: soul\n"
         cd ../soul
         ./remote-start.sh
 
+        echo -e "\ncomponent: sentinel\n"
         cd ../sentinel
         ./remote-start.sh
 
+        echo -e "\ncomponent: demo-services\n"
         cd ../demo-services
         ./remote-start.sh $scale
 
@@ -34,15 +40,19 @@ case $ops in
 
         ;;
     disable)
+        echo -e "\ncomponent: demo-services\n"
         cd ./demo-services
         ./remote-stop.sh $scale
 
+        echo -e "\ncomponent: sentinel\n"
         cd ../sentinel
         ./remote-stop.sh
 
+        echo -e "\ncomponent: soul\n"
         cd ../soul
         ./remote-stop.sh
 
+        echo -e "\ncomponent: dubbo-admin\n"
         cd ../dubbo-admin
         ./remote-stop.sh
 
@@ -50,15 +60,19 @@ case $ops in
 
         ;;
     deploy)
+        echo -e "\ncomponent: dubbo-admin\n"
         cd ./dubbo-admin
         ./deploy-service.sh
 
+        echo -e "\ncomponent: soul\n"
         cd ../soul
         ./deploy-service.sh
 
+        echo -e "\ncomponent: sentinel\n"
         cd ../sentinel
         ./deploy-service.sh
 
+        echo -e "\ncomponent: demo-services\n"
         cd ../demo-services
         ./deploy-service.sh $scale
 
@@ -66,15 +80,19 @@ case $ops in
 
         ;;
      clean)
+        echo -e "\ncomponent: demo-services\n"
         cd ./demo-services
         ./clean-service.sh $scale
 
+        echo -e "\ncomponent: sentinel\n"
         cd ../sentinel
         ./clean-service.sh
 
+        echo -e "\ncomponent: soul\n"
         cd ../soul
         ./clean-service.sh
 
+        echo -e "\ncomponent: dubbo-admin\n"
         cd ../dubbo-admin
         ./clean-service.sh
 
@@ -82,7 +100,7 @@ case $ops in
 
         ;;
     *)
-        echo "unknown ops: $ops"
+        echo -e "\nunknown ops: $ops\n"
         ;;
 esac
 
