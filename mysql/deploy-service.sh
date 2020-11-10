@@ -30,7 +30,7 @@ ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S chown -R mysql:mysql da
 ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S chmod -R 750 data;"
 
 scp ~/Software/mysql/$deploy_file $server:$deploy_path
-ssh $server "cd $deploy_path; tar xf $deploy_file; mv $deploy_file_name mysql"
+ssh $server "cd $deploy_path; tar xf $deploy_file; mv $deploy_file_name mysql; rm $deploy_file;"
 scp defaults.conf $server:$deploy_path/mysql
 scp start-mysql.sh $server:$deploy_path/mysql
 scp init.sql $server:$deploy_path/mysql
