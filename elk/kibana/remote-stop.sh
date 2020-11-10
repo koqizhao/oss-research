@@ -1,8 +1,10 @@
 #!/bin/bash
 
-echo -n "password: "
-read -s PASSWORD
-echo
+if [ -z "$PASSWORD" ]; then
+    echo -n "password: "
+    read -s PASSWORD
+    echo
+fi
 
 rp=`realpath $0`
 work_path=`dirname $rp`
@@ -13,6 +15,6 @@ source servers.sh
 
 for server in ${servers[@]}
 do
-    echo "remote server: $server"
+    echo -e "\nremote server: $server\n"
     disable $server $PASSWORD kibana
 done

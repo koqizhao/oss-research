@@ -1,8 +1,10 @@
 #!/bin/bash
 
-echo -n "password: "
-read -s PASSWORD
-echo
+if [ -z "$PASSWORD" ]; then
+    echo -n "password: "
+    read -s PASSWORD
+    echo
+fi
 
 scale="dist"
 if [ -n "$1" ]

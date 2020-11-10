@@ -1,8 +1,10 @@
 #!/bin/bash
 
-echo -n "password: "
-read -s PASSWORD
-echo
+if [ -z "$PASSWORD" ]; then
+    echo -n "password: "
+    read -s PASSWORD
+    echo
+fi
 
 deploy_version=7.9.3
 deploy_file=kibana-oss-$deploy_version-linux-x86_64.tar.gz
@@ -17,7 +19,7 @@ deploy()
 {
     server=$1
 
-    echo -e "deploy server started: $server\n"
+    echo -e "\ndeploy server started: $server\n"
 
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop kibana.service"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/kibana/kibana"
