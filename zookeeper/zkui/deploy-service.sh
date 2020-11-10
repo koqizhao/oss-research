@@ -15,6 +15,8 @@ cd $work_path
 
 deploy()
 {
+    echo -e "\ndeploy $1 started\n"
+
     ssh $1 "rm -rf $WORK_DIR"
     ssh $1 "mkdir -p $WORK_DIR"
 

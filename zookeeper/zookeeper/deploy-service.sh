@@ -1,6 +1,10 @@
-echo -n "password: "
-read -s PASSWORD
-echo
+#!/bin/bash
+
+if [ -z "$PASSWORD" ]; then
+    echo -n "password: "
+    read -s PASSWORD
+    echo
+fi
 
 zk_file=apache-zookeeper-3.6.1-bin
 
@@ -16,7 +20,7 @@ cd $work_path
 
 deploy()
 {
-    echo "deploy $1 started"
+    echo -e "\ndeploy $1 started\n"
 
     ssh $1 "mkdir -p ~/zookeeper/data"
 

@@ -1,8 +1,10 @@
 #!/bin/bash
 
-echo -n "password: "
-read -s PASSWORD
-echo
+if [ -z "$PASSWORD" ]; then
+    echo -n "password: "
+    read -s PASSWORD
+    echo
+fi
 
 scale="dist"
 if [ -n "$1" ]
@@ -19,6 +21,6 @@ source servers-$scale.sh
 
 for server in ${servers[@]}
 do
-    echo "remote server: $server"
+    echo -e "\nremote server: $server\n"
     enable $server $PASSWORD zookeeper
 done

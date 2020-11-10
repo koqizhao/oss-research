@@ -1,6 +1,10 @@
-echo -n "password: "
-read -s PASSWORD
-echo
+#!/bin/bash
+
+if [ -z "$PASSWORD" ]; then
+    echo -n "password: "
+    read -s PASSWORD
+    echo
+fi
 
 scale="dist"
 if [ -n "$1" ]
@@ -16,7 +20,7 @@ source servers-$scale.sh
 
 clean()
 {
-    echo -e "clean started: $1"
+    echo -e "\nclean started: $1\n"
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl stop zookeeper.service"
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl disable zookeeper.service"
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf ~/zookeeper"

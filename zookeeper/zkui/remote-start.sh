@@ -9,7 +9,7 @@ source ./servers.sh
 
 for server in ${servers[@]}
 do
-    echo  "remote server: $server"
+    echo -e "\nremote server: $server\n"
     ssh $server "cd $deploy_path; ./zkui.sh start"
     echo
 done

@@ -9,7 +9,7 @@ source ./servers.sh
 
 for server in ${servers[@]}
 do
-    echo -e "clean started: $server\n"
+    echo -e "\nclean started: $server\n"
     ssh $server "cd $deploy_path; ./zkui.sh stop"
     ssh $server "rm -rf $deploy_path"
     echo -e "clean finished: $server\n"
