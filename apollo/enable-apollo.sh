@@ -17,14 +17,19 @@ then
 fi
 source servers-$scale.sh
 
+echo -e "\n$ops started\n"
+
 case $ops in 
     enable)
+        echo -e "\ncomponent: config-service\n"
         cd config-service
         ./remote-start.sh ${config_servers[@]}
 
+        echo -e "\ncomponent: admin-service\n"
         cd ../admin-service
         ./remote-start.sh ${admin_servers[@]}
 
+        echo -e "\ncomponent: portal\n"
         cd ../portal
         ./remote-start.sh ${portal_servers[@]}
 
@@ -32,12 +37,15 @@ case $ops in
 
         ;;
     disable)
+        echo -e "\ncomponent: portal\n"
         cd portal
         ./remote-stop.sh ${portal_servers[@]}
 
+        echo -e "\ncomponent: admin-service\n"
         cd ../admin-service
         ./remote-stop.sh ${admin_servers[@]}
 
+        echo -e "\ncomponent: config-service\n"
         cd ../config-service
         ./remote-stop.sh ${config_servers[@]}
 
@@ -45,12 +53,15 @@ case $ops in
 
         ;;
     deploy)
+        echo -e "\ncomponent: config-service\n"
         cd config-service
         ./deploy-service.sh ${config_servers[@]}
 
+        echo -e "\ncomponent: admin-service\n"
         cd ../admin-service
         ./deploy-service.sh ${admin_servers[@]}
 
+        echo -e "\ncomponent: portal\n"
         cd ../portal
         ./deploy-service.sh ${portal_servers[@]}
 
@@ -58,12 +69,15 @@ case $ops in
 
         ;;
      clean)
+        echo -e "\ncomponent: config-service\n"
         cd config-service
         ./clean-service.sh ${config_servers[@]}
 
+        echo -e "\ncomponent: admin-service\n"
         cd ../admin-service
         ./clean-service.sh ${admin_servers[@]}
 
+        echo -e "\ncomponent: portal\n"
         cd ../portal
         ./clean-service.sh ${portal_servers[@]}
 
@@ -71,7 +85,7 @@ case $ops in
 
         ;;
     *)
-        echo "unknown ops: $ops"
+        echo -e "\nunknown ops: $ops\n"
         ;;
 esac
 

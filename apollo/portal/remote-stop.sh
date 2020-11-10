@@ -6,7 +6,7 @@ servers=$@
 
 for server in ${servers[@]}
 do
-    echo "remote server: $server"
+    echo -e "\nremote server: $server\n"
     ssh $server "cd $deploy_path/$component; scripts/shutdown.sh;"
     echo
     sleep 1

@@ -15,7 +15,7 @@ deploy()
 {
     server=$1
 
-    echo -e "deploy started: $server\n"
+    echo -e "\ndeploy started: $server\n"
 
     ssh $server "mkdir -p $deploy_path"
 
