@@ -2,7 +2,7 @@
 
 declare -A servers_map
 servers_map=([192.168.56.11]=server1 \
-    [192.168.56.12]=server2 [192.168.56.14]=server4)
+    [192.168.56.12]=server2 [192.168.56.13]=server3)
 
 servers_count=${#servers_map[@]}
 seed_count=2

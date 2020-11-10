@@ -4,8 +4,9 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-deploy_file=filebeat-oss-7.3.0-linux-x86_64.tar.gz
-deploy_file_extracted=filebeat-7.3.0-linux-x86_64
+deploy_version=7.9.3
+deploy_file=filebeat-oss-$deploy_version-linux-x86_64.tar.gz
+deploy_file_extracted=filebeat-$deploy_version-linux-x86_64
 
 rp=`realpath $0`
 work_path=`dirname $rp`

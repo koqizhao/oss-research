@@ -4,8 +4,9 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-deploy_file=elasticsearch-oss-7.3.2-linux-x86_64.tar.gz
-deploy_file_extracted=elasticsearch-7.3.2
+deploy_version=7.9.3
+deploy_file=elasticsearch-oss-$deploy_version-linux-x86_64.tar.gz
+deploy_file_extracted=elasticsearch-$deploy_version
 
 scale="dist"
 if [ -n "$1" ]

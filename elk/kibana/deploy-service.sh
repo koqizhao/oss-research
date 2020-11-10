@@ -4,8 +4,9 @@ echo -n "password: "
 read -s PASSWORD
 echo
 
-deploy_file=kibana-oss-7.3.0-linux-x86_64.tar.gz
-deploy_file_extracted=kibana-7.3.0-linux-x86_64
+deploy_version=7.9.3
+deploy_file=kibana-oss-$deploy_version-linux-x86_64.tar.gz
+deploy_file_extracted=kibana-$deploy_version-linux-x86_64
 
 rp=`realpath $0`
 work_path=`dirname $rp`
@@ -20,7 +21,7 @@ deploy()
 
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop kibana.service"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/kibana/kibana"
-    ssh $server "mkdir -p ~/kibana"
+    ssh $server "mkdir -p ~/kibana/data"
 
     scp ~/Software/elastic/${deploy_file} $server:./kibana/
     scp kibana.service $server:./kibana/
