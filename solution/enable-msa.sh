@@ -29,7 +29,7 @@ case $ops in
         echo
 
         echo -e "\nmysql\n"
-        mysql/remote-start.sh $ops $scale
+        mysql/enable-mysql.sh $ops
         echo
 
         echo -e "\napollo\n"
@@ -59,7 +59,7 @@ case $ops in
         echo
 
         echo -e "\nmysql\n"
-        mysql/remote-stop.sh $ops $scale
+        mysql/enable-mysql.sh $ops
         echo
 
         echo -e "\nelk\n"
@@ -73,7 +73,7 @@ case $ops in
         echo
 
         echo -e "\nmysql\n"
-        mysql/remote-start.sh $ops $scale
+        mysql/enable-mysql.sh $ops
         echo
 
         echo -e "\napollo\n"
@@ -103,7 +103,7 @@ case $ops in
         echo
 
         echo -e "\nmysql\n"
-        mysql/remote-stop.sh $ops $scale
+        mysql/enable-mysql.sh $ops
         echo
 
         echo -e "\nelk\n"

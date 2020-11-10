@@ -1,5 +1,10 @@
 #!/bin/bash
 
-base_dir=/home/koqizhao/mysql
+base_dir=/home/koqizhao/mysql/mysql
+cd $base_dir
 
-sh -c "cd $base_dir; ./default/bin/mysqld_safe --basedir=$base_dir/default --datadir=$base_dir/data --user=mysql &" > mysql.out 2>&1
+touch mysql.out
+chown mysql:mysql mysql.out
+chmod 666 mysql.out
+bin/mysqld_safe --defaults-file=defaults.conf --user=mysql > mysql.out 2>&1 &
+sleep 1
