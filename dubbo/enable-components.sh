@@ -6,7 +6,7 @@ scale=$2
 
 cd ~/Research/dubbo
 
-do_enable()
+do_start()
 {
     echo -e "\ndubbo-admin\n"
     dubbo-admin/remote-start.sh $scale
@@ -21,7 +21,7 @@ do_enable()
     demo-services/remote-start.sh $scale
 }
 
-do_disable()
+do_stop()
 {
     echo -e "\ndemo-services\n"
     demo-services/remote-stop.sh $scale

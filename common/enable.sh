@@ -2,19 +2,19 @@
 
 do_ops()
 {
-    ops="enable"
+    ops="start"
     if [ -n "$1" ]
     then
         ops=$1
     fi
 
     case $ops in 
-        enable)
-            do_enable
+        start)
+            do_start
 
             ;;
-        disable)
-            do_disable
+        stop)
+            do_stop
 
             ;;
         deploy)

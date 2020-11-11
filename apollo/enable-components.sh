@@ -3,7 +3,7 @@
 source ~/Research/common/init.sh
 init_scale "$2" .
 
-do_enable()
+do_start()
 {
     echo -e "\ncomponent: config-service\n"
     config-service/remote-start.sh $scale
@@ -15,7 +15,7 @@ do_enable()
     portal/remote-start.sh $scale
 }
 
-do_disable()
+do_stop()
 {
     echo -e "\ncomponent: portal\n"
     portal/remote-stop.sh $scale

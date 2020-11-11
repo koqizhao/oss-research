@@ -8,7 +8,7 @@ scale=$2
 
 cd ~/Research
 
-do_enable()
+do_start()
 {
     echo -e "\nelk\n"
     elk/enable-components.sh $ops $scale
@@ -31,7 +31,7 @@ do_enable()
     echo
 }
 
-do_disable()
+do_stop()
 {
     echo -e "\ndubbo\n"
     dubbo/enable-components.sh $ops $scale
