@@ -6,9 +6,6 @@ init_scale "$1" .
 source common.sh
 
 project_path=/home/koqizhao/Projects/koqizhao/java-projects/dubbo-study
-cd $project_path
-mvn clean package -Dmaven.test.skip=true
-cd $work_path
 
 deploy()
 {
