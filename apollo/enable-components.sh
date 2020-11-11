@@ -3,6 +3,8 @@
 source ~/Research/common/init.sh
 init_scale "$2" .
 
+source common.sh
+
 do_start()
 {
     echo -e "\ncomponent: config-service\n"
@@ -51,7 +53,8 @@ do_clean()
 
     echo -e "\ncomponent: config-service\n"
     config-service/clean-service.sh $scale
+
+    clean_all ${config_servers[@]} ${admin_servers[@]} ${portal_servers[@]}
 }
 
-source ~/Research/common/enable.sh
 do_ops $1

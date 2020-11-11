@@ -100,5 +100,4 @@ do_clean()
     echo
 }
 
-source ~/Research/common/enable.sh
 do_ops $1

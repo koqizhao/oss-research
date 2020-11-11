@@ -1,7 +1,11 @@
 #!/bin/bash
 
-source ~/Research/common/cd.sh
-source ~/Research/common/pass.sh
-source ~/Research/common/scale.sh
-source ~/Research/common/db.sh
-source ~/Research/common/expr.sh
+rp=`realpath $0`
+work_path=`dirname $rp`
+cd $work_path
+
+db_server=192.168.56.11
+db_password=xx123456XX
+
+source ~/Research/common/tool.sh
+source ~/Research/common/deploy.sh

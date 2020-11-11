@@ -7,3 +7,13 @@ escape_slash()
     sed 's/\//\\\//g' t_tmp2
     rm t_tmp*
 }
+
+merge_array()
+{
+    declare -A all
+    for i in $@
+    do
+        all[$i]=$i
+    done
+    echo ${!all[@]}
+}

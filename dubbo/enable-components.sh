@@ -1,10 +1,9 @@
 #!/bin/bash
 
 source ~/Research/common/init.sh
+init_scale "$2" .
 
-scale=$2
-
-cd ~/Research/dubbo
+source common.sh
 
 do_start()
 {
@@ -64,7 +63,9 @@ do_clean()
 
     echo -e "\ndubbo-admin\n"
     dubbo-admin/clean-service.sh $scale
+
+    clean_all ${dubbo_admin_servers[@]} ${sentinel_servers[@]} ${soul_admin_servers[@]} \
+        ${soul_bootstrap_servers[@]} ${service_servers[@]} ${client_servers[@]}
 }
 
-source ~/Research/common/enable.sh
 do_ops $1
