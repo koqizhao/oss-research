@@ -1,15 +1,8 @@
 #!/bin/bash
 
-component=adminservice
-deploy_path=/home/koqizhao/apollo
-servers=$@
+source ~/Research/common/init.sh
+init_scale "$1" ..
 
-for server in ${servers[@]}
-do
-    echo -e "\nremote server: $server\n"
-    ssh $server "cd $deploy_path/$component; scripts/startup.sh"
-    echo
-    sleep 1
-    ssh $server "ps aux | grep $component"
-    echo
-done
+source common.sh
+
+remote_start

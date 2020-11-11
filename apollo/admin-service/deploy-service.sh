@@ -1,21 +1,14 @@
 #!/bin/bash
 
-echo -n "password: "
-read -s PASSWORD
-echo
+source ~/Research/common/init.sh
+init_scale "$1" ..
+read_server_pass
 
-component=adminservice
-
-project_path=/home/koqizhao/Projects/ctripcorp/apollo
-deploy_file=$project_path/apollo-$component/target/apollo-$component-*-github.zip
-deploy_path=/home/koqizhao/apollo
-servers=$@
+source common.sh
 
 deploy()
 {
     server=$1
-
-    echo -e "\ndeploy started: $server\n"
 
     ssh $server "mkdir -p $deploy_path"
 
@@ -31,11 +24,6 @@ deploy()
     rm temp.properties
 
     ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S sh deploy.sh $component; rm deploy.sh;"
-
-    echo -e "\ndeploy finished: $server"
 }
 
-for server in ${servers[@]}
-do
-    deploy $server
-done
+remote_deploy
