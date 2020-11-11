@@ -1,34 +1,14 @@
 #!/bin/bash
 
-service_app=dubbo-starter-soul-app
-client_app=dubbo-starter-springboot-client
-deploy_path=/home/koqizhao/dubbo/demo-services
+source ~/Research/common/init.sh
+init_scale "$1" .
 
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
+source common.sh
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source ./servers-$scale.sh
+servers=$client_servers
+component=$client_component
+remote_clean
 
-echo -e "\nclient\n"
-for server in ${client_servers[@]}
-do
-    echo -e "\nclean started: $server\n"
-    ssh $server "pid=\`ps aux | grep java | grep $client_app | awk '{ print \$2 }'\`; kill \$pid;"
-    ssh $server "rm -rf $deploy_path/$client_app;"
-    echo -e "clean finished: $server\n"
-done
-
-echo -e "\nservice\n"
-for server in ${service_servers[@]}
-do
-    echo -e "\nclean started: $server\n"
-    ssh $server "pid=\`ps aux | grep java | grep $service_app | awk '{ print \$2 }'\`; kill \$pid;"
-    ssh $server "rm -rf $deploy_path/$service_app;"
-    echo -e "clean finished: $server\n"
-done
+servers=$service_servers
+component=$service_component
+remote_clean

@@ -1,14 +1,13 @@
 #!/bin/bash
 
-DEPLOY_DIR=dubbo/dubbo-admin
-PROJECT_DIR=~/Projects/apache/dubbo/dubbo-admin
+source ~/Research/common/init.sh
+init_scale "$1" .
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source ./servers.sh
+source common.sh
 
-cd $PROJECT_DIR
+project_path=~/Projects/apache/dubbo/dubbo-admin
+
+cd $project_path
 git checkout -- .
 git pull
 cp -f $work_path/application.properties dubbo-admin-server/src/main/resources/
@@ -18,19 +17,14 @@ cd $work_path
 
 deploy()
 {
-    ssh $1 "rm -rf $DEPLOY_DIR"
-    ssh $1 "mkdir -p $DEPLOY_DIR"
+    server=$1
+    component=$2
+    deploy_file=$project_path/dubbo-admin-distribution/target/dubbo-admin-0.2.0-SNAPSHOT.jar
 
-    scp $PROJECT_DIR/dubbo-admin-distribution/target/dubbo-admin-0.2.0-SNAPSHOT.jar $1:$DEPLOY_DIR
-    scp start-dubbo-admin.sh $1:$DEPLOY_DIR
-    ssh $1 "cd $DEPLOY_DIR; ./start-dubbo-admin.sh"
-
-    echo
+    ssh $server "mkdir -p $deploy_path/$component"
+    scp $deploy_file $server:$deploy_path/$component
+    scp start-$component.sh $server:$deploy_path/$component
+    ssh $1 "cd $deploy_path/$component; ./start-$component.sh"
 }
 
-for server in ${servers[@]}
-do
-    echo -e "\nremote server: $server\n"
-    deploy $server
-    echo
-done
+remote_deploy

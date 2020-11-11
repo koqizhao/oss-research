@@ -23,8 +23,9 @@ clean()
     echo -e "\nclean started: $1\n"
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl stop zookeeper.service"
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl disable zookeeper.service"
-    ssh $1 "echo '$PASSWORD' | sudo -S rm -rf ~/zookeeper"
-    ssh $1 "echo '$PASSWORD' | sudo -S rm /etc/systemd/system/zookeeper.service"
+    ssh $1 "echo '$PASSWORD' | sudo -S rm -rf ~/zookeeper/zookeeper"
+    ssh $1 "echo '$PASSWORD' | sudo -S rm -rf ~/zookeeper/data"
+    ssh $1 "echo '$PASSWORD' | sudo -S rm -f /etc/systemd/system/zookeeper.service"
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
     echo -e "\nclean finished: $1"
 }

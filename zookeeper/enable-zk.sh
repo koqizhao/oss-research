@@ -53,7 +53,7 @@ case $ops in
 
         echo -e "\ncomponent: zkui\n"
         cd ../zkui
-        ./deploy-service.sh
+        ./deploy-service.sh $scale
 
         ;;
      clean)

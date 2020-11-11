@@ -1,21 +1,14 @@
 #!/bin/bash
 
-components=(admin bootstrap)
-deploy_path=/home/koqizhao/soul
+source ~/Research/common/init.sh
+init_scale "$1" .
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source ./servers.sh
+source common.sh
 
-for server in ${servers[@]}
-do
-    echo -e "\nremote server: $server\n"
-    for component in ${components[@]}
-    do
-        echo -e "\ncomponent: $component\n"
-        ssh $server "cd $deploy_path; ./start-soul-$component.sh"
-        ssh $server "ps aux | grep java | grep soul-$component"
-        echo
-    done
-done
+servers=$admin_servers
+component=$admin_component
+remote_start
+
+servers=$bootstrap_servers
+component=$bootstrap_component
+remote_start

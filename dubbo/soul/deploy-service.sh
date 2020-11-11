@@ -1,36 +1,30 @@
 #!/bin/bash
 
-project_path=/home/koqizhao/Projects/misc/soul
-components=(admin bootstrap)
-deploy_path=/home/koqizhao/soul
+source ~/Research/common/init.sh
+init_scale "$1" .
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source ./servers.sh
+source common.sh
+
+project_path=/home/koqizhao/Projects/misc/soul
 
 deploy()
 {
     server=$1
-    component=soul-$2
+    component=$2
     deploy_file=$project_path/$component/target/$component.jar
 
-    echo -e "\ndeploy started: $server/$component\n"
+    ssh $server "mkdir -p $deploy_path/$component"
 
-    ssh $server "mkdir -p $deploy_path"
+    scp $deploy_file $server:$deploy_path/$component
+    scp start-$component.sh $server:$deploy_path/$component
 
-    scp $deploy_file $server:$deploy_path
-    scp start-$component.sh $server:$deploy_path
-
-    ssh $server "cd $deploy_path; ./start-$component.sh"
-
-    echo -e "\ndeploy finished: $server/$component"
+    ssh $server "cd $deploy_path/$component; ./start-$component.sh"
 }
 
-for server in ${servers[@]}
-do
-    for component in ${components[@]}
-    do
-        deploy $server $component
-    done
-done
+servers=$admin_servers
+component=$admin_component
+remote_deploy
+
+servers=$bootstrap_servers
+component=$bootstrap_component
+remote_deploy
