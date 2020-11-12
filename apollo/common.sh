@@ -18,48 +18,40 @@ done
 
 remote_start()
 {
-    for server in ${servers[@]}
-    do
-        echo -e "\nremote server: $server\n"
-        ssh $server "cd $deploy_path/$component; scripts/startup.sh"
-        echo
-        sleep 1
-        ssh $server "ps aux | grep $component"
-        echo
-    done
+    ssh $1 "cd $deploy_path/$2; scripts/startup.sh"
 }
 
 remote_stop()
 {
-    for server in ${servers[@]}
-    do
-        echo -e "\nremote server: $server\n"
-        ssh $server "cd $deploy_path/$component; scripts/shutdown.sh;"
-        echo
-        sleep 5
-        ssh $server "ps aux | grep $component"
-        echo
-    done
+    ssh $1 "cd $deploy_path/$2; scripts/shutdown.sh;"
+}
+
+remote_status()
+{
+    remote_ps $1 $2
 }
 
 remote_deploy()
 {
-    deploy_file=$project_path/apollo-$component/target/apollo-$component-*-github.zip
-    for server in ${servers[@]}
-    do
-        echo -e "\ndeploy started: $server\n"
-        deploy $server
-        echo -e "\ndeploy finished: $server"
-    done
+    server=$1
+
+    ssh $server "mkdir -p $deploy_path"
+
+    deploy_file=$project_path/$component/target/$component-*-github.zip
+    scp $deploy_file $server:$deploy_path
+    scp app.properties $server:$deploy_path
+    scp startup.sh $server:$deploy_path
+    scp deploy.sh $server:$deploy_path
+
+    scp_more $server
+
+    ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S sh deploy.sh $component; rm deploy.sh;"
+    ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S chown -R koqizhao:koqizhao $component;"
+    ssh $server "cd $deploy_path/$component; scripts/startup.sh"
 }
 
 remote_clean()
 {
-    for server in ${servers[@]}
-    do
-        echo -e "\nclean started: $server\n"
-        ssh $server "cd $deploy_path/$component; scripts/shutdown.sh;"
-        ssh $server "rm -rf $deploy_path/$component; rm -rf /opt/logs/$appId"
-        echo -e "clean finished: $server\n"
-    done
+    ssh $1 "cd $deploy_path/$component; scripts/shutdown.sh;"
+    ssh $1 "rm -rf $deploy_path/$component; rm -rf /opt/logs/$appId"
 }

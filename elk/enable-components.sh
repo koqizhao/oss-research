@@ -8,25 +8,25 @@ source common.sh
 do_start()
 {
     echo -e "\nelasticsearch\n"
-    elasticsearch/remote-start.sh $scale
+    elasticsearch/start-service.sh $scale
 
     echo -e "\nkibana\n"
-    kibana/remote-start.sh $scale
+    kibana/start-service.sh $scale
 
     echo -e "\nfilebeat\n"
-    filebeat/remote-start.sh $scale
+    filebeat/start-service.sh $scale
 }
 
 do_stop()
 {
     echo -e "\nfilebeat\n"
-    filebeat/remote-stop.sh $scale
+    filebeat/stop-service.sh $scale
 
     echo -e "\nkibana\n"
-    kibana/remote-stop.sh $scale
+    kibana/stop-service.sh $scale
 
     echo -e "\nelasticsearch\n"
-    elasticsearch/remote-stop.sh $scale
+    elasticsearch/stop-service.sh $scale
 }
 
 do_deploy()
@@ -53,6 +53,18 @@ do_clean()
     elasticsearch/clean-service.sh $scale
 
     clean_all ${!es_servers_map[@]} ${kibana_servers[@]} ${filebeat_servers[@]}
+}
+
+do_status()
+{
+    echo -e "\nfilebeat\n"
+    filebeat/status-service.sh $scale
+
+    echo -e "\nkibana\n"
+    kibana/status-service.sh $scale
+
+    echo -e "\nelasticsearch\n"
+    elasticsearch/status-service.sh $scale
 }
 
 do_ops $1

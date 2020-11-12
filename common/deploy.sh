@@ -72,10 +72,64 @@ do_ops()
             do_clean
 
             ;;
+        status)
+            do_status
+
+            ;;
         *)
             echo -e "\nunknown ops: $ops\n"
             ;;
     esac
 
     echo
+}
+
+batch_start()
+{
+    for server in ${servers[@]}
+    do
+        echo -e "\nstart started: $server\n"
+        remote_start $server $component
+        echo -e "\nstart finished: $server\n"
+    done
+}
+
+batch_stop()
+{
+    for server in ${servers[@]}
+    do
+        echo -e "\nstop started: $server\n"
+        remote_stop $server $component
+        echo -e "\nstop finished: $server\n"
+    done
+}
+
+batch_deploy()
+{
+    for server in ${servers[@]}
+    do
+        echo -e "\ndeploy started: $server\n"
+        remote_deploy $server $component
+        echo -e "\ndeploy finished: $server\n"
+    done
+}
+
+batch_clean()
+{
+    for server in ${servers[@]}
+    do
+        echo -e "\nclean started: $server\n"
+        remote_clean $server $component
+        echo -e "\nclean finished: $server\n"
+    done
+}
+
+batch_status()
+{
+    for server in ${servers[@]}
+    do
+        echo -e "\nstatus started: $server\n"
+        remote_status $server $component
+        echo -e "\nstatus finished: $server\n"
+    done
 }

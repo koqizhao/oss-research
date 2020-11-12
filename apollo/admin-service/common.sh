@@ -2,6 +2,6 @@
 
 source ../common.sh
 
-component=adminservice
+component=apollo-adminservice
 servers=${admin_servers[@]}
 appId=100003172

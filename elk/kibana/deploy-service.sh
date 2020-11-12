@@ -9,7 +9,7 @@ deploy_version=7.9.3
 deploy_file=kibana-oss-$deploy_version-linux-x86_64.tar.gz
 deploy_file_extracted=kibana-$deploy_version-linux-x86_64
 
-deploy()
+remote_deploy()
 {
     server=$1
 
@@ -27,4 +27,4 @@ deploy()
     ssh $server "echo '$PASSWORD' | sudo -S systemctl enable kibana.service"
 }
 
-remote_deploy
+batch_deploy

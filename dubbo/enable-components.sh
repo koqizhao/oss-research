@@ -8,31 +8,31 @@ source common.sh
 do_start()
 {
     echo -e "\ndubbo-admin\n"
-    dubbo-admin/remote-start.sh $scale
+    dubbo-admin/start-service.sh $scale
 
     echo -e "\nsentinel\n"
-    sentinel/remote-start.sh $scale
+    sentinel/start-service.sh $scale
 
     echo -e "\nsoul\n"
-    soul/remote-start.sh $scale
+    soul/start-service.sh $scale
 
     echo -e "\ndemo-services\n"
-    demo-services/remote-start.sh $scale
+    demo-services/start-service.sh $scale
 }
 
 do_stop()
 {
     echo -e "\ndemo-services\n"
-    demo-services/remote-stop.sh $scale
+    demo-services/stop-service.sh $scale
 
     echo -e "\nsoul\n"
-    soul/remote-stop.sh $scale
+    soul/stop-service.sh $scale
 
     echo -e "\nsentinel\n"
-    sentinel/remote-stop.sh $scale
+    sentinel/stop-service.sh $scale
 
     echo -e "\ndubbo-admin\n"
-    dubbo-admin/remote-stop.sh $scale
+    dubbo-admin/stop-service.sh $scale
 }
 
 do_deploy()
@@ -66,6 +66,21 @@ do_clean()
 
     clean_all ${dubbo_admin_servers[@]} ${sentinel_servers[@]} ${soul_admin_servers[@]} \
         ${soul_bootstrap_servers[@]} ${service_servers[@]} ${client_servers[@]}
+}
+
+do_status()
+{
+    echo -e "\ndemo-services\n"
+    demo-services/status-service.sh $scale
+
+    echo -e "\nsoul\n"
+    soul/status-service.sh $scale
+
+    echo -e "\nsentinel\n"
+    sentinel/status-service.sh $scale
+
+    echo -e "\ndubbo-admin\n"
+    dubbo-admin/status-service.sh $scale
 }
 
 do_ops $1

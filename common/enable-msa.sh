@@ -19,7 +19,7 @@ do_start()
     echo
 
     echo -e "\napollo\n"
-    apollo/enable-apollo.sh $ops $scale
+    apollo/enable-components.sh $ops $scale
     echo
 
     echo -e "\nzookeeper\n"
@@ -42,7 +42,7 @@ do_stop()
     echo
 
     echo -e "\napollo\n"
-    apollo/enable-apollo.sh $ops $scale
+    apollo/enable-components.sh $ops $scale
     echo
 
     echo -e "\nmysql\n"
@@ -65,7 +65,7 @@ do_deploy()
     echo
 
     echo -e "\napollo\n"
-    apollo/enable-apollo.sh $ops $scale
+    apollo/enable-components.sh $ops $scale
     echo
 
     echo -e "\nzookeeper\n"
@@ -88,7 +88,30 @@ do_clean()
     echo
 
     echo -e "\napollo\n"
-    apollo/enable-apollo.sh $ops $scale
+    apollo/enable-components.sh $ops $scale
+    echo
+
+    echo -e "\nmysql\n"
+    mysql/enable-components.sh $ops $scale
+    echo
+
+    echo -e "\nelk\n"
+    elk/enable-components.sh $ops $scale
+    echo
+}
+
+do_status()
+{
+    echo -e "\ndubbo\n"
+    dubbo/enable-components.sh $ops $scale
+    echo
+
+    echo -e "\nzookeeper\n"
+    zookeeper/enable-components.sh $ops $scale
+    echo
+
+    echo -e "\napollo\n"
+    apollo/enable-components.sh $ops $scale
     echo
 
     echo -e "\nmysql\n"

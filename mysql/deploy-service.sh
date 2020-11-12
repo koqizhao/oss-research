@@ -9,11 +9,9 @@ mysql_version=8.0.21
 deploy_file_name=mysql-$mysql_version-linux-glibc2.12-x86_64
 deploy_file=$deploy_file_name.tar.xz
 
-deploy()
+remote_deploy()
 {
     server=$1
-    echo -e "\ndeploy started: $server\n"
-
     ssh $server "echo '$PASSWORD' | sudo -S apt install -y libaio1 libncurses5"
 
     ssh $server "echo '$PASSWORD' | sudo -S groupadd mysql"
@@ -39,4 +37,4 @@ deploy()
     ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S mv mysql.sh /etc/profile.d;"
 }
 
-remote_deploy
+batch_deploy

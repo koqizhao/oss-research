@@ -7,7 +7,7 @@ source common.sh
 
 project_path=/home/koqizhao/Projects/koqizhao/java-projects/dubbo-study
 
-deploy()
+remote_deploy()
 {
     server=$1
     component=$2
@@ -23,8 +23,8 @@ deploy()
 
 servers=${service_servers[@]}
 component=$service_component
-remote_deploy
+batch_deploy
 
 servers=${client_servers[@]}
 component=$client_component
-remote_deploy
+batch_deploy

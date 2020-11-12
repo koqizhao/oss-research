@@ -7,7 +7,7 @@ source common.sh
 
 project_path=/home/koqizhao/Projects/alibaba/Sentinel
 
-deploy()
+remote_deploy()
 {
     server=$1
     component=$2
@@ -21,4 +21,4 @@ deploy()
     ssh $server "cd $deploy_path/$component; ./start-$component.sh"
 }
 
-remote_deploy
+batch_deploy

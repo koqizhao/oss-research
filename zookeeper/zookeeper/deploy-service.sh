@@ -24,7 +24,7 @@ get_myid()
     return -1
 }
 
-deploy()
+remote_deploy()
 {
     server=$1
     component=$2
@@ -47,4 +47,4 @@ deploy()
     ssh $server "echo '$PASSWORD' | sudo -S systemctl enable zookeeper.service"
 }
 
-remote_deploy
+batch_deploy

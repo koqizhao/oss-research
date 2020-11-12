@@ -5,7 +5,7 @@ init_scale "$1" .
 
 source common.sh
 
-clean()
+remote_clean()
 {
     server=$1
     ssh $server "cd $deploy_path/$component; bin/mysqladmin --user=root --password='$db_password' shutdown && sleep 5"
@@ -15,4 +15,4 @@ clean()
     ssh $server "echo '$PASSWORD' | sudo -S userdel -f mysql"
 }
 
-remote_clean
+batch_clean

@@ -12,20 +12,10 @@ sed "s/META_SERVERS/$t_servers/g" apolloportaldb.sql \
 db_exec apolloportaldb-temp.sql
 rm apolloportaldb-temp.sql
 
-deploy()
+scp_more()
 {
-    server=$1
-
-    ssh $server "mkdir -p $deploy_path"
-
-    scp $deploy_file $server:$deploy_path
-    scp app.properties $server:$deploy_path
-    scp application-github.properties $server:$deploy_path
-    scp apollo-env.properties $server:$deploy_path
-    scp startup.sh $server:$deploy_path
-    scp deploy.sh $server:$deploy_path
-
-    ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S sh deploy.sh $component; rm deploy.sh;"
+    scp application-github.properties $1:$deploy_path
+    scp apollo-env.properties $1:$deploy_path
 }
 
-remote_deploy
+batch_deploy

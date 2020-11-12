@@ -7,10 +7,10 @@ source common.sh
 
 servers=${client_servers[@]}
 component=$client_component
-remote_clean
+batch_clean
 
 servers=${service_servers[@]}
 component=$service_component
-remote_clean
+batch_clean
 
 clean_all ${service_servers[@]} ${client_servers[@]}

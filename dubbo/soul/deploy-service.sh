@@ -7,7 +7,7 @@ source common.sh
 
 project_path=/home/koqizhao/Projects/misc/soul
 
-deploy()
+remote_deploy()
 {
     server=$1
     component=$2
@@ -23,8 +23,8 @@ deploy()
 
 servers=${admin_servers[@]}
 component=$admin_component
-remote_deploy
+batch_deploy
 
 servers=${bootstrap_servers[@]}
 component=$bootstrap_component
-remote_deploy
+batch_deploy

@@ -7,7 +7,7 @@ source common.sh
 
 project_path=~/Projects/misc/zkui
 
-deploy()
+remote_deploy()
 {
     server=$server
     ssh $server "rm -rf $deploy_path/$component"
@@ -19,4 +19,4 @@ deploy()
     ssh $server "cd $deploy_path/$component; ./zkui.sh start"
 }
 
-remote_deploy
+batch_deploy

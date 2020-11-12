@@ -7,10 +7,10 @@ source common.sh
 
 servers=${bootstrap_servers[@]}
 component=$bootstrap_component
-remote_clean
+batch_clean
 
 servers=${admin_servers[@]}
 component=$admin_component
-remote_clean
+batch_clean
 
 clean_all ${admin_servers[@]} ${bootstrap_servers[@]}

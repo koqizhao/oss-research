@@ -15,7 +15,7 @@ mvn clean package -Dmaven.test.skip=true
 git checkout -- .
 cd $work_path
 
-deploy()
+remote_deploy()
 {
     server=$1
     component=$2
@@ -27,4 +27,4 @@ deploy()
     ssh $1 "cd $deploy_path/$component; ./start-$component.sh"
 }
 
-remote_deploy
+batch_deploy

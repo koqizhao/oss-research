@@ -2,49 +2,23 @@
 
 deploy_path=/home/koqizhao/dubbo
 
+remote_status()
+{
+    remote_ps $1 $2
+}
+
 remote_start()
 {
-    echo -e "\n$component\n"
-    for server in ${servers[@]}
-    do
-        echo -e "\nremote server: $server\n"
-        ssh $server "cd $deploy_path/$component; ./start-$component.sh"
-        ssh $server "ps aux | grep java | grep $component"
-        echo
-    done
+    ssh $1 "cd $deploy_path/$2; ./start-$2.sh"
 }
 
 remote_stop()
 {
-    echo -e "\n$component\n"
-    for server in ${servers[@]}
-    do
-        echo -e "\nremote server: $server\n"
-        ssh $server "pid=\`ps aux | grep java | grep $component | awk '{ print \$2 }'\`; kill \$pid;"
-        ssh $server "ps aux | grep java | grep $component"
-        echo
-    done
-}
-
-remote_deploy()
-{
-    echo -e "\n$component\n"
-    for server in ${servers[@]}
-    do
-        echo -e "\ndeploy started: $server\n"
-        deploy $server $component
-        echo -e "\ndeploy finished: $server"
-    done
+    ssh $1 "pid=\`ps aux | grep java | grep $2 | awk '{ print \$2 }'\`; kill \$pid;"
 }
 
 remote_clean()
 {
-    echo -e "\n$component\n"
-    for server in ${servers[@]}
-    do
-        echo -e "\nremote server: $server\n"
-        ssh $server "pid=\`ps aux | grep java | grep $component | awk '{ print \$2 }'\`; kill \$pid;"
-        ssh $server "rm -rf $deploy_path/$component;"
-        echo -e "clean finished: $server\n"
-    done
+    ssh $1 "pid=\`ps aux | grep java | grep $2 | awk '{ print \$2 }'\`; kill \$pid;"
+    ssh $1 "rm -rf $deploy_path/$2;"
 }

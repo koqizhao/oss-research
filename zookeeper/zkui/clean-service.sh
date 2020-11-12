@@ -5,10 +5,10 @@ init_scale "$1" ..
 
 source common.sh
 
-clean()
+remote_clean()
 {
     ssh $server "cd $deploy_path/$component; ./zkui.sh stop"
     ssh $server "rm -rf $deploy_path/$component"
 }
 
-remote_clean
+batch_clean

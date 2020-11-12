@@ -12,7 +12,7 @@ deploy_file_extracted=elasticsearch-$deploy_version
 cluster_name=es-cluster
 http_port=9200
 
-deploy()
+remote_deploy()
 {
     server=$1
 
@@ -44,4 +44,4 @@ deploy()
     ssh $server "echo '$PASSWORD' | sudo -S systemctl enable elasticsearch.service"
 }
 
-remote_deploy
+batch_deploy

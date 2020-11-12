@@ -7,12 +7,12 @@ source common.sh
 
 do_start()
 {
-    ./remote-start.sh $scale
+    ./start-service.sh $scale
 }
 
 do_stop()
 {
-    ./remote-stop.sh $scale
+    ./stop-service.sh $scale
 }
 
 do_deploy()
@@ -25,6 +25,11 @@ do_clean()
     ./clean-service.sh $scale
 
     clean_all ${servers[@]}
+}
+
+do_status()
+{
+    ./status-service.sh $scale
 }
 
 do_ops $1

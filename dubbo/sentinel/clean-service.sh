@@ -5,4 +5,4 @@ init_scale "$1" ..
 
 source common.sh
 
-remote_clean
+batch_clean

@@ -2,6 +2,6 @@
 
 source ../common.sh
 
-component=configservice
+component=apollo-configservice
 servers=${config_servers[@]}
 appId=100003171

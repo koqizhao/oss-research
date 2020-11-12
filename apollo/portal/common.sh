@@ -2,6 +2,6 @@
 
 source ../common.sh
 
-component=portal
+component=apollo-portal
 servers=${portal_servers[@]}
 appId=100003173

@@ -5,7 +5,7 @@ init_scale "$1" ..
 
 source common.sh
 
-clean()
+remote_clean()
 {
     server=$1
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop zookeeper.service"
@@ -16,4 +16,4 @@ clean()
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
 }
 
-remote_clean
+batch_clean

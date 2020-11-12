@@ -9,19 +9,19 @@ source common.sh
 do_start()
 {
     echo -e "\nzookeeper\n"
-    zookeeper/remote-start.sh $scale
+    zookeeper/start-service.sh $scale
 
     echo -e "\nzkui\n"
-    zkui/remote-start.sh $scale
+    zkui/start-service.sh $scale
 }
 
 do_stop()
 {
     echo -e "\nzkui\n"
-    zkui/remote-stop.sh $scale
+    zkui/stop-service.sh $scale
 
     echo -e "\nzookeeper\n"
-    zookeeper/remote-stop.sh $scale
+    zookeeper/stop-service.sh $scale
 }
 
 do_deploy()
@@ -42,6 +42,15 @@ do_clean()
     zookeeper/clean-service.sh $scale
 
     clean_all ${zookeeper_servers[@]} ${zk_servers[@]}
+}
+
+do_status()
+{
+    echo -e "\nzkui\n"
+    zkui/status-service.sh $scale
+
+    echo -e "\nzookeeper\n"
+    zookeeper/status-service.sh $scale
 }
 
 do_ops $1
