@@ -1,36 +1,20 @@
 #!/bin/bash
 
-if [ -z "$PASSWORD" ]; then
-    echo -n "password: "
-    read -s PASSWORD
-    echo
-fi
+source ~/Research/common/init.sh
+init_scale "$1" ..
 
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
-
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source servers-$scale.sh
+source common.sh
 
 clean()
 {
     server=$1
-
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop elasticsearch.service"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl disable elasticsearch.service"
-    ssh $server "echo '$PASSWORD' | sudo -S rm /etc/systemd/system/elasticsearch.service"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -f /etc/systemd/system/elasticsearch.service"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
-    ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/elasticsearch"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/data/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/logs/$component"
 }
 
-for server in ${servers[@]}
-do
-    echo -e "\nremote server: $server\n"
-    clean $server
-    echo
-done
+remote_clean

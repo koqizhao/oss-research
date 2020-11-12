@@ -1,15 +1,9 @@
 #!/bin/bash
 
-if [ -z "$PASSWORD" ]; then
-    echo -n "password: "
-    read -s PASSWORD
-    echo
-fi
+source ~/Research/common/init.sh
+init_scale "$1" ..
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source servers.sh
+source common.sh
 
 clean()
 {
@@ -17,14 +11,11 @@ clean()
 
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop filebeat.service"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl disable filebeat.service"
-    ssh $server "echo '$PASSWORD' | sudo -S rm /etc/systemd/system/filebeat.service"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -f /etc/systemd/system/filebeat.service"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
-    ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/filebeat"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/data/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/logs/$component"
 }
 
-for server in ${servers[@]}
-do
-    echo -e "\nremote server: $server\n"
-    clean $server
-    echo
-done
+remote_clean

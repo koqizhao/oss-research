@@ -114,4 +114,4 @@ elasticsearch.hosts: ["http://192.168.56.11:9200","http://192.168.56.12:9200"]
 # Supported languages are the following: English - en , by default , Chinese - zh-CN .
 #i18n.locale: "en"
 
-path.data: /home/koqizhao/kibana/data
+path.data: /home/koqizhao/elk/data/kibana

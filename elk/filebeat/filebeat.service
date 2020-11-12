@@ -2,8 +2,8 @@
 Description=FileBeat Log Collector
 
 [Service]
-WorkingDirectory=/home/koqizhao/filebeat/filebeat
-ExecStart=/home/koqizhao/filebeat/filebeat/filebeat -e
+WorkingDirectory=/home/koqizhao/elk/filebeat
+ExecStart=/home/koqizhao/elk/filebeat/filebeat -e
 Restart=always
 RestartSec=10
 

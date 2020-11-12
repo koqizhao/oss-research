@@ -32,12 +32,12 @@ node.name: NODE_NAME
 # Path to directory where to store the data (separate multiple locations by comma):
 #
 #path.data: /path/to/data
-path.data: /home/koqizhao/elasticsearch/data
+path.data: /home/koqizhao/elk/data/elasticsearch
 #
 # Path to log files:
 #
 #path.logs: /path/to/logs
-path.logs: /home/koqizhao/elasticsearch/logs
+path.logs: /home/koqizhao/elk/logs/elasticsearch
 #
 # ----------------------------------- Memory -----------------------------------
 #

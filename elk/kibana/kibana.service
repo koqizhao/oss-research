@@ -4,8 +4,8 @@ Description=Kibana
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/kibana/kibana
-ExecStart=/home/koqizhao/kibana/kibana/bin/kibana
+WorkingDirectory=/home/koqizhao/elk/kibana
+ExecStart=/home/koqizhao/elk/kibana/bin/kibana
 Restart=always
 RestartSec=10
 

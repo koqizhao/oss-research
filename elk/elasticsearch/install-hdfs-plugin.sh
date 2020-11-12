@@ -7,8 +7,8 @@ install_plugin()
     server=$1
 
     scp ~/Software/elastic/${deploy_file} $server:./elasticsearch/
-    ssh $server "echo y | ~/elasticsearch/elasticsearch/bin/elasticsearch-plugin install file:////home/koqizhao/elasticsearch/${deploy_file}"
-    ssh $server "rm ~/elasticsearch/${deploy_file}"
+    ssh $server "echo y | ~/elk/elasticsearch/bin/elasticsearch-plugin install file:////home/koqizhao/elk/${deploy_file}"
+    ssh $server "rm ~/elk/${deploy_file}"
     echo
 }
 
