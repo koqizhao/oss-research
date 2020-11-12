@@ -7,11 +7,9 @@ read -s PASSWORD
 echo
 
 source ~/Research/servers.sh
+source ~/Research/common/remote.sh
 
 for i in ${servers[@]}
 do
-    ssh $i "echo '$PASSWORD' | sudo -S apt update"
-    ssh $i "echo '$PASSWORD' | sudo -S apt autoremove --purge -y"
-    ssh $i "echo '$PASSWORD' | sudo -S apt upgrade -y"
-    ssh $i "echo '$PASSWORD' | sudo -S reboot" || echo
+    remote_update $i $PASSWORD
 done

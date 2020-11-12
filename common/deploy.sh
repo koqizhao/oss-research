@@ -34,17 +34,16 @@ init_scale()
 
 db_exec()
 {
-    sql=$1
-    scp $sql $db_server:./
-    ssh $db_server "cd ~/mysql/mysql; bin/mysql --connect-expired-password --user=root --password=$db_password < ~/$sql;"
-    ssh $db_server "rm ~/$sql"
+    scp $1 $db_server:./
+    ssh $db_server "cd ~/mysql/mysql; bin/mysql --connect-expired-password --user=root --password=$db_password < ~/$1;"
+    ssh $db_server "rm ~/$1"
 }
 
 clean_all()
 {
-    for server in `merge_array $@`
+    for s in `merge_array $@`
     do
-        ssh $server "rm -rf $deploy_path"
+        ssh $s "rm -rf $deploy_path"
     done
 }
 

@@ -1,40 +1,22 @@
 #!/bin/bash
 
-WORK_DIR=zookeeper/zkui
-DEPLOY_DIR=~/Projects/misc/zkui
+source ~/Research/common/init.sh
+init_scale "$1" ..
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source ./servers.sh
+source common.sh
 
-cd $DEPLOY_DIR
-git pull
-mvn clean package
-cd $work_path
-
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
+project_path=~/Projects/misc/zkui
 
 deploy()
 {
-    echo -e "\ndeploy $1 started\n"
+    server=$server
+    ssh $server "rm -rf $deploy_path/$component"
+    ssh $server "mkdir -p $deploy_path/$component"
 
-    ssh $1 "rm -rf $WORK_DIR"
-    ssh $1 "mkdir -p $WORK_DIR"
-
-    scp $DEPLOY_DIR/target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar $1:$WORK_DIR
-    scp config.cfg.$scale $1:$WORK_DIR/config.cfg
-    scp zkui.sh $1:$WORK_DIR
-    ssh $1 "cd $WORK_DIR; ./zkui.sh start"
-
-    echo
+    scp $project_path/target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar $server:$deploy_path/$component
+    scp config.cfg.$scale $server:$deploy_path/$component/config.cfg
+    scp zkui.sh $server:$deploy_path/$component
+    ssh $server "cd $deploy_path/$component; ./zkui.sh start"
 }
 
-for server in ${servers[@]}
-do
-    deploy $server
-done
+remote_deploy

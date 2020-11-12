@@ -1,51 +1,50 @@
 #!/bin/bash
 
-if [ -z "$PASSWORD" ]; then
-    echo -n "password: "
-    read -s PASSWORD
-    echo
-fi
+source ~/Research/common/init.sh
+init_scale "$1" ..
+
+source common.sh
 
 zk_file=apache-zookeeper-3.6.1-bin
 
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
+get_myid()
+{
+    declare -i myid
+    myid=0
+    for server in ${servers[@]}
+    do
+        if [ $server == "$1" ]; then
+            echo $myid
+            return 0
+        fi
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
+        let myid+=1
+    done
+    echo "ERROR: bad myid" 1>&2
+    return -1
+}
 
 deploy()
 {
-    echo -e "\ndeploy $1 started\n"
+    server=$1
+    component=$2
 
-    ssh $1 "mkdir -p ~/zookeeper/data"
+    ssh $server "mkdir -p $deploy_path/data"
 
-    scp ~/Software/${zk_file}.tar.gz $1:./zookeeper/
-    ssh $1 "cd ~/zookeeper; tar xf ${zk_file}.tar.gz; mv $zk_file zookeeper; rm ${zk_file}.tar.gz"
-    scp zoo.cfg.$scale $1:./zookeeper/zookeeper/conf/zoo.cfg
-    scp java.env $1:./zookeeper/zookeeper/conf/
+    scp ~/Software/${zk_file}.tar.gz $server:$deploy_path
+    ssh $server "cd $deploy_path; tar xf ${zk_file}.tar.gz; mv $zk_file $component; rm ${zk_file}.tar.gz"
+    scp zoo.cfg.$scale $server:$deploy_path/$component/conf/zoo.cfg
+    scp java.env $server:$deploy_path/$component/conf/
 
-    ssh $1 "echo $2 > myid; mv myid ~/zookeeper/data"
+    myid=`get_myid $server`
+    ssh $server "echo $myid > myid; mv myid $deploy_path/data"
 
-    scp zookeeper.service $1:./zookeeper
-    ssh $1 "echo '$PASSWORD' | sudo -S mv ~/zookeeper/zookeeper.service /etc/systemd/system/"
-    ssh $1 "echo '$PASSWORD' | sudo -S chown root:root /etc/systemd/system/zookeeper.service"
-    ssh $1 "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
-    ssh $1 "echo '$PASSWORD' | sudo -S systemctl start zookeeper.service"
-    ssh $1 "echo '$PASSWORD' | sudo -S systemctl enable zookeeper.service"
-
-    echo "deploy $1 finished"
+    scp zookeeper.service $server:$deploy_path
+    ssh $server "echo '$PASSWORD' | sudo -S mv $deploy_path/zookeeper.service /etc/systemd/system/"
+    ssh $server "echo '$PASSWORD' | sudo -S chown root:root /etc/systemd/system/zookeeper.service"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start zookeeper.service"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl enable zookeeper.service"
 }
 
-source servers-$scale.sh
-machine_count=`echo ${#servers[@]}`
-
-for i in `let machine_count=machine_count-1; seq 0 $machine_count`
-do
-    deploy ${servers[$i]} $i
-    echo
-done
+remote_deploy

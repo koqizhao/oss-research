@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=sentinel-dashboard
-servers=$sentinel_servers
+servers=${sentinel_servers[@]}

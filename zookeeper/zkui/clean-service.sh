@@ -1,16 +1,14 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/zookeeper/zkui
+source ~/Research/common/init.sh
+init_scale "$1" ..
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source ./servers.sh
+source common.sh
 
-for server in ${servers[@]}
-do
-    echo -e "\nclean started: $server\n"
-    ssh $server "cd $deploy_path; ./zkui.sh stop"
-    ssh $server "rm -rf $deploy_path"
-    echo -e "clean finished: $server\n"
-done
+clean()
+{
+    ssh $server "cd $deploy_path/$component; ./zkui.sh stop"
+    ssh $server "rm -rf $deploy_path/$component"
+}
+
+remote_clean

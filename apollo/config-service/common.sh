@@ -3,5 +3,5 @@
 source ../common.sh
 
 component=configservice
-servers=$config_servers
+servers=${config_servers[@]}
 appId=100003171

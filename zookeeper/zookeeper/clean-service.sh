@@ -1,38 +1,19 @@
 #!/bin/bash
 
-if [ -z "$PASSWORD" ]; then
-    echo -n "password: "
-    read -s PASSWORD
-    echo
-fi
+source ~/Research/common/init.sh
+init_scale "$1" ..
 
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
-
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-
-source servers-$scale.sh
+source common.sh
 
 clean()
 {
-    echo -e "\nclean started: $1\n"
-    ssh $1 "echo '$PASSWORD' | sudo -S systemctl stop zookeeper.service"
-    ssh $1 "echo '$PASSWORD' | sudo -S systemctl disable zookeeper.service"
-    ssh $1 "echo '$PASSWORD' | sudo -S rm -rf ~/zookeeper/zookeeper"
-    ssh $1 "echo '$PASSWORD' | sudo -S rm -rf ~/zookeeper/data"
-    ssh $1 "echo '$PASSWORD' | sudo -S rm -f /etc/systemd/system/zookeeper.service"
-    ssh $1 "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
-    echo -e "\nclean finished: $1"
+    server=$1
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop zookeeper.service"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl disable zookeeper.service"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/data"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -f /etc/systemd/system/zookeeper.service"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
 }
 
-for server in ${servers[@]}
-do
-    clean $server
-done
-
-echo
+remote_clean

@@ -1,26 +1,14 @@
 #!/bin/bash
 
-if [ -z "$PASSWORD" ]; then
-    echo -n "password: "
-    read -s PASSWORD
-    echo
-fi
+source ~/Research/common/init.sh
+init_scale "$1" ..
 
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
+source common.sh
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
+start()
+{
+    server=$1
+    remote_enable $server $component $PASSWORD
+}
 
-source ~/Research/remote-enable.sh
-source servers-$scale.sh
-
-for server in ${servers[@]}
-do
-    echo -e "\nremote server: $server\n"
-    enable $server $PASSWORD zookeeper
-done
+remote_start
