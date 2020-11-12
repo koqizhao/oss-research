@@ -1,16 +1,14 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/mysql/mysql
-mysql_password=xx123456XX
+source ~/Research/common/init.sh
+init_scale "$1" .
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source servers.sh
+source common.sh
 
-echo -e "\nremote server: $server\n"
-ssh $server "cd $deploy_path; bin/mysqladmin --user=root --password='$mysql_password' shutdown"
-echo
-sleep 5
-ssh $server "ps aux | grep mysqld"
-echo
+stop()
+{
+    server=$1
+    ssh $server "cd $deploy_path/$component; bin/mysqladmin --user=root --password='$db_password' shutdown"
+}
+
+remote_stop

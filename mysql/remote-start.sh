@@ -1,21 +1,14 @@
 #!/bin/bash
 
-if [ -z "$PASSWORD" ]; then
-    echo -n "password: "
-    read -s PASSWORD
-    echo
-fi
+source ~/Research/common/init.sh
+init_scale "$1" .
 
-deploy_path=/home/koqizhao/mysql/mysql
+source common.sh
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source servers.sh
+start()
+{
+    server=$1
+    ssh $server "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S ./start-mysql.sh;"
+}
 
-echo -e "\nremote server: $server\n"
-ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S ./start-mysql.sh;"
-echo
-sleep 1
-ssh $server "ps aux | grep mysqld"
-echo
+remote_start
