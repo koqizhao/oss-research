@@ -1,0 +1,13 @@
+[Unit]
+Description=Kibana
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=/home/koqizhao/monitoring/elk/kibana
+ExecStart=/home/koqizhao/monitoring/elk/kibana/bin/kibana
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

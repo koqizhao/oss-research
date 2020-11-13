@@ -1,0 +1,16 @@
+[Unit]
+Description=ElasticSearch Service
+After=network.target
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=/home/koqizhao/monitoring/elk/elasticsearch
+ExecStart=/home/koqizhao/monitoring/elk/elasticsearch/elasticsearch.sh start
+ExecStop=/home/koqizhao/monitoring/elk/elasticsearch/elasticsearch.sh stop 300
+Restart=always
+RestartSec=10
+TimeoutSec=360
+
+[Install]
+WantedBy=multi-user.target
