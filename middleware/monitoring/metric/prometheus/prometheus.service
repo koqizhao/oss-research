@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Metric System
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=/home/koqizhao/monitoring/metric/prometheus
+ExecStart=/home/koqizhao/monitoring/metric/prometheus/prometheus --config.file=./prometheus.yml --storage.tsdb.path=../data/prometheus
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

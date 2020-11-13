@@ -1,0 +1,13 @@
+[Unit]
+Description=Grafana Visualization System
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=/home/koqizhao/monitoring/metric/grafana
+ExecStart=/home/koqizhao/monitoring/metric/grafana/bin/grafana-server web
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

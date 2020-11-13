@@ -26,12 +26,12 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['192.168.56.14:9090']
+      - targets: ['192.168.56.11:9090']
 
   - job_name: 'grafana'
     static_configs:
       - targets:
-        - '192.168.56.15:3000'
+        - '192.168.56.12:3000'
 
   - job_name: 'kafka-exporter'
     scrape_interval: 60s
@@ -49,6 +49,5 @@ scrape_configs:
       - targets:
           - 192.168.56.11:5556
           - 192.168.56.12:5556
-          - 192.168.56.13:5556
         labels:
           cluster: 'cluster1'
