@@ -1,5 +1,5 @@
 #Server Port
-serverPort=9090
+serverPort=2190
 #Comma seperated list of all the zookeeper servers
 zkServer=192.168.56.11:2181
 #Http path of the repository. Ignore if you dont intent to upload files from repository.
