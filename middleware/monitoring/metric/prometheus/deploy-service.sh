@@ -13,9 +13,10 @@ remote_deploy()
 
     ssh $server "mkdir -p $deploy_path/data; mkdir -p $deploy_path/logs/$component"
 
-    scp ~/Software/prometheus/${deploy_file}.tar.gz $server:$deploy_path
+    scp ~/Software/metric/prometheus/${deploy_file}.tar.gz $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf ${deploy_file}.tar.gz; mv $deploy_file $component; rm ${deploy_file}.tar.gz"
     scp prometheus.yml $server:$deploy_path/$component
+    scp start.sh $server:$deploy_path/$component
 
     scp prometheus.service $server:$deploy_path
     ssh $server "echo '$PASSWORD' | sudo -S chown root:root $deploy_path/prometheus.service"

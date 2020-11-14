@@ -7,7 +7,7 @@ Group=koqizhao
 WorkingDirectory=/home/koqizhao/monitoring/metric/prometheus
 StandardOutput=file:/home/koqizhao/monitoring/metric/logs/prometheus/prometheus.log
 StandardError=file:/home/koqizhao/monitoring/metric/logs/prometheus/prometheus.log
-ExecStart=/home/koqizhao/monitoring/metric/prometheus/prometheus --config.file=./prometheus.yml --storage.tsdb.path=../data/prometheus --web.listen-address=0.0.0.0:9090 --web.enable-lifecycle --web.enable-admin-api
+ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10
 

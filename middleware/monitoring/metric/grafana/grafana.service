@@ -5,7 +5,7 @@ Description=Grafana Visualization System
 User=koqizhao
 Group=koqizhao
 WorkingDirectory=/home/koqizhao/monitoring/metric/grafana
-ExecStart=/home/koqizhao/monitoring/metric/grafana/bin/grafana-server web
+ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10
 
