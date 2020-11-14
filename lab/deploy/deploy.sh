@@ -64,12 +64,22 @@ do_ops()
             do_stop
 
             ;;
+        restart)
+            do_stop
+            do_start
+
+            ;;
         deploy)
             do_deploy
 
             ;;
         clean)
             do_clean
+
+            ;;
+        redeploy)
+            do_clean
+            do_deploy
 
             ;;
         status)
