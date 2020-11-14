@@ -15,6 +15,7 @@ remote_clean()
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/data/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/logs/$component"
 }
 
 batch_clean

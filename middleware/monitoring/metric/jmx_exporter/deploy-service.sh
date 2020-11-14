@@ -12,7 +12,7 @@ remote_deploy()
 {
     server=$1
 
-    ssh $server "mkdir -p $deploy_path/$component"
+    ssh $server "mkdir -p $deploy_path/$component; mkdir -p $deploy_path/logs/$component"
 
     scp $project_path/jmx_prometheus_httpserver/target/$deploy_file $server:$deploy_path/$component/jmx_prometheus_httpserver.jar
     scp kafka.yml $server:$deploy_path/$component

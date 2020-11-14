@@ -11,7 +11,7 @@ remote_deploy()
 {
     server=$1
 
-    ssh $server "mkdir -p $deploy_path/data"
+    ssh $server "mkdir -p $deploy_path/data; mkdir -p $deploy_path/logs/$component"
 
     scp ~/Software/prometheus/${deploy_file}.tar.gz $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf ${deploy_file}.tar.gz; mv $deploy_file $component; rm ${deploy_file}.tar.gz"
