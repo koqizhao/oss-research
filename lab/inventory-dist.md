@@ -11,8 +11,10 @@
       - [Kafka Manager](#kafka-manager)
       - [Kafka Exporter](#kafka-exporter)
       - [Jmx Exporter](#jmx-exporter)
-    - [Promethues](#promethues)
-    - [Grafana](#grafana)
+    - [metric](#metric)
+      - [Promethues](#promethues)
+      - [Grafana](#grafana)
+      - [Thanos](#thanos)
     - [ELK](#elk)
       - [ElasticSearch](#elasticsearch)
       - [FileBeat](#filebeat)
@@ -88,17 +90,30 @@ port: 2181, 2888, 3888, 21811, 21812
 
 [jmx_exporter](http://192.168.56.11:9000/)
 
-### Promethues
+### metric
+
+#### Promethues
 
 - 192.168.56.11
 
 [prometheus](http://192.168.56.11:9090/graph)
 
-### Grafana
+#### Grafana
 
 - 192.168.56.11
 
 [grafana](http://192.168.56.11:3000)
+
+#### Thanos
+
+- 192.168.56.11
+
+port
+
+- sidecar: 19090, 19191
+- query: 19192
+
+[query](http://192.168.56.11:19192)
 
 ### ELK
 

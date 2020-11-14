@@ -1,0 +1,15 @@
+[Unit]
+Description=thanos sidecar
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=/home/koqizhao/monitoring/metric/thanos/thanos-sidecar
+StandardOutput=file:/home/koqizhao/monitoring/metric/logs/thanos/thanos-sidecar/thanos-sidecar.log
+StandardError=file:/home/koqizhao/monitoring/metric/logs/thanos/thanos-sidecar/thanos-sidecar.log
+ExecStart=/bin/sh ./start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
