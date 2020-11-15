@@ -16,7 +16,12 @@ remote_deploy()
 
     scp ~/Software/metric/prometheus/${deploy_file}.tar.gz $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf ${deploy_file}.tar.gz; mv $deploy_file $component; rm ${deploy_file}.tar.gz"
-    scp prometheus.yml $server:$deploy_path/$component
+
+    sed "s/THANOS_REPLICA/$server/g" prometheus.yml \
+        > prometheus.yml.tmp
+    scp prometheus.yml.tmp $server:$deploy_path/$component/prometheus.yml
+    rm prometheus.yml.tmp
+
     scp start.sh $server:$deploy_path/$component
 
     scp prometheus.service $server:$deploy_path

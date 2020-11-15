@@ -7,7 +7,7 @@ eureka_url=""
 meta_servers=""
 for s in ${config_servers[@]}
 do
-    if [ -z $eureka_url ]; then
+    if [ -z "$eureka_url" ]; then
         eureka_url="http://$s:38080/eureka/"
         meta_servers="http://$s:38080"
     else
