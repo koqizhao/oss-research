@@ -1,0 +1,13 @@
+[Unit]
+Description=node exporter
+
+[Service]
+WorkingDirectory=/home/koqizhao/monitoring/metric/node_exporter
+StandardOutput=file:/home/koqizhao/monitoring/metric/logs/node_exporter/node_exporter.log
+StandardError=file:/home/koqizhao/monitoring/metric/logs/node_exporter/node_exporter.log
+ExecStart=/bin/sh ./start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
