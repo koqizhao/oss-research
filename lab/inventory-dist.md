@@ -3,9 +3,11 @@
 - [Inventory](#inventory)
   - [Machines](#machines)
   - [Apps](#apps)
-    - [Zookeeper](#zookeeper)
-      - [ZK Server](#zk-server)
-      - [zkui](#zkui)
+    - [distribution](#distribution)
+      - [Zookeeper](#zookeeper)
+        - [zk](#zk)
+        - [zkui](#zkui)
+      - [Consul](#consul)
     - [Kafka](#kafka)
       - [Kafka Server](#kafka-server)
       - [Kafka Manager](#kafka-manager)
@@ -50,9 +52,11 @@
 
 ## Apps
 
-### Zookeeper
+### distribution
 
-#### ZK Server
+#### Zookeeper
+
+##### zk
 
 - 192.168.56.11
 - 192.168.56.12
@@ -60,11 +64,21 @@
 
 port: 2181, 2888, 3888, 21811, 21812
 
-#### zkui
+##### zkui
 
 - 192.168.56.11
 
 [zkui](http://192.168.56.11:2190)
+
+#### Consul
+
+- 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
+
+port: 8300, 8301, 8302, 8500, 8600
+
+[ui](http://192.168.56.11:8500)
 
 ### Kafka
 
