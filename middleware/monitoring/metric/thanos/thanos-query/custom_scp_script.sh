@@ -15,6 +15,7 @@ store_conf=`escape_slash "$store_conf"`
 sed "s/STORE_PLACEHOLDER/$store_conf/g" $component/start.sh \
     | sed "s/$nlh/\n/g" \
     > start.sh.tmp
+chmod a+x start.sh.tmp
 scp start.sh.tmp $server:$deploy_path/$parent_component/$component/start.sh
 rm start.sh.tmp
 

@@ -18,9 +18,12 @@ scp_more()
 
     sed "s/SERVER_IP/$server/g" application-github.properties \
         | sed "s/SERVER_NAME/$server/g" \
-        > temp.properties
-    scp temp.properties $server:$deploy_path/application-github.properties
-    rm temp.properties
+        | sed "s/MYSQL_SERVER/$mysql_db_server/g" \
+        | sed "s/MYSQL_USER/$mysql_db_user/g" \
+        | sed "s/MYSQL_PASSWORD/$mysql_db_password/g" \
+        > application-github.properties.tmp
+    scp application-github.properties.tmp $1:$deploy_path/application-github.properties
+    rm application-github.properties.tmp
 }
 
 batch_deploy

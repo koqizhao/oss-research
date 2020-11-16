@@ -15,6 +15,8 @@
       - [Promethues](#promethues)
       - [Grafana](#grafana)
       - [Thanos](#thanos)
+      - [node exporter](#node-exporter)
+      - [mysqld exporter](#mysqld-exporter)
     - [ELK](#elk)
       - [ElasticSearch](#elasticsearch)
       - [FileBeat](#filebeat)
@@ -114,6 +116,19 @@ port
 - query: 19192
 
 [query](http://192.168.56.11:19192)
+
+#### node exporter
+
+- 192.168.56.11
+- 192.168.56.12
+
+port: 19100
+
+#### mysqld exporter
+
+- 192.168.56.11
+
+port: 9104
 
 ### ELK
 

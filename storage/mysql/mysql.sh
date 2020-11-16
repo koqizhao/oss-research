@@ -1,2 +1,2 @@
 
-export PATH=$PATH:/home/koqizhao/storage/mysql/mysql/bin
+export PATH=$PATH:BASE_DIR/mysql/bin

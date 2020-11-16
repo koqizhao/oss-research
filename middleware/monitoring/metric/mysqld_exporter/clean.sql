@@ -1,0 +1,5 @@
+
+REVOKE PROCESS, REPLICATION CLIENT, SELECT ON *.* from 'exporter'@'%';
+FLUSH PRIVILEGES;
+
+DROP USER 'exporter'@'%';

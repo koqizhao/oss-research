@@ -13,4 +13,5 @@ servers=${admin_servers[@]}
 component=$admin_component
 batch_clean
 
+db_exec clean.sql
 clean_all ${admin_servers[@]} ${bootstrap_servers[@]}

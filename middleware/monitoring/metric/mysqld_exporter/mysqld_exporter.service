@@ -1,0 +1,15 @@
+[Unit]
+Description=prometheus mysqld_exporter
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=/home/koqizhao/monitoring/metric/mysqld_exporter
+StandardOutput=file:/home/koqizhao/monitoring/metric/logs/mysqld_exporter/mysqld_exporter.log
+StandardError=file:/home/koqizhao/monitoring/metric/logs/mysqld_exporter/mysqld_exporter.log
+ExecStart=/bin/sh ./start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

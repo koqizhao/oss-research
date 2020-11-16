@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ~/Research/storage/mysql/mysql_db_conf.sh
+
 read_server_pass()
 {
     if [ -z "$PASSWORD" ]; then
@@ -35,7 +37,7 @@ init_scale()
 db_exec()
 {
     scp $1 $mysql_db_server:./
-    ssh $mysql_db_server "cd ~/storage/mysql/mysql; bin/mysql --connect-expired-password --user=root --password=$mysql_db_password < ~/$1;"
+    ssh $mysql_db_server "cd ~/storage/mysql/mysql; bin/mysql --connect-expired-password --user=$mysql_db_user --password=$mysql_db_password < ~/$1;"
     ssh $mysql_db_server "rm ~/$1"
 }
 

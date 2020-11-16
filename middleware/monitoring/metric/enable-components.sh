@@ -10,6 +10,9 @@ do_start()
     echo -e "\nprometheus\n"
     prometheus/start-service.sh $scale
 
+    echo -e "\npushgateway\n"
+    pushgateway/start-service.sh $scale
+
     echo -e "\nthanos\n"
     thanos/start-service.sh $scale
 
@@ -18,10 +21,16 @@ do_start()
 
     echo -e "\nnode_exporter\n"
     node_exporter/start-service.sh $scale
+
+    echo -e "\nmysqld_exporter\n"
+    mysqld_exporter/start-service.sh $scale
 }
 
 do_stop()
 {
+    echo -e "\nmysqld_exporter\n"
+    mysqld_exporter/stop-service.sh $scale
+
     echo -e "\nnode_exporter\n"
     node_exporter/stop-service.sh $scale
 
@@ -30,6 +39,9 @@ do_stop()
 
     echo -e "\nthanos\n"
     thanos/stop-service.sh $scale
+
+    echo -e "\npushgateway\n"
+    pushgateway/stop-service.sh $scale
 
     echo -e "\nprometheus\n"
     prometheus/stop-service.sh $scale
@@ -40,6 +52,9 @@ do_deploy()
     echo -e "\nprometheus\n"
     prometheus/deploy-service.sh $scale
 
+    echo -e "\npushgateway\n"
+    pushgateway/deploy-service.sh $scale
+
     echo -e "\nthanos\n"
     thanos/deploy-service.sh $scale
 
@@ -48,10 +63,16 @@ do_deploy()
 
     echo -e "\nnode_exporter\n"
     node_exporter/deploy-service.sh $scale
+
+    echo -e "\nmysqld_exporter\n"
+    mysqld_exporter/deploy-service.sh $scale
 }
 
 do_clean()
 {
+    echo -e "\nmysqld_exporter\n"
+    mysqld_exporter/clean-service.sh $scale
+
     echo -e "\nnode_exporter\n"
     node_exporter/clean-service.sh $scale
 
@@ -61,14 +82,21 @@ do_clean()
     echo -e "\nthanos\n"
     thanos/clean-service.sh $scale
 
+    echo -e "\npushgateway\n"
+    pushgateway/clean-service.sh $scale
+
     echo -e "\nprometheus\n"
     prometheus/clean-service.sh $scale
 
-    clean_all ${prometheus_servers[@]} ${grafana_servers[@]} ${jmx_exporter_servers[@]} ${node_exporter_servers[@]}
+    clean_all ${prometheus_servers[@]} ${pushgateway_servers[@]} ${grafana_servers[@]} \
+        ${jmx_exporter_servers[@]} ${node_exporter_servers[@]}
 }
 
 do_status()
 {
+    echo -e "\nmysqld_exporter\n"
+    mysqld_exporter/status-service.sh $scale
+
     echo -e "\nnode_exporter\n"
     node_exporter/status-service.sh $scale
 
@@ -77,6 +105,9 @@ do_status()
 
     echo -e "\nthanos\n"
     thanos/status-service.sh $scale
+
+    echo -e "\npushgateway\n"
+    pushgateway/status-service.sh $scale
 
     echo -e "\nprometheus\n"
     prometheus/status-service.sh $scale

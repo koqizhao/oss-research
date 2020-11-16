@@ -14,7 +14,13 @@ rm apolloportaldb-temp.sql
 
 scp_more()
 {
-    scp application-github.properties $1:$deploy_path
+    sed "s/MYSQL_SERVER/$mysql_db_server/g" application-github.properties \
+        | sed "s/MYSQL_USER/$mysql_db_user/g" \
+        | sed "s/MYSQL_PASSWORD/$mysql_db_password/g" \
+        > application-github.properties.tmp
+    scp application-github.properties.tmp $1:$deploy_path/application-github.properties
+    rm application-github.properties.tmp
+
     scp apollo-env.properties $1:$deploy_path
 }
 

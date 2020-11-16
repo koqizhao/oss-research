@@ -8,7 +8,7 @@ source common.sh
 remote_start()
 {
     server=$1
-    ssh $server "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S ./start-mysql.sh;"
+    ssh $server "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S ./start.sh;"
 }
 
 batch_start

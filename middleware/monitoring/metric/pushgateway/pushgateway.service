@@ -1,0 +1,15 @@
+[Unit]
+Description=prometheus pushgateway
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=/home/koqizhao/monitoring/metric/pushgateway
+StandardOutput=file:/home/koqizhao/monitoring/metric/logs/pushgateway/pushgateway.log
+StandardError=file:/home/koqizhao/monitoring/metric/logs/pushgateway/pushgateway.log
+ExecStart=/bin/sh ./start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

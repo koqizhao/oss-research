@@ -15,7 +15,7 @@ remote_status()
 
 remote_start()
 {
-    ssh $1 "cd $deploy_path/$2; ./start-$2.sh"
+    ssh $1 "cd $deploy_path/$2; sh ./start-$2.sh"
 }
 
 remote_stop()

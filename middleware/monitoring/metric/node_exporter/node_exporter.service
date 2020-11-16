@@ -1,5 +1,5 @@
 [Unit]
-Description=node exporter
+Description=prometheus node exporter
 
 [Service]
 WorkingDirectory=/home/koqizhao/monitoring/metric/node_exporter
