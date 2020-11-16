@@ -15,6 +15,7 @@
       - [Jmx Exporter](#jmx-exporter)
     - [metric](#metric)
       - [Promethues](#promethues)
+      - [Alert Manager](#alert-manager)
       - [Grafana](#grafana)
       - [Thanos](#thanos)
       - [node exporter](#node-exporter)
@@ -113,6 +114,14 @@ port: 8300, 8301, 8302, 8500, 8600
 - 192.168.56.11
 
 [prometheus](http://192.168.56.11:9090/graph)
+
+#### Alert Manager
+
+- 192.168.56.11
+
+port: 9093, 9094
+
+[AlertManager](http://192.168.56.11:9093)
 
 #### Grafana
 
