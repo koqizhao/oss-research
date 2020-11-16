@@ -1,0 +1,13 @@
+
+groups:
+  - name: cpu-alerts
+    rules:
+      - alert: ScrapeDurationTooLong
+        expr: scrape_duration_seconds > 0.0001
+        for: 10m
+        labels:
+          severity: page
+        annotations:
+          summary: "Scrape Duration Too Long: {{ $value }}"
+          description: 
+            "Scrape on [instance={{ $labels.instance }}, job={{ $labels.job }}] is too long: {{ $value }}. Last for more than 5 minutes!"
