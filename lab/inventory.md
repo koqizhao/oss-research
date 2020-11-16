@@ -18,6 +18,7 @@
       - [Alert Manager](#alert-manager)
       - [Grafana](#grafana)
       - [Thanos](#thanos)
+      - [Push Gateway](#push-gateway)
       - [node exporter](#node-exporter)
       - [mysqld exporter](#mysqld-exporter)
     - [ELK](#elk)
@@ -139,6 +140,13 @@ port
 - query: 19192
 
 [query](http://192.168.56.11:19192)
+
+#### Push Gateway
+
+- 192.168.56.11
+- 192.168.56.12
+
+port: 9091
 
 #### node exporter
 
