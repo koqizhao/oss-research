@@ -14,7 +14,7 @@ global:
 alerting:
   alertmanagers:
     - static_configs:
-      - targets: [ALERT_MANAGERS]
+      - targets: [TARGETS_ALERTMANAGER]
 
 # Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
 rule_files:
@@ -32,28 +32,56 @@ scrape_configs:
     # scheme defaults to 'http'.
 
     static_configs:
-      - targets: ['192.168.56.11:9090']
+      - targets: [TARGETS_PROMETHEUS]
 
   - job_name: 'grafana'
     static_configs:
-      - targets:
-        - '192.168.56.11:3000'
+      - targets: [TARGETS_GRAFANA]
 
-  - job_name: 'node-exporter'
+  - job_name: 'node-exporter-static'
     scrape_interval: 60s
     scrape_timeout: 60s
     static_configs:
-      - targets:
-        - 192.168.56.11:9100
-        - 192.168.56.12:9100
+      - targets: [TARGETS_NODE_EXPORTER]
+
+  - job_name: 'node-exporter-consul'
+    scrape_interval: 60s
+    scrape_timeout: 60s
+    consul_sd_configs:
+      - server: 192.168.56.11:8500
+        scheme: "http"
+        tags:
+          - prometheus
+        # Node metadata key/value pairs to filter nodes for a given service.
+        node_meta:
+          collector: node
+
+        #[ tag_separator: <string> | default = , ]
+        tag_separator: "|"
+
+        # Allow stale Consul results (see https://www.consul.io/api/features/consistency.html). Will reduce load on Consul.
+        #[ allow_stale: <boolean> | default = true ]
+        allow_stale: true
+
+        # The time after which the provided names are refreshed.
+        # On large setup it might be a good idea to increase this value because the catalog will change all the time.
+        refresh_interval: 30s
+
+  - job_name: 'node-exporter-file'
+    scrape_interval: 60s
+    scrape_timeout: 60s
+    file_sd_configs:
+      # Patterns for files from which target groups are extracted.
+      - files:
+          - sd_configs/node.yml
+        # Refresh interval to re-read the files.
+        refresh_interval: 5m
 
   - job_name: 'pushgateway'
     scrape_interval: 60s
     scrape_timeout: 60s
     static_configs:
-      - targets:
-        - 192.168.56.11:9091
-        - 192.168.56.12:9091
+      - targets: [TARGETS_PUSHGATEWAY]
 
   - job_name: 'kafka-exporter'
     scrape_interval: 60s

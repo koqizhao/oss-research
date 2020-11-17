@@ -1,0 +1,79 @@
+###
+
+PUT http://192.168.56.11:8500/v1/catalog/register
+Content-Type: application/json
+
+{
+  "Datacenter": "lab",
+  "ID": "c28e5dda-287f-11eb-9801-b78255cde571",
+  "Node": "node-192.168.56.11",
+  "Address": "192.168.56.11",
+  "NodeMeta": {
+    "collector": "node"
+  },
+  "Service": {
+    "ID": "node-prometheus-192.168.56.11",
+    "Service": "node-prometheus",
+    "Tags": ["prometheus", "node"],
+    "Address": "192.168.56.11",
+    "Meta": {
+      "node_version": "1.0"
+    },
+    "Port": 9100
+  },
+  "Check": {
+    "Node": "node-192.168.56.11",
+    "CheckID": "node-192.168.56.11-prometheus",
+    "Name": "node check",
+    "Notes": "port based health check",
+    "Status": "passing",
+    "ServiceID": "node-prometheus-192.168.56.11",
+    "Definition": {
+      "TCP": "192.168.56.11:9100",
+      "Interval": "5s",
+      "Timeout": "1s",
+      "DeregisterCriticalServiceAfter": "30s"
+    }
+  },
+  "SkipNodeUpdate": false
+}
+
+###
+
+PUT http://192.168.56.11:8500/v1/catalog/register
+Content-Type: application/json
+
+{
+  "Datacenter": "lab",
+  "ID": "91ada094-2880-11eb-9679-1744e134fdf7",
+  "Node": "node-192.168.56.12",
+  "Address": "192.168.56.12",
+  "NodeMeta": {
+    "collector": "node"
+  },
+  "Service": {
+    "ID": "node-prometheus-192.168.56.12",
+    "Service": "node-prometheus",
+    "Tags": ["prometheus", "node"],
+    "Address": "192.168.56.12",
+    "Meta": {
+      "node_version": "1.0"
+    },
+    "Port": 9100
+  },
+  "Check": {
+    "Node": "node-192.168.56.12",
+    "CheckID": "node-192.168.56.12-prometheus",
+    "Name": "node check",
+    "Notes": "port based health check",
+    "Status": "passing",
+    "ServiceID": "node-prometheus-192.168.56.12",
+    "Definition": {
+      "TCP": "192.168.56.12:9100",
+      "Interval": "5s",
+      "Timeout": "1s",
+      "DeregisterCriticalServiceAfter": "30s"
+    }
+  },
+  "SkipNodeUpdate": false
+}
