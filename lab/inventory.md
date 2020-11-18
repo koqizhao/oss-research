@@ -21,6 +21,11 @@
       - [Push Gateway](#push-gateway)
       - [node exporter](#node-exporter)
       - [mysqld exporter](#mysqld-exporter)
+    - [trace](#trace)
+      - [skywalking](#skywalking)
+        - [receiver](#receiver)
+        - [aggregator](#aggregator)
+        - [webapp](#webapp)
     - [ELK](#elk)
       - [ElasticSearch](#elasticsearch)
       - [FileBeat](#filebeat)
@@ -160,6 +165,30 @@ port: 19100
 - 192.168.56.11
 
 port: 9104
+
+### trace
+
+#### skywalking
+
+##### receiver
+
+- 192.168.56.11
+- 192.168.56.12
+
+port: 11800, 12800
+
+##### aggregator
+
+- 192.168.56.11
+- 192.168.56.12
+
+port: 11801, 12801
+
+##### webapp
+
+- 192.168.56.11
+
+[console](http://192.168.56.11:13800)
 
 ### ELK
 
