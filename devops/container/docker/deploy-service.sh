@@ -1,27 +1,9 @@
 #! /bin/bash
 
-set -e
+source ~/Research/lab/deploy/init.sh
+init_scale "$1" ..
 
-echo -n "password: "
-read -s PASSWORD
-echo
-
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
-
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source servers-$scale.sh
-
-prerequisites="curl apt-transport-https ca-certificates gnupg-agent software-properties-common"
-#mirror_site=https://download.docker.com/linux/ubuntu
-mirror_site=https://mirrors.aliyun.com/docker-ce/linux/ubuntu
-docker_packages="docker-ce docker-ce-cli containerd.io"
-os_release=focal
+source common.sh
 
 replace_docker_daemon()
 {
@@ -33,27 +15,21 @@ replace_docker_daemon()
     ssh $1 "echo '$PASSWORD' | sudo -S systemctl restart docker"
 }
 
-deploy()
+remote_deploy()
 {
-    echo "deploy $1 started"
-
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y $prerequisites"
-    ssh $1 "curl -fsSL $mirror_site/gpg > gpg"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg"
-    ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"deb [arch=amd64] $mirror_site $os_release stable\""
+    ssh $1 "echo '$PASSWORD' | sudo -S apt remove -y docker docker-engine docker.io containerd runc"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common"
+    ssh $1 "curl -fsSL $mirror_site/gpg > gpg; echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg;"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint 0EBFCD88"
+    ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"deb [arch=amd64] $mirror_site \$(lsb_release -cs) stable\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y $docker_packages"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y docker-ce docker-ce-cli containerd.io"
+
+    ssh $1 "echo '$PASSWORD' | sudo -S sudo usermod -aG docker $manager"
 
     replace_docker_daemon $1
 
-    echo
-
-    echo "deploy $1 finished"
+    ssh $1 "echo '$PASSWORD' | sudo -S reboot"
 }
 
-for i in "${servers[@]}"
-do
-    deploy $i
-    echo
-done
+batch_deploy

@@ -1,32 +1,31 @@
-echo -n "password: "
-read -s PASSWORD
-echo
+#!/bin/bash
 
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
+source ~/Research/lab/deploy/init.sh
+init_scale "$1" ..
 
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
+source common.sh
 
-source servers-$scale.sh
-
-clean()
+remote_clean()
 {
-    echo -e "clean started: $1"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt remove -y containerd.io docker-ce-cli docker-ce"
-    ssh $1 "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt purge -y docker-ce docker-ce-cli containerd.io"
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"
     ssh $1 "echo '$PASSWORD' | sudo -S apt autoremove -y --purge"
-    echo -e "\nclean finished: $1"
+
+    ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository -r -y \"deb [arch=amd64] $mirror_site \$(lsb_release -cs) stable\""
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-key del 0EBFCD88"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt update"
+
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/docker"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/docker"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/systemd/system/docker.service"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/systemd/system/docker.socket"
+    ssh $1 "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
+
+    ssh $1 "echo '$PASSWORD' | sudo -S sudo gpasswd -d $manager docker"
+    ssh $1 "echo '$PASSWORD' | sudo -S sudo groupdel docker"
+
+    ssh $server "echo '$PASSWORD' | sudo -S reboot"
 }
 
-for server in ${servers[@]}
-do
-    clean $server
-done
-
-echo
+batch_clean
