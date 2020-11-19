@@ -17,6 +17,7 @@ remote_clean()
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
 
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/docker"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/dockershim"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/docker"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/systemd/system/docker.service"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/systemd/system/docker.socket"

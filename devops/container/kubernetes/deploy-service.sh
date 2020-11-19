@@ -1,50 +1,23 @@
 #! /bin/bash
 
-set -e
+source ~/Research/lab/deploy/init.sh
+init_scale "$1" ..
 
-echo -n "password: "
-read -s PASSWORD
-echo
+source common.sh
 
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
-
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source servers-$scale.sh
-
-prerequisites="curl apt-transport-https"
-#mirror_site=https://apt.kubernetes.io
-mirror_site=https://mirrors.aliyun.com/kubernetes/apt
 #gpg_site=https://packages.cloud.google.com/apt/doc/apt-key.gpg
 gpg_site=https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
-artifact=kubernetes-xenial
-kubernetes_packages="kubelet kubectl kubeadm"
 
-deploy()
+remote_deploy()
 {
-    echo "deploy $1 started"
-
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y $prerequisites"
-    ssh $1 "curl -fsSL $gpg_site > gpg"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y curl apt-transport-https"
+    ssh $1 "curl -fsSL $gpg_site > gpg; echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg;"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint BA07F4FB"
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"deb $mirror_site $artifact main\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y $kubernetes_packages"
-    #prevent auto upgrade
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-mark hold $kubernetes_packages"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y kubelet kubectl kubeadm"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-mark hold kubelet kubectl kubeadm"
     ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"
-    echo
-
-    echo "deploy $1 finished"
 }
 
-for i in "${servers[@]}"
-do
-    deploy $i
-    echo
-done
+batch_deploy

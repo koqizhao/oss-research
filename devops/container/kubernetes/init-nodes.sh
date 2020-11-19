@@ -1,26 +1,13 @@
 #!/bin/bash
 
-set -e
+source ~/Research/lab/deploy/init.sh
+init_scale "$1" ..
 
-echo -n "password: "
-read -s PASSWORD
-echo
-
-scale="dist"
-if [ -n "$1" ]
-then
-    scale=$1
-fi
-
-rp=`realpath $0`
-work_path=`dirname $rp`
-cd $work_path
-source servers-$scale.sh
+source common.sh
 
 for i in "${servers[@]}"
 do
     scp init-env.sh $i:./
-    ssh $i "echo '$PASSWORD' | sudo -S sh init-env.sh; rm init-env.sh; echo '$PASSWORD' | sudo -S reboot" || echo
+    ssh $i "echo '$PASSWORD' | sudo -S sh init-env.sh; rm init-env.sh;"
+    ssh $i "echo '$PASSWORD' | sudo -S reboot" || echo
 done
-
-echo
