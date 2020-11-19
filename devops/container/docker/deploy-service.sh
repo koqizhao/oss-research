@@ -28,8 +28,6 @@ remote_deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S sudo usermod -aG docker $manager"
 
     replace_docker_daemon $1
-
-    ssh $1 "echo '$PASSWORD' | sudo -S reboot"
 }
 
 batch_deploy
