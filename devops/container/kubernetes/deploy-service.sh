@@ -36,7 +36,7 @@ remote_deploy()
 
 batch_deploy
 
-deploy_basic()
+deploy_cluster_basic()
 {
     master_server=${master_servers[0]}
 
@@ -59,9 +59,9 @@ deploy_basic()
     done
 }
 
-deploy_dist()
+deploy_cluster_dist()
 {
     echo "ok"
 }
 
-deploy_$scale
+deploy_cluster_$scale
