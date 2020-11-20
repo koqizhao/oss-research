@@ -4,6 +4,9 @@ deploy_path=/home/koqizhao/container
 
 read_server_pass
 
+manager=koqizhao
+servers=`merge_array ${master_servers[@]} ${worker_servers[@]}`
+
 remote_status()
 {
     remote_systemctl $1 status $2 $PASSWORD
