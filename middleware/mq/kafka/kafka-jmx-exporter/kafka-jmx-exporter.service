@@ -1,0 +1,16 @@
+[Unit]
+Description=kafka jmx exporter
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=DEPLOY_PATH
+StandardOutput=file:LOG_PATH/jmx_exporter.log
+StandardError=file:LOG_PATH/jmx_exporter.log
+ExecStart=/bin/sh ./start.sh
+ExecStop=/bin/sh ./stop.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

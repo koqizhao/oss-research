@@ -15,12 +15,18 @@ do_start()
 
     echo -e "\nkafka-exporter\n"
     kafka-exporter/start-service.sh $scale
+
+    echo -e "\nkafka-jmx-exporter\n"
+    kafka-jmx-exporter/start-service.sh $scale
 }
 
 do_stop()
 {
     echo -e "\nkafka-exporter\n"
     kafka-exporter/stop-service.sh $scale
+
+    echo -e "\nkafka-jmx-exporter\n"
+    kafka-jmx-exporter/stop-service.sh $scale
 
     echo -e "\nkafka-manager\n"
     kafka-manager/stop-service.sh $scale
@@ -37,6 +43,9 @@ do_deploy()
     echo -e "\nkafka-manager\n"
     kafka-manager/deploy-service.sh $scale
 
+    echo -e "\nkafka-jmx-exporter\n"
+    kafka-jmx-exporter/deploy-service.sh $scale
+
     echo -e "\nkafka-exporter\n"
     kafka-exporter/deploy-service.sh $scale
 }
@@ -45,6 +54,9 @@ do_clean()
 {
     echo -e "\nkafka-exporter\n"
     kafka-exporter/clean-service.sh $scale
+
+    echo -e "\nkafka-jmx-exporter\n"
+    kafka-jmx-exporter/clean-service.sh $scale
 
     echo -e "\nkafka-manager\n"
     kafka-manager/clean-service.sh $scale
@@ -59,6 +71,9 @@ do_status()
 {
     echo -e "\nkafka-exporter\n"
     kafka-exporter/status-service.sh $scale
+
+    echo -e "\nkafka-jmx-exporter\n"
+    kafka-jmx-exporter/status-service.sh $scale
 
     echo -e "\nkafka-manager\n"
     kafka-manager/status-service.sh $scale

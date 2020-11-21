@@ -18,9 +18,15 @@ remote_deploy()
     scp $project_path/jmx_prometheus_httpserver/target/$deploy_file $server:$deploy_path/$component/jmx_prometheus_httpserver.jar
     scp kafka.yml $server:$deploy_path/$component
     scp start.sh $server:$deploy_path/$component
-    scp stop.sh $server:$deploy_path/$component
 
-    scp $component.service $server:$deploy_path
+    dp=`escape_slash $deploy_path/$component`
+    lp=`escape_slash $deploy_path/logs/$component`
+    sed "s/DEPLOY_PATH/$dp/g" $component.service \
+        | sed "s/LOG_PATH/$lp/g" \
+        > $component.service.tmp
+    scp $component.service.tmp $server:$deploy_path/$component.service
+    rm $component.service.tmp
+
     ssh $server "echo '$PASSWORD' | sudo -S chown root:root $deploy_path/$component.service"
     ssh $server "echo '$PASSWORD' | sudo -S mv $deploy_path/$component.service /etc/systemd/system/"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"
