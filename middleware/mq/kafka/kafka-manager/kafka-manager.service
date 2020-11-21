@@ -3,9 +3,9 @@ Description=Kafka Manager
 After=network.target kafka.service
 
 [Service]
-WorkingDirectory=/home/koqizhao/kafka-manager
-ExecStartPre=/bin/rm -rf /home/koqizhao/kafka-manager/RUNNING_PID
-ExecStart=/home/koqizhao/kafka-manager/bin/kafka-manager -Dhttp.port=9000
+WorkingDirectory=DEPLOY_PATH
+ExecStartPre=/bin/rm -rf DEPLOY_PATH/RUNNING_PID
+ExecStart=DEPLOY_PATH/bin/kafka-manager -Dhttp.port=9000
 Restart=always
 RestartSec=10
 
