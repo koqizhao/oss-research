@@ -103,6 +103,7 @@ deploy_cluster_dist()
         echo -e "join rest master node: $s\n"
         server=$s
         execute_ops join_ha_cluster_as_master $join_token $join_hash $master_cert_key
+        execute_ops prepare_ha_cluster_vip
     done
 
     for s in ${worker_servers[@]}
