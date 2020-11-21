@@ -1,7 +1,9 @@
 #!/bin/bash
 
 manager=koqizhao
+deploy_path=/home/koqizhao/container/kubernetes
 pod_network_cidr=10.217.0.0/16
+master_vip=10.0.2.100
 
 get_ip()
 {
@@ -10,7 +12,12 @@ get_ip()
 
 get_internal_ip()
 {
-    get_ip enp0s3
+    for i in `get_ip enp0s3`
+    do
+        if [ $i != $master_vip ]; then
+            echo $i
+        fi
+    done
 }
 
 internal_ip=`get_internal_ip`
@@ -31,6 +38,7 @@ init_cluster()
         --pod-network-cidr=$pod_network_cidr \
         --apiserver-advertise-address $internal_ip
 
+    rm -rf /home/$manager/.kube
     mkdir -p /home/$manager/.kube
     cp -i /etc/kubernetes/admin.conf /home/$manager/.kube/config
     chown -R $manager:$manager /home/$manager/.kube
@@ -38,8 +46,10 @@ init_cluster()
 
 install_network()
 {
-    kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
-    kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+    #kubectl create -f https://docs.projectcalico.org/manifests/tigera-operator.yaml
+    #kubectl create -f https://docs.projectcalico.org/manifests/custom-resources.yaml
+    kubectl create -f $deploy_path/calico/tigera-operator.yaml
+    kubectl create -f $deploy_path/calico/custom-resources.yaml
     #watch kubectl get pods -n calico-system
 }
 
@@ -58,8 +68,8 @@ get_join_hash()
 join_cluster()
 {
     kubeadm join $1:6443 \
-        --token "$2" \
-        --discovery-token-ca-cert-hash "sha256:$3"
+        --token $2 \
+        --discovery-token-ca-cert-hash sha256:$3
 }
 
 clean_iptables()
@@ -72,7 +82,7 @@ clean_ipvs()
     ipvsadm -C
 }
 
-reset_cluster()
+reset_node()
 {
     kubeadm reset -f
     clean_iptables
@@ -94,4 +104,51 @@ drain_node()
 delete_node()
 {
     kubectl delete node $1
+}
+
+prepare_ha_cluster_vip()
+{
+    mkdir -p /etc/kubernetes/manifests
+    docker run -i --rm plndr/kube-vip:0.1.1 /kube-vip sample manifest \
+        | sed "s|plndr/kube-vip:'|plndr/kube-vip:0.1.1'|" \
+        | tee /etc/kubernetes/manifests/kube-vip.yaml
+}
+
+init_ha_cluster()
+{
+    kubeadm init --control-plane-endpoint "$master_vip:6443" --upload-certs \
+        --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers \
+        --pod-network-cidr=$pod_network_cidr \
+        --apiserver-advertise-address $master_vip
+
+    rm -rf /home/$manager/.kube
+    mkdir -p /home/$manager/.kube
+    cp -i /etc/kubernetes/admin.conf /home/$manager/.kube/config
+    chown -R $manager:$manager /home/$manager/.kube
+}
+
+get_ha_master_cert_key()
+{
+    kubeadm init phase upload-certs --upload-certs | awk 'END { print $1 }'
+}
+
+join_ha_cluster_as_master()
+{
+    kubeadm join $master_vip:6443 \
+        --token $1 \
+        --discovery-token-ca-cert-hash sha256:$2 \
+        --control-plane \
+        --certificate-key $3
+
+    rm -rf /home/$manager/.kube
+    mkdir -p /home/$manager/.kube
+    cp -i /etc/kubernetes/admin.conf /home/$manager/.kube/config
+    chown -R $manager:$manager /home/$manager/.kube
+}
+
+join_ha_cluster_as_worker()
+{
+    kubeadm join $master_vip:6443 \
+        --token $1 \
+        --discovery-token-ca-cert-hash sha256:$2
 }

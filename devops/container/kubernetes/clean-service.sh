@@ -34,7 +34,46 @@ clean_cluster_basic()
 
 clean_cluster_dist()
 {
-    echo "ok"
+    master_server=${master_servers[0]}
+
+    for s in ${worker_servers[@]}
+    do
+        echo -e "clean k8s worker node: $s\n"
+
+        node_name=`ssh $s "hostname"`
+
+        server=$master_server
+        execute_ops drain_node $node_name
+
+        server=$s
+        execute_ops reset_node
+
+        server=$master_server
+        execute_ops delete_node $node_name
+    done
+
+    for s in ${master_servers[@]}
+    do
+        if [ $s == "$master_server" ]; then
+            continue
+        fi
+
+        echo -e "clean k8s ha rest master node: $s\n"
+        node_name=`ssh $s "hostname"`
+
+        server=$master_server
+        execute_ops drain_node $node_name
+
+        server=$s
+        execute_ops reset_node
+
+        server=$master_server
+        execute_ops delete_node $node_name
+    done
+
+    echo -e "clean k8s ha last master node: $master_server\n"
+    server=$master_server
+    execute_ops reset_node
 }
 
 clean_cluster_$scale
@@ -60,6 +99,7 @@ remote_clean()
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/calico"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/etcd"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/kubernetes"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/kube-vip"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/cni"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /opt/cni"
 
