@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=filebeat
-servers=${filebeat_servers[@]}
+servers=(${filebeat_servers[@]})

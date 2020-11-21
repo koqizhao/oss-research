@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=kibana
-servers=${kibana_servers[@]}
+servers=(${kibana_servers[@]})

@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=pushgateway
-servers=${pushgateway_servers[@]}
+servers=(${pushgateway_servers[@]})

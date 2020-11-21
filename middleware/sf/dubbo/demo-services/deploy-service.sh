@@ -21,10 +21,10 @@ remote_deploy()
     ssh $server "cd $deploy_path/$component; ./start-$component.sh"
 }
 
-servers=${service_servers[@]}
+servers=(${service_servers[@]})
 component=$service_component
 batch_deploy
 
-servers=${client_servers[@]}
+servers=(${client_servers[@]})
 component=$client_component
 batch_deploy

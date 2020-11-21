@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=grafana
-servers=${grafana_servers[@]}
+servers=(${grafana_servers[@]})

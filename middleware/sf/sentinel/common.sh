@@ -2,7 +2,7 @@
 
 deploy_path=/home/koqizhao/sf/sentinel
 component=sentinel-dashboard
-servers=${sentinel_servers[@]}
+servers=(${sentinel_servers[@]})
 
 remote_status()
 {

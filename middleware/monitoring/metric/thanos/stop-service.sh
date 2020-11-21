@@ -6,9 +6,9 @@ init_scale "$1" ..
 source common.sh
 
 component=thanos-query
-servers=${thanos_query_servers[@]}
+servers=(${thanos_query_servers[@]})
 batch_stop
 
 component=thanos-sidecar
-servers=${thanos_sidecar_servers[@]}
+servers=(${thanos_sidecar_servers[@]})
 batch_stop

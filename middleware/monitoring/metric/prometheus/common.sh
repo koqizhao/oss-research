@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=prometheus
-servers=${prometheus_servers[@]}
+servers=(${prometheus_servers[@]})

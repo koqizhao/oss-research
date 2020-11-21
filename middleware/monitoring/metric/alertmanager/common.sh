@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=alertmanager
-servers=${alertmanager_servers[@]}
+servers=(${alertmanager_servers[@]})

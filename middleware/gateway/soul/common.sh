@@ -5,8 +5,8 @@ deploy_path=/home/koqizhao/gateway/soul
 admin_component=soul-admin
 bootstrap_component=soul-bootstrap
 
-admin_servers=${soul_admin_servers[@]}
-bootstrap_servers=${soul_bootstrap_servers[@]}
+admin_servers=(${soul_admin_servers[@]})
+bootstrap_servers=(${soul_bootstrap_servers[@]})
 
 remote_status()
 {

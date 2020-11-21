@@ -34,9 +34,9 @@ remote_deploy()
 }
 
 component=thanos-sidecar
-servers=${thanos_sidecar_servers[@]}
+servers=(${thanos_sidecar_servers[@]})
 batch_deploy
 
 component=thanos-query
-servers=${thanos_query_servers[@]}
+servers=(${thanos_query_servers[@]})
 batch_deploy

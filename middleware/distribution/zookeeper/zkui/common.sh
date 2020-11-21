@@ -3,4 +3,4 @@
 source ../common.sh
 
 component=zkui
-servers=${zkui_servers[@]}
+servers=(${zkui_servers[@]})

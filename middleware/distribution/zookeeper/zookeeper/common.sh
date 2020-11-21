@@ -3,7 +3,7 @@
 source ../common.sh
 
 component=zookeeper
-servers=${zk_servers[@]}
+servers=(${zk_servers[@]})
 
 read_server_pass
 

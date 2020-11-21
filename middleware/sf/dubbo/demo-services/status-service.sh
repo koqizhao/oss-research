@@ -5,10 +5,10 @@ init_scale "$1" .
 
 source common.sh
 
-servers=${client_servers[@]}
+servers=(${client_servers[@]})
 component=$client_component
 batch_status
 
-servers=${service_servers[@]}
+servers=(${service_servers[@]})
 component=$service_component
 batch_status

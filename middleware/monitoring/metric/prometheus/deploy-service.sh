@@ -21,19 +21,19 @@ generate_targets_config()
     echo $tc
 }
 
-target_servers=${alertmanager_servers[@]}
+target_servers=(${alertmanager_servers[@]})
 target_port=9093
 amtc="`generate_targets_config`"
-target_servers=${prometheus_servers[@]}
+target_servers=(${prometheus_servers[@]})
 target_port=9090
 ptc="`generate_targets_config`"
-target_servers=${grafana_servers[@]}
+target_servers=(${grafana_servers[@]})
 target_port=3000
 gtc="`generate_targets_config`"
-target_servers=${node_exporter_servers[@]}
+target_servers=(${node_exporter_servers[@]})
 target_port=9100
 ntc="`generate_targets_config`"
-target_servers=${pushgateway_servers[@]}
+target_servers=(${pushgateway_servers[@]})
 target_port=9091
 pgtc="`generate_targets_config`"
 sed "s/TARGETS_ALERTMANAGER/$amtc/g" prometheus.yml \

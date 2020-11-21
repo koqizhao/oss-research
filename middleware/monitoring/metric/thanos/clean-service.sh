@@ -19,11 +19,11 @@ remote_clean()
 }
 
 component=thanos-query
-servers=${thanos_query_servers[@]}
+servers=(${thanos_query_servers[@]})
 batch_clean
 
 component=thanos-sidecar
-servers=${thanos_sidecar_servers[@]}
+servers=(${thanos_sidecar_servers[@]})
 batch_clean
 
 for server in ${all_servers[@]}

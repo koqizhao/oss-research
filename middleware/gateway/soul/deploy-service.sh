@@ -31,10 +31,10 @@ remote_deploy()
     ssh $server "cd $deploy_path/$component; ./start-$component.sh"
 }
 
-servers=${admin_servers[@]}
+servers=(${admin_servers[@]})
 component=$admin_component
 batch_deploy
 
-servers=${bootstrap_servers[@]}
+servers=(${bootstrap_servers[@]})
 component=$bootstrap_component
 batch_deploy

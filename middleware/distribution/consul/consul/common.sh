@@ -3,7 +3,7 @@
 source ../common.sh
 
 component=consul
-servers=${consul_servers[@]}
+servers=(${consul_servers[@]})
 user=consul
 dc=lab
 
