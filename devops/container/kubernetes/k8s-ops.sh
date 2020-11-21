@@ -116,10 +116,10 @@ prepare_ha_cluster_vip()
 
 init_ha_cluster()
 {
-    kubeadm init --control-plane-endpoint "$master_vip:6443" --upload-certs \
+    kubeadm init --control-plane-endpoint "$master_vip:16443" --upload-certs \
         --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers \
         --pod-network-cidr=$pod_network_cidr \
-        --apiserver-advertise-address $master_vip
+        --apiserver-advertise-address $internal_ip
 
     rm -rf /home/$manager/.kube
     mkdir -p /home/$manager/.kube
@@ -134,7 +134,7 @@ get_ha_master_cert_key()
 
 join_ha_cluster_as_master()
 {
-    kubeadm join $master_vip:6443 \
+    kubeadm join $master_vip:16443 \
         --token $1 \
         --discovery-token-ca-cert-hash sha256:$2 \
         --control-plane \
@@ -148,7 +148,7 @@ join_ha_cluster_as_master()
 
 join_ha_cluster_as_worker()
 {
-    kubeadm join $master_vip:6443 \
+    kubeadm join $master_vip:16443 \
         --token $1 \
         --discovery-token-ca-cert-hash sha256:$2
 }

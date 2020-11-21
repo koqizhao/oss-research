@@ -17,7 +17,7 @@ interface: enp0s3
 loadBalancers:
 - name: API Server Load Balancer
   type: tcp
-  port: 6443
+  port: 16443
   bindToVip: false
   backends:
   - port: 6443
