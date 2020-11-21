@@ -32,10 +32,9 @@
       - [Kibana](#kibana)
     - [HDFS](#hdfs)
     - [kubernetes](#kubernetes)
-      - [docker registry](#docker-registry)
       - [master](#master)
+      - [worker](#worker)
       - [kubectl proxy](#kubectl-proxy)
-      - [node](#node)
     - [dubbo](#dubbo)
       - [dubbo admin](#dubbo-admin)
       - [nacos](#nacos)
@@ -218,28 +217,23 @@ port: 11801, 12801
 
 ### kubernetes
 
-#### docker registry
-
-- 192.168.56.11
-
-[docker-registry](http://192.168.56.11:15000/)
-
 #### master
 
-- 192.168.56.11
-
-[k8s-master](https://10.0.2.11:6443)
-
-#### kubectl proxy
-
-[kubectl-proxy](http://192.168.56.11:8001/)
-
-#### node
-
-- 192.168.56.12
 - 192.168.56.13
 - 192.168.56.14
 - 192.168.56.15
+
+port: 6443
+vip: 10.0.2.100:16443
+
+#### worker
+
+- 192.168.56.11
+- 192.168.56.12
+
+#### kubectl proxy
+
+[kubectl-proxy](http://192.168.56.13:8001/)
 
 ### dubbo
 

@@ -12,3 +12,9 @@ execute_ops()
 {
     ssh $server "echo '$PASSWORD' | sudo -S bash -c 'cd $deploy_path/$component; source k8s-ops.sh; $@'"
 }
+
+enable_api_proxy()
+{
+    ssh $1 "cd $deploy_path/$component; kubectl proxy --address=$1 --port=8001 \
+        --accept-hosts=192.168.56.1 > kube-proxy.log 2>&1 &"
+}

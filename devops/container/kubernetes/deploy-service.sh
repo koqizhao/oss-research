@@ -54,6 +54,8 @@ deploy_cluster_basic()
     scp calico/* $master_server:$deploy_path/$component/calico
     execute_ops install_network
 
+    enable_api_proxy $master_server
+
     join_ip=`execute_ops get_internal_ip`
     echo "join ip: $join_ip"
     join_token=`execute_ops get_join_token`
@@ -67,6 +69,11 @@ deploy_cluster_basic()
         server=$s
         execute_ops join_cluster $join_ip $join_token $join_hash
     done
+
+    ssh $master_server "mkdir -p $deploy_path/$component/kube-dashboard"
+    scp kube-dashboard/* $master_server:$deploy_path/$component/kube-dashboard
+    server=$master_server
+    execute_ops install_dashboard
 }
 
 deploy_cluster_dist()
@@ -87,6 +94,8 @@ deploy_cluster_dist()
     scp calico/* $master_server:$deploy_path/$component/calico
     execute_ops install_network
 
+    enable_api_proxy $master_server
+
     master_cert_key=`execute_ops get_ha_master_cert_key`
     echo "master_cert_key: $master_cert_key"
     join_token=`execute_ops get_join_token`
@@ -104,6 +113,7 @@ deploy_cluster_dist()
         server=$s
         execute_ops join_ha_cluster_as_master $join_token $join_hash $master_cert_key
         execute_ops prepare_ha_cluster_vip
+        enable_api_proxy $server
     done
 
     for s in ${worker_servers[@]}
@@ -112,6 +122,11 @@ deploy_cluster_dist()
         server=$s
         execute_ops join_ha_cluster_as_worker $join_token $join_hash
     done
+
+    ssh $master_server "mkdir -p $deploy_path/$component/kube-dashboard"
+    scp kube-dashboard/* $master_server:$deploy_path/$component/kube-dashboard
+    server=$master_server
+    execute_ops install_dashboard
 }
 
 deploy_cluster_$scale

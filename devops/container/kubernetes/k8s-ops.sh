@@ -53,6 +53,12 @@ install_network()
     #watch kubectl get pods -n calico-system
 }
 
+install_dashboard()
+{
+    #kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
+    kubectl create -f $deploy_path/kube-dashboard/recommended.yaml
+}
+
 get_join_token()
 {
     kubeadm token list | grep token | awk '{ print $1 }'
@@ -89,11 +95,6 @@ reset_node()
     #clean_ipvs
     rm -rf /etc/cni/net.d
     rm -rf /home/$manager/.kube
-}
-
-enable_api_proxy()
-{
-    kubectl proxy --address=$external_ip --port=8001 --accept-hosts=192.168.56.1
 }
 
 drain_node()
