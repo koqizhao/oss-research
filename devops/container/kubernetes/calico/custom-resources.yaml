@@ -14,4 +14,4 @@ spec:
       encapsulation: VXLANCrossSubnet
       natOutgoing: Enabled
       nodeSelector: all()
-  registry: https://registry.cn-hangzhou.aliyuncs.com
+  registry: docker.io
