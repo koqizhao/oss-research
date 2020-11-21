@@ -199,7 +199,7 @@ esac
 # ${HADOOP_HOME}/logs by default.
 # Java property: hadoop.log.dir
 # export HADOOP_LOG_DIR=${HADOOP_HOME}/logs
-export HADOOP_LOG_DIR=/home/koqizhao/hadoop/logs
+export HADOOP_LOG_DIR=H_LOG_DIR
 
 # A string representing this instance of hadoop. $USER by default.
 # This is used in writing log and pid files, so keep that in mind!

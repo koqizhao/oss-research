@@ -18,23 +18,15 @@
 
 <configuration>
   <property>
-    <name>dfs.replication</name>
-    <value>2</value>
+    <name>fs.defaultFS</name>
+    <value>hdfs://server2:9000</value>
   </property>
   <property>
-    <name>dfs.datanode.data.dir</name>
-    <value>file:////home/koqizhao/hadoop/data</value>
+    <name>hadoop.tmp.dir</name>
+    <value>file:///TMP_DIR</value>
   </property>
   <property>
-    <name>dfs.blocksize</name>
-    <value>134217728</value>
-  </property>
-  <property>
-    <name>dfs.datanode.http.address</name>
-    <value>0.0.0.0:9864</value>
-  </property>
-  <property>
-    <name>dfs.permissions.enabled</name>
-    <value>false</value>
+    <name>io.file.buffer.size</name>
+    <value>131072</value>
   </property>
 </configuration>

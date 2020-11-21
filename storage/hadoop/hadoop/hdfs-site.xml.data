@@ -22,20 +22,12 @@
     <value>2</value>
   </property>
   <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>file:////home/koqizhao/hadoop/name</value>
-  </property>
-  <property>
     <name>dfs.datanode.data.dir</name>
-    <value>file:////home/koqizhao/hadoop/data</value>
+    <value>file:///DEPLOY_PATH/data</value>
   </property>
   <property>
     <name>dfs.blocksize</name>
     <value>134217728</value>
-  </property>
-  <property>
-    <name>dfs.namenode.http-address</name>
-    <value>0.0.0.0:9870</value>
   </property>
   <property>
     <name>dfs.datanode.http.address</name>
