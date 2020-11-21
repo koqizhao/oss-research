@@ -21,7 +21,7 @@ clean_cluster_basic()
         execute_ops drain_node $node_name
 
         server=$s
-        execute_ops reset_cluster
+        execute_ops reset_node
 
         server=$master_server
         execute_ops delete_node $node_name
@@ -29,7 +29,7 @@ clean_cluster_basic()
 
     echo -e "clean k8s master node: $master_server\n"
     server=$master_server
-    execute_ops reset_cluster
+    execute_ops reset_node
 }
 
 clean_cluster_dist()
