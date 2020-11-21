@@ -56,7 +56,9 @@ install_network()
 install_dashboard()
 {
     #kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
-    kubectl create -f $deploy_path/kube-dashboard/recommended.yaml
+    kubectl apply -f $deploy_path/kube-dashboard/recommended.yaml
+    kubectl apply -f $deploy_path/kube-dashboard/dashboard-adminuser.yaml
+    kubectl apply -f $deploy_path/kube-dashboard/dashboard-adminuser-role.yaml
 }
 
 get_join_token()

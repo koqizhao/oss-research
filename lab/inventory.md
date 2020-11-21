@@ -234,6 +234,7 @@ vip: 10.0.2.100:16443
 #### kubectl proxy
 
 [kubectl-proxy](http://192.168.56.13:8001/)
+[kube-dashboard](http://192.168.56.13:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
 
 ### dubbo
 
