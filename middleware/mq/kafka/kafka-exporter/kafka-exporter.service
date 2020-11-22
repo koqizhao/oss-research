@@ -3,6 +3,8 @@ Description=Kafka Exporter Service
 After=network.target zookeeper.service
 
 [Service]
+User=koqizhao
+Group=koqizhao
 WorkingDirectory=DEPLOY_PATH
 ExecStart=/bin/sh DEPLOY_PATH/start.sh
 ExecStop=/bin/sh DEPLOY_PATH/stop.sh

@@ -3,6 +3,8 @@ Description=Kafka Service
 After=network.target zookeeper.service
 
 [Service]
+User=koqizhao
+Group=koqizhao
 WorkingDirectory=DEPLOY_PATH
 ExecStart=DEPLOY_PATH/kafka.sh start
 ExecStop=DEPLOY_PATH/kafka.sh stop 300
