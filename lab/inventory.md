@@ -31,7 +31,7 @@
       - [ElasticSearch](#elasticsearch)
       - [FileBeat](#filebeat)
       - [Kibana](#kibana)
-    - [HDFS](#hdfs)
+    - [Hadoop](#hadoop)
     - [kubernetes](#kubernetes)
       - [master](#master)
       - [worker](#worker)
@@ -218,11 +218,15 @@ port: 11801, 12801
 
 [kibana](http://192.168.56.11:5601/)
 
-### HDFS
+### Hadoop
 
 - 192.168.56.11, name node
 - 192.168.56.12
 - 192.168.56.13
+
+port: 9000, 9870, 9864
+
+[name-node](http://192.168.56.11:9870/)
 
 ### kubernetes
 

@@ -23,7 +23,7 @@ deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S update-alternatives --set java $deploy_dir/$fold_name/bin/java"
 }
 
-source ~/Research/servers.sh
+source ~/Research/lab/env/servers.sh
 
 INDEX_MAX=`expr ${#servers[@]} - 1`
 for i in `seq 0 $INDEX_MAX`

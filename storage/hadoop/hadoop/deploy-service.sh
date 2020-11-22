@@ -8,6 +8,8 @@ source common.sh
 deploy_file=hadoop-3.2.0.tar.gz
 deploy_file_extracted=hadoop-3.2.0
 
+name_node_name=`ssh $name_node "hostname"`
+
 deploy_name()
 {
     server=$1
@@ -30,7 +32,9 @@ deploy_name()
     scp workers $server:$deploy_path/$component/etc/hadoop/
 
     dp=`escape_slash $deploy_path/tmp`
-    sed "s/TMP_DIR/$dp/g" core-site.xml > core-site.xml.tmp
+    sed "s/TMP_DIR/$dp/g" core-site.xml \
+        | sed "s/NAME_NODE/$name_node_name/g" \
+        > core-site.xml.tmp
     scp core-site.xml.tmp $server:$deploy_path/$component/etc/hadoop/core-site.xml
     rm core-site.xml.tmp
 
@@ -60,7 +64,9 @@ deploy_data()
     rm hadoop-env.sh.tmp
 
     dp=`escape_slash $deploy_path/tmp`
-    sed "s/TMP_DIR/$dp/g" core-site.xml > core-site.xml.tmp
+    sed "s/TMP_DIR/$dp/g" core-site.xml \
+        | sed "s/NAME_NODE/$name_node_name/g" \
+        > core-site.xml.tmp
     scp core-site.xml.tmp $server:$deploy_path/$component/etc/hadoop/core-site.xml
     rm core-site.xml.tmp
 

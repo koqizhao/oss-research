@@ -12,16 +12,17 @@ remote_status()
 
 start_hdfs_share()
 {
-    ssh $hdfs_share_server "echo '$PASSWORD' | sudo -S $deploy_path/$component/bin/hdfs --daemon start portmap"
+    ssh $hdfs_share_node "echo '$PASSWORD' | sudo -S $deploy_path/$component/bin/hdfs --daemon start portmap"
     sleep 5
-    ssh $hsdf_share_server "$deploy_path/$component/bin/hdfs --daemon start nfs3"
+    ssh $hdfs_share_node "$deploy_path/$component/bin/hdfs --daemon start nfs3"
     sleep 5
-    ssh $hdfs_share_server "echo '$PASSWORD' | sudo -S mount -t nfs -o vers=3,proto=tcp,nolock,noacl,sync $hdfs_share_server:/ $mount_point"
+    ssh $hdfs_share_node "mkdir -p $mount_point"
+    ssh $hdfs_share_node "echo '$PASSWORD' | sudo -S busybox mount -t nfs -o vers=3,proto=tcp,nolock,noacl,sync $hdfs_share_node:/ $mount_point"
 }
 
 stop_hdfs_share()
 {
-    ssh $hdfs_share_server "echo '$PASSWORD' | sudo -S umount $mount_point"
-    ssh $hdfs_share_server "$hadoop_home/bin/hdfs --daemon stop nfs3"
-    ssh $hdfs_share_server "echo '$PASSWORD' | sudo -S $deploy_path/$component/bin/hdfs --daemon stop portmap"
+    ssh $hdfs_share_node "echo '$PASSWORD' | sudo -S umount $mount_point"
+    ssh $hdfs_share_node "$deploy_path/$component/bin/hdfs --daemon stop nfs3"
+    ssh $hdfs_share_node "echo '$PASSWORD' | sudo -S $deploy_path/$component/bin/hdfs --daemon stop portmap"
 }
