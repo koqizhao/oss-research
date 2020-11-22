@@ -11,8 +11,9 @@
     - [Kafka](#kafka)
       - [Kafka Server](#kafka-server)
       - [Kafka Manager](#kafka-manager)
+      - [Kafka Eagle](#kafka-eagle)
       - [Kafka Exporter](#kafka-exporter)
-      - [Jmx Exporter](#jmx-exporter)
+      - [Kafka Jmx Exporter](#kafka-jmx-exporter)
     - [metric](#metric)
       - [Promethues](#promethues)
       - [Alert Manager](#alert-manager)
@@ -100,17 +101,25 @@ port: 8300, 8301, 8302, 8500, 8600
 
 [kafka-manager](http://192.168.56.11:9000/)
 
+#### Kafka Eagle
+
+- 192.168.56.11
+
+[kafka-eagle](http://192.168.56.11:8048/)
+
 #### Kafka Exporter
 
 - 192.168.56.11
 
-#### Jmx Exporter
+port: 9308
+
+#### Kafka Jmx Exporter
 
 - 192.168.56.11
 - 192.168.56.12
 - 192.168.56.13
 
-[jmx_exporter](http://192.168.56.11:9000/)
+port: 5556
 
 ### metric
 
