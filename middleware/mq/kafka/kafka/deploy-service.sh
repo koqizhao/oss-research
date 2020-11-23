@@ -5,7 +5,7 @@ init_scale "$1" ..
 
 source common.sh
 
-deploy_file=kafka_2.12-2.2.0
+deploy_file=kafka_2.13-2.6.0
 
 remote_deploy()
 {
