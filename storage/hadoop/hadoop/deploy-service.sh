@@ -42,11 +42,16 @@ deploy()
         rm workers
     fi
 
+    core_file=core-site.xml
+    if [ $node_type == "name" ]; then
+        # enable nfs-gateway
+        core_file=core-site.xml.name
+    fi
     name_node_name=`ssh $name_node "hostname"`
-    if [ $scale == "basic" ]; then
+    if [ $scale == "basic" ] && [ $node_type == "name" ]; then
         name_node_name="localhost"
     fi
-    sed "s/TMP_DIR/$tmp_dp/g" core-site.xml \
+    sed "s/TMP_DIR/$tmp_dp/g" $core_file \
         | sed "s/NAME_NODE/$name_node_name/g" \
         > core-site.xml.tmp
     scp core-site.xml.tmp $server:$deploy_path/$component/etc/hadoop/core-site.xml
@@ -75,5 +80,16 @@ fi
 echo -e "\nstart cluster\n"
 ssh $name_node "$deploy_path/$component/sbin/start-dfs.sh"
 
-#deploy $hdfs_share_node data
-#start_hdfs_share
+echo -e "\ndeploy nfs gateway\n"
+ssh $name_node "$deploy_path/$component/bin/hdfs dfs -mkdir /share; \
+    $deploy_path/$component/bin/hdfs dfs -chown -R koqizhao:koqizhao /share; \
+    $deploy_path/$component/bin/hdfs dfs -ls /;"
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt install -y nfs-common;"
+#ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl stop nfs;"
+#ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl disable nfs;"
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl stop rpcbind.socket;"
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl disable rpcbind.socket;"
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl stop rpcbind;"
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl disable rpcbind;"
+deploy $nfs_gateway_node nfs
+start_nfs_gateway

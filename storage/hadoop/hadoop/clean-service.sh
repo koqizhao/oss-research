@@ -5,7 +5,7 @@ init_scale "$1" ..
 
 source common.sh
 
-#stop_hdfs_share
+stop_nfs_gateway
 ssh $name_node "$deploy_path/$component/sbin/stop-dfs.sh"
 
 remote_clean()
@@ -21,3 +21,7 @@ remote_clean()
 }
 
 batch_clean
+
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt purge -y nfs-common;"
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt update;"
+ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt autoremove --purge -y;"
