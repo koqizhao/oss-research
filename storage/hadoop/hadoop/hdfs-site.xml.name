@@ -29,9 +29,23 @@
     <name>dfs.datanode.data.dir</name>
     <value>file:///DEPLOY_PATH/data</value>
   </property>
+  <!--
+  <property>
+    <name>dfs.hosts</name>
+    <value>server1,server2,server3</value>
+  </property>
+  <property>
+    <name>dfs.host.exclude</name>
+    <value>server4</value>
+  </property>
+  -->
   <property>
     <name>dfs.blocksize</name>
     <value>134217728</value>
+  </property>
+  <property>
+    <name>dfs.namenode.rpc-address</name>
+    <value>0.0.0.0:9000</value>
   </property>
   <property>
     <name>dfs.namenode.http-address</name>

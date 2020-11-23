@@ -198,6 +198,7 @@ export HADOOP_LOG_DIR=H_LOG_DIR
 
 # Where pid files are stored.  /tmp by default.
 # export HADOOP_PID_DIR=/tmp
+export HADOOP_PID_DIR=TMP_DIR
 
 # Default log4j setting for interactive commands
 # Java property: hadoop.root.logger
