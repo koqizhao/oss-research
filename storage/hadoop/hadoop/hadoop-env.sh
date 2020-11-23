@@ -97,19 +97,6 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 # section as to why....
 export HADOOP_OS_TYPE=${HADOOP_OS_TYPE:-$(uname -s)}
 
-
-# Under certain conditions, Java on OS X will throw SCDynamicStore errors
-# in the system logs.
-# See HADOOP-8719 for more information.  If one needs Kerberos
-# support on OS X, one will want to change/remove this extra bit.
-case ${HADOOP_OS_TYPE} in
-  Darwin*)
-    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.realm= "
-    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.kdc= "
-    export HADOOP_OPTS="${HADOOP_OPTS} -Djava.security.krb5.conf= "
-  ;;
-esac
-
 # Extra Java runtime options for some Hadoop commands
 # and clients (i.e., hdfs dfs -blah).  These get appended to HADOOP_OPTS for
 # such commands.  In most cases, # this should be left empty and
@@ -158,7 +145,7 @@ esac
 # Enable optional, bundled Hadoop features
 # This is a comma delimited list.  It may NOT be overridden via .hadooprc
 # Entries may be added/removed as needed.
-# export HADOOP_OPTIONAL_TOOLS="hadoop-aliyun,hadoop-aws,hadoop-azure-datalake,hadoop-azure,hadoop-kafka,hadoop-openstack"
+# export HADOOP_OPTIONAL_TOOLS="hadoop-aliyun,hadoop-openstack,hadoop-azure,hadoop-azure-datalake,hadoop-aws,hadoop-kafka"
 
 ###
 # Options for remote shell connectivity
