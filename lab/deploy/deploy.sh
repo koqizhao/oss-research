@@ -2,17 +2,6 @@
 
 source ~/Research/storage/mysql/mysql_db_conf.sh
 
-read_server_pass()
-{
-    if [ -z "$PASSWORD" ]; then
-        echo -n "server password: "
-        read -s PASSWORD
-        echo
-
-        export PASSWORD
-    fi
-}
-
 init_scale()
 {
     scale="basic"

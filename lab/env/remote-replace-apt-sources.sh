@@ -2,9 +2,8 @@
 
 set -e
 
-echo -n "password: "
-read -s PASSWORD
-echo
+source ~/Research/lab/env/env.sh
+read_server_pass
 
 source ~/Research/lab/env/servers.sh
 

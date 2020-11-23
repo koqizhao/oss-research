@@ -2,8 +2,8 @@
 
 set -e
 
-echo -n "password: "
-read -s PASSWORD
+source ~/Research/lab/env/env.sh
+read_server_pass
 
 enable_ssh()
 {
