@@ -1,0 +1,16 @@
+;
+; BIND reverse data file for local 192.168.56.XXX net
+;
+$TTL    604800
+@       IN      SOA     mydotey.com. root.mydotey.com. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns.
+11      IN      PTR     ns.mydotey.com.
+12      IN      PTR     sns.mydotey.com.
+13      IN      PTR     cns.mydotey.com.
+14      IN      PTR     cns.mydotey.com.

@@ -48,6 +48,8 @@
       - [portal](#portal)
       - [config-service](#config-service)
       - [admin-service](#admin-service)
+    - [DNS](#dns)
+      - [bind9](#bind9)
 
 ## Machines
 
@@ -308,3 +310,14 @@ port: 38080
 - 192.168.56.12
 
 port: 38090
+
+### DNS
+
+#### bind9
+
+- 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
+- 192.168.56.14
+
+port: 53
