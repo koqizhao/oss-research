@@ -50,6 +50,7 @@
       - [admin-service](#admin-service)
     - [DNS](#dns)
       - [bind9](#bind9)
+    - [gitlab](#gitlab)
 
 ## Machines
 
@@ -321,3 +322,11 @@ port: 38090
 - 192.168.56.14
 
 port: 53
+
+### gitlab
+
+- 192.168.56.11
+
+port: 80, 8080等多个端口
+
+[gitlab](https://gitlab.mydotey.com)
