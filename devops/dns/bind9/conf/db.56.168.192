@@ -11,6 +11,11 @@ $TTL    604800
 ;
 @       IN      NS      ns.
 11      IN      PTR     ns.mydotey.com.
+11      IN      PTR     server1.mydotey.com.
 12      IN      PTR     sns.mydotey.com.
+12      IN      PTR     server2.mydotey.com.
 13      IN      PTR     cns.mydotey.com.
+13      IN      PTR     server3.mydotey.com.
 14      IN      PTR     cns.mydotey.com.
+14      IN      PTR     server4.mydotey.com.
+15      IN      PTR     server5.mydotey.com.
