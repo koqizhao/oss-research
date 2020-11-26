@@ -48,10 +48,15 @@
       - [portal](#portal)
       - [config-service](#config-service)
       - [admin-service](#admin-service)
-    - [DNS](#dns)
-      - [bind9](#bind9)
-    - [gitlab](#gitlab)
-    - [nexus](#nexus)
+    - [ops](#ops)
+      - [DNS](#dns)
+        - [bind9](#bind9)
+      - [scm](#scm)
+        - [gitlab](#gitlab)
+      - [repo-manager](#repo-manager)
+        - [nexus](#nexus)
+      - [cd](#cd)
+        - [jenkins](#jenkins)
 
 ## Machines
 
@@ -313,9 +318,11 @@ port: 38080
 
 port: 38090
 
-### DNS
+### ops
 
-#### bind9
+#### DNS
+
+##### bind9
 
 - 192.168.56.11
 - 192.168.56.12
@@ -324,7 +331,9 @@ port: 38090
 
 port: 53
 
-### gitlab
+#### scm
+
+##### gitlab
 
 - 192.168.56.11
 
@@ -332,8 +341,18 @@ port: 80, 8080等多个端口
 
 [gitlab](https://gitlab.mydotey.com)
 
-### nexus
+#### repo-manager
+
+##### nexus
 
 - 192.168.56.11
 
 [nexus](https://192.168.56.11:8081)
+
+#### cd
+
+##### jenkins
+
+- 192.168.56.11
+
+[jenkins](https://192.168.56.11:18080)
