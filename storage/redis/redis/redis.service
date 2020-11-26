@@ -1,0 +1,27 @@
+[Unit]
+Description=Redis data structure server
+Documentation=https://redis.io/documentation
+#Before=your_application.service another_example_application.service
+#AssertPathExists=/var/lib/redis
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/redis.log
+StandardError=file:LOG_DIR/redis.log
+ExecStart=BASE_DIR/bin/redis-server redis.conf
+Restart=always
+RestartSec=10
+LimitNOFILE=10032
+NoNewPrivileges=yes
+#OOMScoreAdjust=-900
+#PrivateTmp=yes
+TimeoutStartSec=infinity
+TimeoutStopSec=infinity
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

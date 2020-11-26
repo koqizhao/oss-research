@@ -1,3 +1,4 @@
 *.un~
 
 middleware/distribution/consul/consul/deploy
+storage/redis/redis/redis.tar

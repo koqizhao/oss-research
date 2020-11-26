@@ -3,7 +3,7 @@
 - [Inventory](#inventory)
   - [Machines](#machines)
   - [Apps](#apps)
-    - [distribution](#distribution)
+    - [Distribution](#distribution)
       - [Zookeeper](#zookeeper)
         - [zk](#zk)
         - [zkui](#zkui)
@@ -14,7 +14,7 @@
       - [Kafka Eagle](#kafka-eagle)
       - [Kafka Exporter](#kafka-exporter)
       - [Kafka Jmx Exporter](#kafka-jmx-exporter)
-    - [metric](#metric)
+    - [Metric](#metric)
       - [Promethues](#promethues)
       - [Alert Manager](#alert-manager)
       - [Grafana](#grafana)
@@ -22,7 +22,7 @@
       - [Push Gateway](#push-gateway)
       - [node exporter](#node-exporter)
       - [mysqld exporter](#mysqld-exporter)
-    - [trace](#trace)
+    - [Trace](#trace)
       - [skywalking](#skywalking)
         - [receiver](#receiver)
         - [aggregator](#aggregator)
@@ -31,24 +31,26 @@
       - [ElasticSearch](#elasticsearch)
       - [FileBeat](#filebeat)
       - [Kibana](#kibana)
-    - [Hadoop](#hadoop)
-    - [kubernetes](#kubernetes)
+    - [Kubernetes](#kubernetes)
       - [master](#master)
       - [worker](#worker)
       - [kubectl proxy](#kubectl-proxy)
-    - [dubbo](#dubbo)
+    - [Dubbo](#dubbo)
       - [dubbo admin](#dubbo-admin)
       - [nacos](#nacos)
       - [soul](#soul)
       - [sentinel](#sentinel)
-    - [MySql](#mysql)
-      - [MySql Server](#mysql-server)
-      - [MySql Workbench](#mysql-workbench)
+    - [Storage](#storage)
+      - [MySql](#mysql)
+        - [MySql Server](#mysql-server)
+        - [MySql Workbench](#mysql-workbench)
+      - [Hadoop](#hadoop)
+      - [Redis](#redis)
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
       - [admin-service](#admin-service)
-    - [ops](#ops)
+    - [Ops](#ops)
       - [DNS](#dns)
         - [bind9](#bind9)
       - [scm](#scm)
@@ -68,7 +70,7 @@
 
 ## Apps
 
-### distribution
+### Distribution
 
 #### Zookeeper
 
@@ -130,7 +132,7 @@ port: 9308
 
 port: 5556
 
-### metric
+### Metric
 
 #### Promethues
 
@@ -183,7 +185,7 @@ port: 19100
 
 port: 9104
 
-### trace
+### Trace
 
 #### skywalking
 
@@ -227,17 +229,7 @@ port: 11801, 12801
 
 [kibana](http://192.168.56.11:5601/)
 
-### Hadoop
-
-- 192.168.56.11, name node
-- 192.168.56.12
-- 192.168.56.13
-
-port: 9000, 9870, 9864
-
-[name-node](http://192.168.56.11:9870/)
-
-### kubernetes
+### Kubernetes
 
 #### master
 
@@ -258,7 +250,7 @@ vip: 10.0.2.100:16443
 [kubectl-proxy](http://192.168.56.13:8001/)
 [kube-dashboard](http://192.168.56.13:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
 
-### dubbo
+### Dubbo
 
 #### dubbo admin
 
@@ -286,15 +278,33 @@ vip: 10.0.2.100:16443
 [sentinel-dashboard](http://192.168.56.11:8085)
 [sentinel-transport](http://192.168.56.11:8719)
 
-### MySql
+### Storage
 
-#### MySql Server
+#### MySql
+
+##### MySql Server
 
 - 192.168.56.11:3306
 
-#### MySql Workbench
+##### MySql Workbench
 
 - 192.168.56.1
+
+#### Hadoop
+
+- 192.168.56.11, name node
+- 192.168.56.12
+- 192.168.56.13
+
+port: 9000, 9870, 9864
+
+[name-node](http://192.168.56.11:9870/)
+
+#### Redis
+
+- 192.168.56.11
+
+port: 6379
 
 ### Apollo
 
@@ -318,7 +328,7 @@ port: 38080
 
 port: 38090
 
-### ops
+### Ops
 
 #### DNS
 
