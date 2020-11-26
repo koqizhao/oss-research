@@ -13,12 +13,14 @@ remote_deploy()
     component=$2
 
     ssh $server "echo '$PASSWORD' | sudo -S apt update; \
-        echo '$PASSWORD' | sudo -S apt install -y curl openssh-server ca-certificates tzdata; "
+        echo '$PASSWORD' | sudo -S apt install -y curl openssh-server ca-certificates tzdata; \
+        echo '$PASSWORD' | sudo -S DEBIAN_FRONTEND=noninteractive apt install -y postfix; "
 
     ssh $server "mkdir -p $deploy_path/$component"
     #ssh $server "cd $deploy_path/$component; curl -fsSL https://packages.gitlab.com/gpg.key > gpg;"
     scp gpg $server:$deploy_path/$component
-    ssh $server "echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg; \
+    ssh $server "cd $deploy_path/$component; \
+        echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg; \
         echo '$PASSWORD' | sudo -S apt-key fingerprint 51312F3F; \
         echo '$PASSWORD' | sudo -S add-apt-repository \"deb $mirror_site \$(lsb_release -cs) main\"; \
         echo '$PASSWORD' | sudo -S apt update; "
