@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/container
+deploy_path=/home/koqizhao/ops/container
 
 read_server_pass
 

@@ -1,8 +1,12 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/ops/gitlab
+source ../common.sh
 
-read_server_pass
+component=gitlab
+version=ce
+
+#mirror_site=https://packages.gitlab.com/gitlab/gitlab-$version/ubuntu
+mirror_site=http://mirrors.tuna.tsinghua.edu.cn/gitlab-$version/ubuntu
 
 remote_status()
 {
