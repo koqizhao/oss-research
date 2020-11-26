@@ -51,6 +51,7 @@
     - [DNS](#dns)
       - [bind9](#bind9)
     - [gitlab](#gitlab)
+    - [nexus](#nexus)
 
 ## Machines
 
@@ -330,3 +331,9 @@ port: 53
 port: 80, 8080等多个端口
 
 [gitlab](https://gitlab.mydotey.com)
+
+### nexus
+
+- 192.168.56.11
+
+[nexus](https://192.168.56.11:8081)

@@ -1,0 +1,18 @@
+[Unit]
+Description=nexus service
+After=network.target
+  
+[Service]
+Type=forking
+Group=GROUP
+User=USER
+LimitNOFILE=65536
+WorkingDirectory=DEPLOY_PATH
+ExecStart=DEPLOY_PATH/bin/nexus start
+ExecStop=DEPLOY_PATH/bin/nexus stop
+Restart=on-abort
+RestartSec=30
+TimeoutSec=600
+  
+[Install]
+WantedBy=multi-user.target
