@@ -2,9 +2,9 @@
 Description=prometheus node exporter
 
 [Service]
-WorkingDirectory=/home/koqizhao/monitoring/metric/node_exporter
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/node_exporter/node_exporter.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/node_exporter/node_exporter.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/node_exporter.log
+StandardError=file:LOG_DIR/node_exporter.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

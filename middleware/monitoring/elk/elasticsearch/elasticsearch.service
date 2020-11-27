@@ -5,9 +5,9 @@ After=network.target
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/elk/elasticsearch
-ExecStart=/home/koqizhao/monitoring/elk/elasticsearch/elasticsearch.sh start
-ExecStop=/home/koqizhao/monitoring/elk/elasticsearch/elasticsearch.sh stop 300
+WorkingDirectory=BASE_DIR
+ExecStart=BASE_DIR/elasticsearch.sh start
+ExecStop=BASE_DIR/elasticsearch.sh stop 300
 Restart=always
 RestartSec=10
 TimeoutSec=360

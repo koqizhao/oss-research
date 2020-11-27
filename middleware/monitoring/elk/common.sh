@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/monitoring/elk
+deploy_path=/home/koqizhao/middleware/monitoring/elk
 
 read_server_pass
 

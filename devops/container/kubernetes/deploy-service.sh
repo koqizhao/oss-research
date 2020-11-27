@@ -29,7 +29,12 @@ remote_deploy()
     scp init-iptables.sh $1:$deploy_path/$component
     ssh $1 "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S sh init-iptables.sh; rm init-iptables.sh"
 
-    scp k8s-ops.sh $1:$deploy_path/$component
+    dp=`escape_slash $deploy_path/$component`
+    sed "s/DEPLOY_PATH/$dp/g" k8s-ops.sh \
+        > k8s-ops.sh.tmp
+    chmod a+x k8s-ops.sh.tmp
+    scp k8s-ops.sh.tmp $1:$deploy_path/$component/k8s-ops.sh
+    rm k8s-ops.sh.tmp
 }
 
 batch_deploy

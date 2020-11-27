@@ -4,9 +4,9 @@ Description=Grafana Visualization System
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/metric/grafana
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/grafana/grafana.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/grafana/grafana.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/grafana.log
+StandardError=file:LOG_DIR/grafana.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

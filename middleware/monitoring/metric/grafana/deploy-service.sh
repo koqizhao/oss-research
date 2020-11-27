@@ -17,10 +17,25 @@ remote_deploy()
     scp ~/Software/metric/${deploy_file}.linux-amd64.tar.gz $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf ${deploy_file}.linux-amd64.tar.gz; mv $deploy_file $component; rm ${deploy_file}.linux-amd64.tar.gz"
 
-    scp custom.ini $server:$deploy_path/$component/conf
+    base_dir=`escape_slash $deploy_path/$component`
+    data_dir=`escape_slash $deploy_path/data/$component`
+    log_dir=`escape_slash $deploy_path/logs/$component`
+
+    sed "s/BASE_DIR/$base_dir/g" custom.ini \
+        | sed "s/DATA_DIR/$data_dir/g" \
+        | sed "s/LOG_DIR/$log_dir/g" \
+        > custom.ini.tmp 
+    scp custom.ini.tmp $server:$deploy_path/$component/conf/custom.ini
+    rm custom.ini.tmp
+
     scp start.sh $server:$deploy_path/$component
 
-    scp $component.service $server:$deploy_path
+    sed "s/BASE_DIR/$base_dir/g" $component.service \
+        | sed "s/LOG_DIR/$log_dir/g" \
+        > $component.service.tmp 
+    scp $component.service.tmp $server:$deploy_path/$component.service
+    rm $component.service.tmp
+
     ssh $server "echo '$PASSWORD' | sudo -S chown root:root $deploy_path/$component.service"
     ssh $server "echo '$PASSWORD' | sudo -S mv $deploy_path/$component.service /etc/systemd/system/"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"

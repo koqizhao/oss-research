@@ -1,3 +1,3 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/distribution/zookeeper
+deploy_path=/home/koqizhao/middleware/distribution/zookeeper

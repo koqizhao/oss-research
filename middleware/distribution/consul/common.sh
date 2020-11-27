@@ -1,3 +1,3 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/distribution/consul
+deploy_path=/home/koqizhao/middleware/distribution/consul

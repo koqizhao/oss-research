@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PIDFILE=~/distribution/zookeeper/zkui/zkui.pid
+PIDFILE=BASE_DIR/zkui.pid
 ZKUIBINDIR=$(cd `dirname $0`; pwd)
 ZKUICLASSNAME="zkui-2.0-SNAPSHOT-jar-with-dependencies.jar"
 ZKUI_DAEMON_OUT=$ZKUIBINDIR/zkui.out

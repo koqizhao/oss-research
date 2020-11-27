@@ -4,9 +4,9 @@ Description=Prometheus Metric System
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/metric/prometheus
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/prometheus/prometheus.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/prometheus/prometheus.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/prometheus.log
+StandardError=file:LOG_DIR/prometheus.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

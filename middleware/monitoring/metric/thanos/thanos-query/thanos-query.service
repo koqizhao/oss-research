@@ -4,9 +4,9 @@ Description=thanos query
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/metric/thanos/thanos-query
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/thanos/thanos-query/thanos-query.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/thanos/thanos-query/thanos-query.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/thanos-query.log
+StandardError=file:LOG_DIR/thanos-query.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

@@ -25,7 +25,14 @@ remote_deploy()
     ssh $server "mkdir -p $deploy_path/$parent_component/$component"
     source $component/custom_scp_script.sh
 
-    scp $component/$component.service $server:$deploy_path/$parent_component/$component
+    base_dir=`escape_slash $deploy_path/$parent_component/$component`
+    log_dir=`escape_slash $deploy_path/logs/$parent_component/$component`
+    sed "s/BASE_DIR/$base_dir/g" $component/$component.service \
+        | sed "s/LOG_DIR/$log_dir/g" \
+        > $component.service.tmp 
+    scp $component.service.tmp $server:$deploy_path/$parent_component/$component/$component.service
+    rm $component.service.tmp
+
     ssh $server "echo '$PASSWORD' | sudo -S chown root:root $deploy_path/$parent_component/$component/$component.service"
     ssh $server "echo '$PASSWORD' | sudo -S mv $deploy_path/$parent_component/$component/$component.service /etc/systemd/system/"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"

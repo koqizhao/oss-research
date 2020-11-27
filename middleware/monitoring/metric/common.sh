@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/monitoring/metric
+deploy_path=/home/koqizhao/middleware/monitoring/metric
 
 read_server_pass
 

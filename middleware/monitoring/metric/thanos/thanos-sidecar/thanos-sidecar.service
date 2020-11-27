@@ -4,9 +4,9 @@ Description=thanos sidecar
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/metric/thanos/thanos-sidecar
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/thanos/thanos-sidecar/thanos-sidecar.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/thanos/thanos-sidecar/thanos-sidecar.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/thanos-sidecar.log
+StandardError=file:LOG_DIR/thanos-sidecar.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

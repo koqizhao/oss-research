@@ -1,7 +1,7 @@
 #!/bin/bash
 
 project_path=/home/koqizhao/Projects/ctripcorp/apollo
-deploy_path=/home/koqizhao/config/apollo
+deploy_path=/home/koqizhao/middleware/config/apollo
 
 eureka_url=""
 meta_servers=""

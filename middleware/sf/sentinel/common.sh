@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/sf/sentinel
+deploy_path=/home/koqizhao/middleware/sf/sentinel
 component=sentinel-dashboard
 servers=(${sentinel_servers[@]})
 

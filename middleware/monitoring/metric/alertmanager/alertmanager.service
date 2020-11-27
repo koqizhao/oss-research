@@ -4,9 +4,9 @@ Description=Prometheus Alert Manager
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/metric/alertmanager
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/alertmanager/alertmanager.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/alertmanager/alertmanager.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/alertmanager.log
+StandardError=file:LOG_DIR/alertmanager.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

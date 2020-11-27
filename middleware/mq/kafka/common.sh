@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/mq/kafka
+deploy_path=/home/koqizhao/middleware/mq/kafka
 
 read_server_pass
 

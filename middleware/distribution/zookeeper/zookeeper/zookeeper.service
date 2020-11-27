@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/distribution/zookeeper/zookeeper
+WorkingDirectory=BASE_DIR
 ExecStart=/bin/bash bin/zkServer.sh start-foreground
 Restart=always
 RestartSec=10

@@ -33,13 +33,24 @@ remote_deploy()
 
     scp ~/Software/${zk_file}.tar.gz $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf ${zk_file}.tar.gz; mv $zk_file $component; rm ${zk_file}.tar.gz"
-    scp zoo.cfg.$scale $server:$deploy_path/$component/conf/zoo.cfg
+
+    data_dir=`escape_slash $deploy_path/data`
+    sed "s/DATA_DIR/$data_dir/g" zoo.cfg.$scale \
+        > zoo.cfg.tmp
+    scp zoo.cfg.tmp $server:$deploy_path/$component/conf/zoo.cfg
+    rm zoo.cfg.tmp
+
     scp java.env $server:$deploy_path/$component/conf/
 
     myid=`get_myid $server`
     ssh $server "echo $myid > myid; mv myid $deploy_path/data"
 
-    scp zookeeper.service $server:$deploy_path
+    base_dir=`escape_slash $deploy_path/$component`
+    sed "s/BASE_DIR/$base_dir/g" zookeeper.service \
+        > zookeeper.service.tmp
+    scp zookeeper.service.tmp $server:$deploy_path/zookeeper.service
+    rm zookeeper.service.tmp
+
     ssh $server "echo '$PASSWORD' | sudo -S mv $deploy_path/zookeeper.service /etc/systemd/system/"
     ssh $server "echo '$PASSWORD' | sudo -S chown root:root /etc/systemd/system/zookeeper.service"
     ssh $server "echo '$PASSWORD' | sudo -S systemctl daemon-reload"

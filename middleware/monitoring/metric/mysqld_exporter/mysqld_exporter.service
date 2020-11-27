@@ -4,9 +4,9 @@ Description=prometheus mysqld_exporter
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/metric/mysqld_exporter
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/mysqld_exporter/mysqld_exporter.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/mysqld_exporter/mysqld_exporter.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/mysqld_exporter.log
+StandardError=file:LOG_DIR/mysqld_exporter.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

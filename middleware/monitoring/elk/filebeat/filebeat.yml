@@ -240,5 +240,5 @@ processors:
 # This allows to enable 6.7 migration aliases
 #migration.6_to_7.enabled: true
 
-path.data: /home/koqizhao/monitoring/elk/data/filebeat
-path.logs: /home/koqizhao/monitoring/elk/logs/filebeat
+path.data: DATA_DIR
+path.logs: LOG_DIR

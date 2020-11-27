@@ -40,4 +40,5 @@ remote_deploy()
 
 batch_deploy
 
+rm bin/webappService.sh.tmp
 rm conf/webapp.yml.tmp

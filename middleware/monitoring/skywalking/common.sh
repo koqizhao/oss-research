@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/monitoring/trace/skywalking
+deploy_path=/home/koqizhao/middleware/monitoring/trace/skywalking
 
 #es_type=
 es_type=-es7

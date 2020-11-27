@@ -1,7 +1,7 @@
 #!/bin/bash
 
 manager=koqizhao
-deploy_path=/home/koqizhao/container/kubernetes
+deploy_path=DEPLOY_PATH
 pod_network_cidr=10.217.0.0/16
 master_vip=10.0.2.100
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/gateway/soul
+deploy_path=/home/koqizhao/middleware/gateway/soul
 
 admin_component=soul-admin
 bootstrap_component=soul-bootstrap

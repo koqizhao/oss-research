@@ -4,9 +4,9 @@ Description=prometheus pushgateway
 [Service]
 User=koqizhao
 Group=koqizhao
-WorkingDirectory=/home/koqizhao/monitoring/metric/pushgateway
-StandardOutput=file:/home/koqizhao/monitoring/metric/logs/pushgateway/pushgateway.log
-StandardError=file:/home/koqizhao/monitoring/metric/logs/pushgateway/pushgateway.log
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/pushgateway.log
+StandardError=file:LOG_DIR/pushgateway.log
 ExecStart=/bin/sh ./start.sh
 Restart=always
 RestartSec=10

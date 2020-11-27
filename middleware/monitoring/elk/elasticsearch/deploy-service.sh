@@ -17,25 +17,35 @@ remote_deploy()
     server=$1
 
     ssh $server "mkdir -p $deploy_path/data/$component"
+    ssh $server "mkdir -p $deploy_path/logs/$component"
 
     scp ~/Software/elastic/${deploy_file} $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf ${deploy_file}; mv $deploy_file_extracted $component; rm ${deploy_file}"
 
+    data_dir=`escape_slash $deploy_path/data/$component`
+    log_dir=`escape_slash $deploy_path/logs/$component`
     node_name=${es_servers_map[$server]}
     sed "s/CLUSTER_NAME/$cluster_name/g" elasticsearch.yml \
         | sed "s/NODE_NAME/$node_name/g" \
         | sed "s/NETWORK_HOST/$server/g" \
         | sed "s/HTTP_PORT/$http_port/g" \
         | sed "s/SEED_HOSTS/$seed_hosts/g" \
+        | sed "s/DATA_DIR/$data_dir/g" \
+        | sed "s/LOG_DIR/$log_dir/g" \
         | sed "s/INITIAL_MASTER_NODES/$initial_master_nodes/g" \
-        > temp.yml
-    scp temp.yml $server:$deploy_path/$component/config/elasticsearch.yml
-    rm temp.yml
+        > elasticsearch.yml.tmp
+    scp elasticsearch.yml.tmp $server:$deploy_path/$component/config/elasticsearch.yml
+    rm elasticsearch.yml.tmp
 
     scp elasticsearch-env $server:$deploy_path/$component/bin/
     scp jvm.options $server:$deploy_path/$component/config/
     scp elasticsearch.sh $server:$deploy_path/$component
-    scp elasticsearch.service $server:$deploy_path/$component
+
+    base_dir=`escape_slash $deploy_path/$component`
+    sed "s/BASE_DIR/$base_dir/g" $component.service \
+        > $component.service.tmp 
+    scp $component.service.tmp $server:$deploy_path/$component/$component.service
+    rm $component.service.tmp
 
     ssh $server "echo '$PASSWORD' | sudo -S chown root:root $deploy_path/$component/elasticsearch.service"
     ssh $server "echo '$PASSWORD' | sudo -S mv $deploy_path/$component/elasticsearch.service /etc/systemd/system/"

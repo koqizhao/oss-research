@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/sf/dubbo
+deploy_path=/home/koqizhao/middleware/sf/dubbo
 
 remote_status()
 {

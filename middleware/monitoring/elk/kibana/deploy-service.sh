@@ -14,10 +14,21 @@ remote_deploy()
     server=$1
 
     ssh $server "mkdir -p $deploy_path/data/$component"
+    ssh $server "mkdir -p $deploy_path/logs/$component"
 
     scp ~/Software/elastic/${deploy_file} $server:$deploy_path
-    scp kibana.service $server:$deploy_path
-    scp kibana.yml $server:$deploy_path
+
+    data_dir=`escape_slash $deploy_path/data/$component`
+    sed "s/DATA_DIR/$data_dir/g" $component.yml \
+        > $component.yml.tmp
+    scp $component.yml.tmp $server:$deploy_path/$component.yml
+    rm $component.yml.tmp
+
+    base_dir=`escape_slash $deploy_path/$component`
+    sed "s/BASE_DIR/$base_dir/g" $component.service \
+        > $component.service.tmp 
+    scp $component.service.tmp $server:$deploy_path/$component.service
+    rm $component.service.tmp
 
     ssh $server "cd $deploy_path; tar xf $deploy_file; mv $deploy_file_extracted $component; mv kibana.yml $component/config/; rm $deploy_file"
     ssh $server "echo '$PASSWORD' | sudo -S chown root:root $deploy_path/kibana.service"
