@@ -80,6 +80,26 @@ remote_deploy()
     ssh $server "echo '$PASSWORD' | sudo -S systemctl enable $component.service"
 }
 
+create_cluster()
+{
+    nodes=""
+    for i in ${servers[@]}
+    do
+        if [ -z "$nodes" ]; then
+            nodes="$i:6379"
+        else
+            nodes="$nodes $i:6379"
+        fi
+    done
+
+    ssh ${servers[0]} "cd $deploy_path/$component; \
+        echo yes | bin/redis-cli --cluster create $nodes --cluster-replicas $cluster_replicas"
+}
+
 build ${servers[0]}
 
 batch_deploy
+
+if [ $scale == "dist" ]; then
+    create_cluster
+fi
