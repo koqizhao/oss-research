@@ -59,6 +59,8 @@
         - [nexus](#nexus)
       - [cd](#cd)
         - [jenkins](#jenkins)
+    - [Gateway](#gateway)
+      - [Kong](#kong)
 
 ## Machines
 
@@ -368,3 +370,11 @@ port: 80, 8080等多个端口
 - 192.168.56.11
 
 [jenkins](https://192.168.56.11:18080)
+
+### Gateway
+
+#### Kong
+
+- 192.168.56.11
+
+port: 8000, 8443, 8001, 8444

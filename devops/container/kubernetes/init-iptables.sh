@@ -36,6 +36,6 @@ iptables -A INPUT -p tcp --dport 8300:8302 -j ACCEPT
 iptables -A INPUT -p tcp --dport 8500 -j ACCEPT
 
 # for all ports
-#iptables -A INPUT -p tcp --dport 0:65535 -j ACCEPT
+iptables -A INPUT -p tcp --dport 0:65535 -j ACCEPT
 
 netfilter-persistent save
