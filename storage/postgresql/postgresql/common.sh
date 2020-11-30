@@ -6,10 +6,11 @@ component=postgresql
 
 gpg_site=https://www.postgresql.org/media/keys/ACCC4CF8.asc
 gpg_pub=ACCC4CF8
-apt_repo="deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main"
-#apt_repo="deb http://mirrors.ustc.edu.cn/postgresql/repos/apt $(lsb_release -cs)-pgdg main"
+#apt_repo="deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main"
+apt_repo="deb http://mirrors.ustc.edu.cn/postgresql/repos/apt $(lsb_release -cs)-pgdg main"
 
-deploy_version=13
+deploy_version=9.6
+pg_pkg=postgresql-$deploy_version
 
 remote_status()
 {

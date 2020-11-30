@@ -64,6 +64,8 @@
         - [jenkins](#jenkins)
     - [Gateway](#gateway)
       - [Kong](#kong)
+        - [Kong Server](#kong-server)
+        - [Konga](#konga)
 
 ## Machines
 
@@ -394,6 +396,14 @@ port: 80, 8080等多个端口
 
 #### Kong
 
+##### Kong Server
+
 - 192.168.56.11
 
 port: 8000, 8443, 8001, 8444
+
+##### Konga
+
+- 192.168.56.11
+
+[konga](http://192.168.56.11:1337/)

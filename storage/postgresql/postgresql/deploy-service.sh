@@ -15,11 +15,12 @@ remote_deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"$apt_repo\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
     ssh $1 "echo '$PASSWORD' | sudo -S apt install -y debconf-utils"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y postgresql"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y $pg_pkg"
 
     declare data_dir
     data_dir=`escape_slash $deploy_path/data/$component`
     sed "s/DATA_DIR/$data_dir/g" postgresql.conf \
+        | sed "s/PG_VERSION/$deploy_version/g" \
         > postgresql.conf.tmp
     scp postgresql.conf.tmp $server:$deploy_path/postgresql.conf
     rm postgresql.conf.tmp
@@ -41,7 +42,7 @@ remote_deploy()
             '/usr/lib/postgresql/$deploy_version/bin/initdb -D $deploy_path/data/$component'; \
         echo '$PASSWORD' | sudo -S chown postgres:postgres pg_hba.conf; \
         echo '$PASSWORD' | sudo -S chmod 640 pg_hba.conf; \
-        echo '$PASSWORD' | sudo -S mv pg_hba.conf /etc/postgresql/13/main; \
+        echo '$PASSWORD' | sudo -S mv pg_hba.conf /etc/postgresql/$deploy_version/main; \
         echo '$PASSWORD' | sudo -S systemctl restart postgresql; \
         echo '$PASSWORD' | sudo -S su - postgres -c 'psql -f $deploy_path/$component/init.sql'; \
         rm $deploy_path/$component/init.sql; "

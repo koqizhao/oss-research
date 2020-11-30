@@ -1,0 +1,4 @@
+
+DROP DATABASE konga;
+
+DROP USER PG_USER;
