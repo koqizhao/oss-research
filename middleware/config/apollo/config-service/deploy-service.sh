@@ -9,7 +9,7 @@ source common.sh
 t_url=`escape_slash "$eureka_url"`
 sed "s/EUREKA_SERVICE_URL/$t_url/g" apolloconfigdb.sql \
     > apolloconfigdb-temp.sql
-db_exec apolloconfigdb-temp.sql
+mysql_db_exec apolloconfigdb-temp.sql
 rm apolloconfigdb-temp.sql
 
 scp_more()

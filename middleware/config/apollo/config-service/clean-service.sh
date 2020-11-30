@@ -7,4 +7,4 @@ source common.sh
 
 batch_clean
 
-db_exec apolloconfigdb-drop.sql
+mysql_db_exec apolloconfigdb-drop.sql

@@ -9,7 +9,7 @@ deploy_file=mysqld_exporter-0.12.1.linux-amd64
 
 sed "s/EXPORTER_PASSWORD/$exporter_password/g" init.sql \
     > init-tmp.sql
-db_exec init-tmp.sql
+mysql_db_exec init-tmp.sql
 rm init-tmp.sql
 
 remote_deploy()

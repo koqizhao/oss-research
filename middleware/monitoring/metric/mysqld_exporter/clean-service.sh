@@ -20,4 +20,4 @@ remote_clean()
 
 batch_clean
 
-db_exec clean.sql
+mysql_db_exec clean.sql

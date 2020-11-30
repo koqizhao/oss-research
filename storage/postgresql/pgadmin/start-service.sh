@@ -5,6 +5,4 @@ init_scale "$1" ..
 
 source common.sh
 
-batch_clean
-
-mysql_db_exec apolloportaldb-drop.sql
+batch_start

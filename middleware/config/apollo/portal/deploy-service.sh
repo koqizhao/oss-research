@@ -9,7 +9,7 @@ source common.sh
 t_servers=`escape_slash "$meta_servers"`
 sed "s/META_SERVERS/$t_servers/g" apolloportaldb.sql \
     > apolloportaldb-temp.sql
-db_exec apolloportaldb-temp.sql
+mysql_db_exec apolloportaldb-temp.sql
 rm apolloportaldb-temp.sql
 
 scp_more()

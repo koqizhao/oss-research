@@ -44,6 +44,9 @@
       - [MySql](#mysql)
         - [MySql Server](#mysql-server)
         - [MySql Workbench](#mysql-workbench)
+      - [PostgreSQL](#postgresql)
+        - [PostgreSQL Server](#postgresql-server)
+        - [PostgreSQL Admin](#postgresql-admin)
       - [Hadoop](#hadoop)
       - [Redis](#redis)
     - [Apollo](#apollo)
@@ -286,11 +289,27 @@ vip: 10.0.2.100:16443
 
 ##### MySql Server
 
-- 192.168.56.11:3306
+- 192.168.56.11
+
+port: 3306
 
 ##### MySql Workbench
 
 - 192.168.56.1
+
+#### PostgreSQL
+
+##### PostgreSQL Server
+
+- 192.168.56.11
+
+port: 5432
+
+##### PostgreSQL Admin
+
+- 192.168.56.1
+
+[pgadmin](http://localhost:5480/pgadmin4)
 
 #### Hadoop
 

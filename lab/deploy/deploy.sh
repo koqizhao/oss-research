@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ~/Research/storage/mysql/mysql_db_conf.sh
-
 init_scale()
 {
     scale="basic"
@@ -21,13 +19,6 @@ init_scale()
 
     t_scale_dir=""
     t_dir_pwd=""
-}
-
-db_exec()
-{
-    scp $1 $mysql_db_server:./
-    ssh $mysql_db_server "cd ~/storage/mysql/mysql; bin/mysql --connect-expired-password --user=$mysql_db_user --password=$mysql_db_password < ~/$1;"
-    ssh $mysql_db_server "rm ~/$1"
 }
 
 clean_all()
