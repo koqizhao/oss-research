@@ -19,4 +19,13 @@ remote_clean()
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
 }
 
+batch_stop
+
 batch_clean
+
+if [ $scale == "dist" ]; then
+    sed "s/KONG_PG_USER/$kong_pg_user/g" clean.sql \
+        > clean.sql.tmp
+    pg_db_exec clean.sql.tmp
+    rm clean.sql.tmp
+fi

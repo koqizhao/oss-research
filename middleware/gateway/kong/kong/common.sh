@@ -4,6 +4,9 @@ source ../common.sh
 
 component=kong
 
+kong_pg_user=kong
+kong_pg_password=xx123456XX
+
 remote_status()
 {
     ssh $1 "cd $deploy_path/$component; \

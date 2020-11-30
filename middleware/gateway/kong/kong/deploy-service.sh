@@ -22,14 +22,33 @@ remote_deploy()
         rm $deploy_file;"
     
     base_dir=`escape_slash $deploy_path/$component`
-    sed "s/BASE_DIR/$base_dir/g" conf/kong.conf.$scale \
-        > kong.conf.tmp
+    if [ $scale == "basic" ]; then
+        sed "s/BASE_DIR/$base_dir/g" conf/kong.conf.$scale \
+            > kong.conf.tmp
+    else
+        sed "s/BASE_DIR/$base_dir/g" conf/kong.conf.$scale \
+            | sed "s/PG_HOST/$pg_db_server/g" \
+            | sed "s/KONG_PG_USER/$kong_pg_user/g" \
+            | sed "s/KONG_PG_PASSWORD/$kong_pg_password/g" \
+            > kong.conf.tmp
+    fi
     scp kong.conf.tmp $server:$deploy_path/$component/conf/kong.conf
     rm kong.conf.tmp
 
     scp conf/kong.yml $server:$deploy_path/$component/conf
-
-    remote_start $1 $2
 }
 
 batch_deploy
+
+if [ $scale == "dist" ]; then
+    sed "s/KONG_PG_USER/$kong_pg_user/g" init.sql \
+        | sed "s/KONG_PG_PASSWORD/$kong_pg_password/g" \
+        > init.sql.tmp
+    pg_db_exec init.sql.tmp
+    rm init.sql.tmp
+
+    ssh ${servers[0]} "cd $deploy_path/$component; \
+        kong migrations bootstrap -c conf/kong.conf; "
+fi
+
+batch_start

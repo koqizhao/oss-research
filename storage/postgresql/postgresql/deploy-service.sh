@@ -5,8 +5,6 @@ init_scale "$1" ..
 
 source common.sh
 
-deploy_version=13
-
 remote_deploy()
 {
     ssh $1 "mkdir -p $deploy_path/$component"
@@ -16,6 +14,7 @@ remote_deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint $gpg_pub"
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"$apt_repo\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y debconf-utils"
     ssh $1 "echo '$PASSWORD' | sudo -S apt install -y postgresql"
 
     declare data_dir
@@ -25,10 +24,7 @@ remote_deploy()
     scp postgresql.conf.tmp $server:$deploy_path/postgresql.conf
     rm postgresql.conf.tmp
 
-    sed "s/PG_USER/$pg_db_user/g" pg_hba.conf \
-        > pg_hba.conf.tmp
-    scp pg_hba.conf.tmp $server:$deploy_path/pg_hba.conf
-    rm pg_hba.conf.tmp
+    scp pg_hba.conf $server:$deploy_path/pg_hba.conf
 
     sed "s/PG_USER/$pg_db_user/g" init.sql \
         | sed "s/PG_PASSWORD/$pg_db_password/g" \

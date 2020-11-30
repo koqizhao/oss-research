@@ -9,6 +9,8 @@ gpg_pub=ACCC4CF8
 apt_repo="deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main"
 #apt_repo="deb http://mirrors.ustc.edu.cn/postgresql/repos/apt $(lsb_release -cs)-pgdg main"
 
+deploy_version=13
+
 remote_status()
 {
     remote_systemctl $1 status $2 $PASSWORD

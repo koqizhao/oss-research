@@ -7,6 +7,9 @@ source common.sh
 
 remote_clean()
 {
+    ssh $1 "echo '$PASSWORD' | sudo -S sudo sh -c \
+        'echo postgresql-$deploy_version postgresql-$deploy_version/postrm_purge_data boolean true \
+        | debconf-set-selections'"
     ssh $1 "echo '$PASSWORD' | sudo -S apt purge -y postgresql*"
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
     ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"

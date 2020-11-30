@@ -839,19 +839,22 @@ admin_listen = 0.0.0.0:8001 reuseport backlog=16384, 0.0.0.0:8444 http2 ssl reus
 # inherited from the corresponding main connection config described above but
 # may be optionally overwritten explicitly using the `pg_ro_*` config below.
 
-database = off
+database = postgres
 #database = postgres             # Determines which of PostgreSQL or Cassandra
                                  # this node will use as its datastore.
                                  # Accepted values are `postgres`,
                                  # `cassandra`, and `off`.
 
+pg_host = PG_HOST
 #pg_host = 127.0.0.1             # Host of the Postgres server.
 #pg_port = 5432                  # Port of the Postgres server.
 #pg_timeout = 5000               # Defines the timeout (in ms), for connecting,
                                  # reading and writing.
-
+pg_user = KONG_PG_USER
 #pg_user = kong                  # Postgres user.
+pg_password = KONG_PG_PASSWORD
 #pg_password =                   # Postgres user's password.
+pg_database = kong
 #pg_database = kong              # The database name to connect to.
 
 #pg_schema =                     # The database schema to use. If unspecified,
