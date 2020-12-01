@@ -38,7 +38,6 @@
     - [Dubbo](#dubbo)
       - [dubbo admin](#dubbo-admin)
       - [nacos](#nacos)
-      - [soul](#soul)
       - [sentinel](#sentinel)
     - [Storage](#storage)
       - [MySql](#mysql)
@@ -63,9 +62,12 @@
       - [cd](#cd)
         - [jenkins](#jenkins)
     - [Gateway](#gateway)
+      - [Nginx](#nginx)
+      - [OpenResty](#openresty)
       - [Kong](#kong)
         - [Kong Server](#kong-server)
         - [Konga](#konga)
+      - [soul](#soul)
 
 ## Machines
 
@@ -271,13 +273,6 @@ vip: 10.0.2.100:16443
 
 [nacos console](http://192.168.56.11:8848/nacos/index.html)
 
-#### soul
-
-- 192.168.56.11
-
-[soul-admin](http://192.168.56.11:9095)
-[soul-gateway](http://192.168.56.11:9195)
-
 #### sentinel
 
 - 192.168.56.11
@@ -394,6 +389,18 @@ port: 80, 8080等多个端口
 
 ### Gateway
 
+#### Nginx
+
+192.168.56.11
+
+port: 80
+
+#### OpenResty
+
+192.168.56.11
+
+port: 80
+
 #### Kong
 
 ##### Kong Server
@@ -407,3 +414,10 @@ port: 8000, 8443, 8001, 8444
 - 192.168.56.11
 
 [konga](http://192.168.56.11:1337/)
+
+#### soul
+
+- 192.168.56.11
+
+[soul-admin](http://192.168.56.11:9095)
+[soul-gateway](http://192.168.56.11:9195)
