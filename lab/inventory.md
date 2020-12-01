@@ -66,6 +66,8 @@
       - [Nginx](#nginx)
       - [OpenResty](#openresty)
       - [apisix](#apisix)
+        - [apisix server](#apisix-server)
+        - [apisix dashboard](#apisix-dashboard)
       - [Kong](#kong)
         - [Kong Server](#kong-server)
         - [Konga](#konga)
@@ -413,9 +415,19 @@ port: 80
 
 #### apisix
 
+##### apisix server
+
 192.168.56.11
 
 port: 9080, 9443
+
+##### apisix dashboard
+
+192.168.56.11
+
+port: 8080
+
+[apisix-dashboard](http://192.168.56.11:8080)
 
 #### Kong
 

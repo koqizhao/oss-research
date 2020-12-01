@@ -58,6 +58,8 @@ remote_deploy()
 
     ssh $server "echo '$PASSWORD' | sudo -S mv $deploy_path/$component /usr/local"
     ssh $server "echo '$PASSWORD' | sudo -S chown -R root:root /usr/local/$component"
+
+    ssh $server "mkdir $deploy_path/$component"
 }
 
 build ${servers[0]}
