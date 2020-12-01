@@ -1,0 +1,15 @@
+[Unit]
+Description=ETCD Service
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/etcd.log
+StandardError=file:LOG_DIR/etcd.log
+ExecStart=/bin/sh ./start.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
