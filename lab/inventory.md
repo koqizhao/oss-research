@@ -65,6 +65,7 @@
     - [Gateway](#gateway)
       - [Nginx](#nginx)
       - [OpenResty](#openresty)
+      - [apisix](#apisix)
       - [Kong](#kong)
         - [Kong Server](#kong-server)
         - [Konga](#konga)
@@ -409,6 +410,12 @@ port: 80
 192.168.56.11
 
 port: 80
+
+#### apisix
+
+192.168.56.11
+
+port: 9080, 9443
 
 #### Kong
 
