@@ -74,6 +74,8 @@
         - [Kong Server](#kong-server)
         - [Konga](#konga)
       - [soul](#soul)
+    - [Web Server](#web-server)
+      - [Tomcat](#tomcat)
 
 ## Machines
 
@@ -459,3 +461,11 @@ port: 8000, 8443, 8001, 8444
 
 [soul-admin](http://192.168.56.11:9095)
 [soul-gateway](http://192.168.56.11:9195)
+
+### Web Server
+
+#### Tomcat
+
+- 192.168.56.11
+
+port: 8080

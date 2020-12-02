@@ -1,0 +1,19 @@
+[Unit]
+Description=Tomcat service
+After=network.target
+
+[Service]
+Group=koqizhao
+User=koqizhao
+LimitNOFILE=65536
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/tomcat.log
+StandardError=file:LOG_DIR/tomcat.log
+ExecStart=BASE_DIR/start.sh
+ExecStop=BASE_DIR/bin/catalina.sh stop
+Restart=always
+RestartSec=30
+TimeoutSec=600
+
+[Install]
+WantedBy=multi-user.target
