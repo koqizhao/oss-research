@@ -5,9 +5,13 @@ init_scale "$1" .
 
 source common.sh
 
-mysql_version=8.0.21
+#mysql_version=8.0.21
+#deploy_file_name=mysql-$mysql_version-linux-glibc2.12-x86_64
+#deploy_file=$deploy_file_name.tar.xz
+
+mysql_version=5.7.31
 deploy_file_name=mysql-$mysql_version-linux-glibc2.12-x86_64
-deploy_file=$deploy_file_name.tar.xz
+deploy_file=$deploy_file_name.tar.gz
 
 remote_deploy()
 {
