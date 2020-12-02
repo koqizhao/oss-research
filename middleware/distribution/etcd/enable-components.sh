@@ -52,7 +52,7 @@ do_clean()
     echo -e "\netcd\n"
     etcd/clean-service.sh $scale
 
-    clean_all ${servers[@]} ${manager_servers[@]} ${keeper_servers[@]}
+    clean_all ${servers[@]} ${keeper_servers[@]}
 }
 
 do_status()
