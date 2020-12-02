@@ -34,6 +34,7 @@
       - [ElasticSearch](#elasticsearch)
       - [FileBeat](#filebeat)
       - [Kibana](#kibana)
+    - [CAT](#cat)
     - [Kubernetes](#kubernetes)
       - [master](#master)
       - [worker](#worker)
@@ -261,6 +262,15 @@ port: 11801, 12801
 - 192.168.56.11
 
 [kibana](http://192.168.56.11:5601/)
+
+### CAT
+
+- 192.168.56.11
+- 192.168.56.12
+
+port: 18080, 18005, 2280
+
+[cat](http://192.168.56.11:18080)
 
 ### Kubernetes
 

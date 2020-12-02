@@ -2,3 +2,4 @@
 
 middleware/distribution/consul/consul/deploy
 *.tar
+middleware/monitoring/cat/cat/manual/*.tmp

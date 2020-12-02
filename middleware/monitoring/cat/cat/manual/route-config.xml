@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<router-config backup-server="BACKUP_SERVER" backup-server-port="2280">
+DEFAULT_SERVERS
+   <network-policy id="default" title="default" block="false" server-group="default_group">
+   </network-policy>
+   <server-group id="default_group" title="default-group">
+DEFAULT_GROUP_SERVERS
+   </server-group>
+   <domain id="cat">
+      <group id="default">
+DOMAIN_GROUP_SERVERS
+      </group>
+   </domain>
+</router-config>

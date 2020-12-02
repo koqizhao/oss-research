@@ -5,17 +5,29 @@ init_scale "$1" ..
 
 source common.sh
 
-server_port=8005
-service_port=8080
+tomcat_version=${tomcat_version:=8}
+tomcat_server_port=${tomcat_server_port:=8005}
+tomcat_service_port=${tomcat_service_port:=8080}
 
-#deploy_version=7.0.107
-#deploy_version=8.5.60
-deploy_version=9.0.40
+case $tomcat_version in
+    7)
+        deploy_version=7.0.107
+
+        ;;
+    8)
+        deploy_version=8.5.60
+
+        ;;
+    *)
+        tomcat_version=9
+        deploy_version=9.0.40
+
+        ;;
+esac
+
 deploy_file_name=apache-tomcat-$deploy_version
 deploy_file=$deploy_file_name.tar.gz
-
-conf_v=`echo $deploy_version | awk -F '.' '{ print $1 }'`
-conf_d="conf.$conf_v"
+conf_d="conf.$tomcat_version"
 
 remote_deploy()
 {
@@ -42,8 +54,8 @@ remote_deploy()
     scp logging.properties.tmp $server:$deploy_path/$component/conf/logging.properties
     rm logging.properties.tmp
 
-    sed "s/SERVER_PORT/$server_port/g" $conf_d/server.xml \
-        | sed "s/SERVICE_PORT/$service_port/g" \
+    sed "s/SERVER_PORT/$tomcat_server_port/g" $conf_d/server.xml \
+        | sed "s/SERVICE_PORT/$tomcat_service_port/g" \
         | sed "s/APP_BASE/$data_dir/g" \
         | sed "s/LOG_DIR/$log_dir/g" \
         > server.xml.tmp

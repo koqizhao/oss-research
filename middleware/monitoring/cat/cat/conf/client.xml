@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config mode="client">
+    <servers>
+CLIENT_SERVERS
+    </servers>
+</config>
