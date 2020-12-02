@@ -17,6 +17,8 @@ replace_docker_daemon()
 
 remote_deploy()
 {
+    ssh $1 "mkdir -p $deploy_path/$component"
+
     ssh $1 "echo '$PASSWORD' | sudo -S apt remove -y docker docker-engine docker.io containerd runc"
     ssh $1 "echo '$PASSWORD' | sudo -S apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common"
     ssh $1 "curl -fsSL $mirror_site/gpg > gpg; echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg;"

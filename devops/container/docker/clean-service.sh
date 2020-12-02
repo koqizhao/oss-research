@@ -25,6 +25,8 @@ remote_clean()
 
     ssh $1 "echo '$PASSWORD' | sudo -S sudo gpasswd -d $manager docker"
     ssh $1 "echo '$PASSWORD' | sudo -S sudo groupdel docker"
+
+    ssh $1 "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
 }
 
 batch_clean
