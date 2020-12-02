@@ -27,9 +27,6 @@ base_dir=`escape_slash $deploy_path/$component`
 data_dir=`escape_slash $deploy_path/data/$component`
 log_dir=`escape_slash $deploy_path/logs/$component`
 
-port=2380
-port=2379
-
 initial_cluster=""
 for s in ${servers[@]}
 do

@@ -9,6 +9,8 @@
         - [zkui](#zkui)
       - [Consul](#consul)
       - [ETCD](#etcd)
+        - [ETCD Server](#etcd-server)
+        - [ETCD Keeper](#etcd-keeper)
     - [Kafka](#kafka)
       - [Kafka Server](#kafka-server)
       - [Kafka Manager](#kafka-manager)
@@ -113,11 +115,19 @@ port: 8300, 8301, 8302, 8500, 8600
 
 #### ETCD
 
+##### ETCD Server
+
 - 192.168.56.11
 - 192.168.56.12
 - 192.168.56.13
 
 port: 2379, 2380
+
+##### ETCD Keeper
+
+- 192.168.56.11
+
+[etcdkeeper](http://192.168.56.11:12380/etcdkeeper)
 
 ### Kafka
 
