@@ -36,6 +36,7 @@ generate_conf()
     client_servers=`escape_slash "$client_servers"`
     sed "s/CLIENT_SERVERS/$client_servers/g" conf/client.xml \
         | sed "s/NEW_LINE/\\n/g" \
+        | sed "s/192.168.56.1/10.0.2.1/g" \
         > conf/client.xml.tmp
 
     declare remote_servers=""
@@ -49,6 +50,7 @@ generate_conf()
     done
     sed "s/REMOTE_SERVERS/$remote_servers/g" manual/server-config.xml \
         | sed "s/SERVER_JOB/${servers[0]}/g" \
+        | sed "s/192.168.56.1/10.0.2.1/g" \
         > manual/server-config.xml.tmp
 
     declare default_servers=""
@@ -94,6 +96,7 @@ generate_conf()
         | sed "s/DEFAULT_GROUP_SERVERS/$default_group_servers/g" \
         | sed "s/DOMAIN_GROUP_SERVERS/$domain_group_servers/g" \
         | sed "s/NEW_LINE/\\n/g" \
+        | sed "s/192.168.56.1/10.0.2.1/g" \
         > manual/route-config.xml.tmp
 }
 

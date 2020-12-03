@@ -8,6 +8,8 @@ user/pass: admin/admin
 
 如果修改了默认http端口8080，如改为18080，必须先修改server config里的端口号，并重启机器。否则应用监控页面打不开。
 
+多网卡机器，使用第1个网卡的ip。client.xml/server-config/route-config/里注意配置成第1个网卡的ip。
+
 ### Client Route
 
 route-config.xml.tmp
