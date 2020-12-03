@@ -112,6 +112,7 @@ init_server()
         ssh $s "echo '$PASSWORD' | sudo -S apt install -y openjdk-8-jdk"
 
         ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/appdatas/cat"
+        ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/applogs"
         ssh $s "echo '$PASSWORD' | sudo -S chown -R koqizhao:koqizhao /data"
         ssh $s "echo '$PASSWORD' | sudo -S chmod -R 777 /data"
 

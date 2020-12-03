@@ -10,9 +10,9 @@
          <property name="remote-servers" value="REMOTE_SERVERS"/>
       </properties>
       <storage  local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
-        <hdfs id="logview" max-size="128M" server-uri="hdfs://10.1.77.86/" base-dir="user/cat/logview"/>
-        <hdfs id="dump" max-size="128M" server-uri="hdfs://10.1.77.86/" base-dir="user/cat/dump"/>
-        <hdfs id="remote" max-size="128M" server-uri="hdfs://10.1.77.86/" base-dir="user/cat/remote"/>
+        <hdfs id="logview" max-size="128M" server-uri="hdfs://192.168.56.11/" base-dir="user/koqizhao/cat/logview"/>
+        <hdfs id="dump" max-size="128M" server-uri="hdfs://192.168.56.11/" base-dir="user/koqizhao/cat/dump"/>
+        <hdfs id="remote" max-size="128M" server-uri="hdfs://192.168.56.11/" base-dir="user/koqizhao/cat/remote"/>
       </storage>
       <consumer>
          <long-config default-url-threshold="1000" default-sql-threshold="100" default-service-threshold="50">
