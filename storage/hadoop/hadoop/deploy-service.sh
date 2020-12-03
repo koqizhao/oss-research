@@ -84,12 +84,15 @@ echo -e "\ndeploy nfs gateway\n"
 ssh $name_node "$deploy_path/$component/bin/hdfs dfs -mkdir /share; \
     $deploy_path/$component/bin/hdfs dfs -chown -R koqizhao:koqizhao /share; \
     $deploy_path/$component/bin/hdfs dfs -ls /;"
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt install -y nfs-common;"
-#ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl stop nfs;"
-#ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl disable nfs;"
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl stop rpcbind.socket;"
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl disable rpcbind.socket;"
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl stop rpcbind;"
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S systemctl disable rpcbind;"
-deploy $nfs_gateway_node nfs
+for server in ${nfs_gateway_nodes[@]}
+do
+    ssh $server "echo '$PASSWORD' | sudo -S apt install -y nfs-common;"
+    #ssh $server "echo '$PASSWORD' | sudo -S systemctl stop nfs;"
+    #ssh $server "echo '$PASSWORD' | sudo -S systemctl disable nfs;"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop rpcbind.socket;"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl disable rpcbind.socket;"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop rpcbind;"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl disable rpcbind;"
+    deploy $server nfs
+done
 start_nfs_gateway

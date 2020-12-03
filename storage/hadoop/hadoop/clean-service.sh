@@ -17,11 +17,24 @@ remote_clean()
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/name"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/data"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/tmp"
+
+    ssh $server "echo '$PASSWORD' | sudo -S apt purge -y ssh pdsh;"
+    ssh $server "echo '$PASSWORD' | sudo -S apt autoremove --purge -y;"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/pdsh"
+
     echo
 }
 
 batch_clean
 
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt purge -y nfs-common;"
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt update;"
-ssh $nfs_gateway_node "echo '$PASSWORD' | sudo -S apt autoremove --purge -y;"
+for server in ${nfs_gateway_nodes[@]}
+do
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $mount_point"
+
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start rpcbind;"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl enable rpcbind;"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start rpcbind.socket;"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl enable rpcbind.socket;"
+    ssh $server "echo '$PASSWORD' | sudo -S apt purge -y nfs-common;"
+    ssh $server "echo '$PASSWORD' | sudo -S apt autoremove --purge -y"
+done
