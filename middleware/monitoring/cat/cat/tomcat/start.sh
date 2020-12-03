@@ -1,10 +1,14 @@
 #!/bin/bash
 
-export CAT_HOME=/data/appdatas/cat/
-
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
-export CATALINA_OPTS="$CATALINA_OPTS -server -DCAT_HOME=$CAT_HOME -Djava.awt.headless=true \
+export SERVER_IP=`ip addr | grep "global enp0s8" | awk '{ print $2 }' | awk -F '/' '{ print $1 }'`
+
+export CAT_HOME=/data/appdatas/cat/
+
+export CATALINA_OPTS="$CATALINA_OPTS -server \
+    -Dhost.ip=$SERVER_IP -Djava.net.preferIPv4Stack=true \
+    -DCAT_HOME=$CAT_HOME -Djava.awt.headless=true \
     -Xmx1g -Xss256k -XX:+UseParNewGC -XX:ParallelGCThreads=4 -XX:MaxTenuringThreshold=13 \
     -XX:+UseConcMarkSweepGC -XX:+DisableExplicitGC -XX:+UseCMSInitiatingOccupancyOnly \
     -XX:+ScavengeBeforeFullGC -XX:+UseCMSCompactAtFullCollection -XX:+CMSParallelRemarkEnabled \
