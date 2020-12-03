@@ -1,5 +1,10 @@
 #!/bin/bash
 
+remote_reboot()
+{
+    ssh $1 "echo '$2' | sudo -S reboot" || echo
+}
+
 remote_enable()
 {
     ssh $1 "echo '$3' | sudo -S systemctl enable $2"
