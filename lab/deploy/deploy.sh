@@ -48,6 +48,11 @@ do_ops()
             ;;
         restart)
             do_stop
+
+            declare interval_s=${stop_start_interval:-1}
+            echo -e "\nsleep $interval_s seconds between stop and start\n"
+            sleep $interval_s
+
             do_start
 
             ;;

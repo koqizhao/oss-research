@@ -112,7 +112,7 @@ init_server()
         ssh $s "echo '$PASSWORD' | sudo -S apt install -y openjdk-8-jdk"
 
         ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/appdatas/cat"
-        ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/applogs"
+        ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/applogs/cat"
         ssh $s "echo '$PASSWORD' | sudo -S chown -R koqizhao:koqizhao /data"
         ssh $s "echo '$PASSWORD' | sudo -S chmod -R 777 /data"
 
@@ -158,7 +158,7 @@ remote_deploy()
     ssh $server "mkdir -p $deploy_path/$component"
 
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop tomcat"
-    sleep 10
+    sleep $stop_start_interval
     scp $project_path/cat-home/target/cat*.war $server:$deploy_path/data/tomcat/cat.war
     ssh $server "echo '$PASSWORD' | sudo -S systemctl start tomcat"
 }
