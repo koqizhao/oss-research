@@ -111,13 +111,15 @@ init_server()
     do
         ssh $s "echo '$PASSWORD' | sudo -S apt install -y openjdk-8-jdk"
 
-        ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/appdatas/cat"
+        ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/appdatas/cat/hdfs_conf"
         ssh $s "echo '$PASSWORD' | sudo -S mkdir -p /data/applogs"
         ssh $s "echo '$PASSWORD' | sudo -S chown -R koqizhao:koqizhao /data"
         ssh $s "echo '$PASSWORD' | sudo -S chmod -R 777 /data"
 
         scp conf/datasources.xml.tmp $s:/data/appdatas/cat/datasources.xml
         scp conf/client.xml.tmp $s:/data/appdatas/cat/client.xml
+        scp conf/core-site.xml $s:/data/appdatas/cat/hdfs_conf
+        scp conf/hdfs-site.xml $s:/data/appdatas/cat/hdfs_conf
     done
 
     clean_conf
@@ -129,6 +131,7 @@ deploy_tomcat()
 
     cp tomcat/server.xml $tomcat_path/conf.$tomcat_version
     cp tomcat/start.sh $tomcat_path
+    cp tomcat/setenv.sh $tomcat_path
 
     sed "s/servers/tomcat_servers/g" ../servers-$scale.sh \
         > servers-$scale.sh.tmp

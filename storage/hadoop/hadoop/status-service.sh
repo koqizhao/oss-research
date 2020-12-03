@@ -8,8 +8,12 @@ source common.sh
 batch_status
 
 echo -e "\nnfs gateway\n"
-remote_ps $nfs_gateway_node portmap
-remote_ps $nfs_gateway_node nfs3
+for server in ${nfs_gateway_nodes[@]}
+do
+    remote_ps $server portmap
+    remote_ps $server nfs3
+done
 
 echo -e "\nhdfs share\n"
+ssh $name_node "$deploy_path/$component/bin/hdfs dfs -ls /;"
 ssh $name_node "$deploy_path/$component/bin/hdfs dfs -ls /share;"

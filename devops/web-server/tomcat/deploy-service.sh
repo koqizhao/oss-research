@@ -48,6 +48,7 @@ remote_deploy()
         mv $component/webapps/ROOT data/$component; "
 
     scp start.sh $server:$deploy_path/$component
+    scp setenv.sh $server:$deploy_path/$component/bin
 
     sed "s/LOG_DIR/$log_dir/g" $conf_d/logging.properties \
         > logging.properties.tmp
