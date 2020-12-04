@@ -130,3 +130,16 @@ batch_status()
         echo -e "\nstatus finished: $server\n"
     done
 }
+
+batch_restart()
+{
+    for server in ${servers[@]}
+    do
+        echo -e "\nstop started: $server\n"
+        remote_stop $server $component
+        echo -e "\nstop finished: $server\n"
+        echo -e "\nstart started: $server\n"
+        remote_start $server $component
+        echo -e "\nstart finished: $server\n"
+    done
+}

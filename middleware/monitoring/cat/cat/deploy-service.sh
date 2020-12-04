@@ -7,16 +7,9 @@ source common.sh
 
 project_path=~/Projects/dianping/cat
 
-init_db()
-{
-    cp init.sql init.sql.tmp
-    echo >> init.sql.tmp
-    cat $project_path/script/CatApplication.sql >> init.sql.tmp
-    mysql_db_exec init.sql.tmp
-    rm init.sql.tmp
-}
+char_quote="QUOTE"
+char_qm="Q_M"
 
-char_nl="NEW_LINE"
 generate_conf()
 {
     sed "s/DB_SERVER/$mysql_db_server/g" conf/datasources.xml \
@@ -35,7 +28,7 @@ generate_conf()
     done
     client_servers=`escape_slash "$client_servers"`
     sed "s/CLIENT_SERVERS/$client_servers/g" conf/client.xml \
-        | sed "s/NEW_LINE/\\n/g" \
+        | sed "s/$char_nl/\\n/g" \
         > conf/client.xml.tmp
 
     declare remote_servers=""
@@ -93,7 +86,7 @@ generate_conf()
         | sed "s/DEFAULT_SERVERS/$default_servers/g" \
         | sed "s/DEFAULT_GROUP_SERVERS/$default_group_servers/g" \
         | sed "s/DOMAIN_GROUP_SERVERS/$domain_group_servers/g" \
-        | sed "s/NEW_LINE/\\n/g" \
+        | sed "s/$char_nl/\\n/g" \
         > manual/route-config.xml.tmp
 }
 
@@ -101,12 +94,41 @@ clean_conf()
 {
     rm conf/datasources.xml.tmp
     rm conf/client.xml.tmp
+    rm manual/route-config.xml.tmp
+    rm manual/server-config.xml.tmp
+}
+
+init_db()
+{
+    cp init.sql init.sql.tmp
+    echo >> init.sql.tmp
+    cat $project_path/script/CatApplication.sql >> init.sql.tmp
+    mysql_db_exec init.sql.tmp
+    rm init.sql.tmp
+}
+
+init_config()
+{
+    server_config_value=`escape_newline manual/server-config.xml.tmp \
+        | sed "s/\\?/$char_qm/g" \
+        | sed "s/\"/$char_quote/g" `
+    server_config_value=`escape_slash "$server_config_value"`
+    route_config_value=`escape_newline manual/route-config.xml.tmp \
+        | sed "s/\\?/$char_qm/g" \
+        | sed "s/\"/$char_quote/g" `
+    route_config_value=`escape_slash "$route_config_value"`
+    sed "s/SERVER_CONFIG/$server_config_value/g" init-config.sql \
+        | sed "s/ROUTE_CONFIG/$route_config_value/g" \
+        | sed "s/$char_nl/\\\\n/g" \
+        | sed "s/$char_qm/\\?/g" \
+        | sed "s/$char_quote/\"/g" \
+        > init-config.sql.tmp
+    mysql_db_exec init-config.sql.tmp
+    rm init-config.sql.tmp
 }
 
 init_server()
 {
-    generate_conf
-
     for s in ${servers[@]}
     do
         ssh $s "echo '$PASSWORD' | sudo -S apt install -y openjdk-8-jdk"
@@ -119,8 +141,6 @@ init_server()
         scp conf/datasources.xml.tmp $s:/data/appdatas/cat/datasources.xml
         scp conf/client.xml.tmp $s:/data/appdatas/cat/client.xml
     done
-
-    clean_conf
 }
 
 deploy_tomcat()
@@ -163,10 +183,30 @@ remote_deploy()
     ssh $server "echo '$PASSWORD' | sudo -S systemctl start tomcat"
 }
 
+echo -e "\ngenerate conf\n"
+generate_conf
+
+echo -e "\ninit db\n"
 init_db
 
+echo -e "\ninit server\n"
 init_server
 
+echo -e "\ndeploy tomcat\n"
 deploy_tomcat
 
+echo -e "\ndeploy cat\n"
 batch_deploy
+
+sleep_s=30
+echo -e "\nsleep ${sleep_s}s so as to init cat\n"
+sleep $sleep_s
+
+echo -e "\ninit cat config (server-config & route-config)\n"
+init_config
+
+echo -e "\nclean conf\n"
+clean_conf
+
+echo -e "\nrestart cat\n"
+batch_restart

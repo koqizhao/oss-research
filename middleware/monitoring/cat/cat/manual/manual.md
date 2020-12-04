@@ -14,11 +14,11 @@ user/pass: admin/admin
 
 ### Client Route
 
-route-config.xml.tmp
+route-config.xml.tmp full automated
 
 ### Server Role
 
-server-config.xml.tmp
+server-config.xml.tmp full automated
 
 ## Enable Hadoop Storage (optional)
 
