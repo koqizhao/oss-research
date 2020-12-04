@@ -9,10 +9,22 @@
          <property name="hdfs-enabled" value="false"/>
          <property name="remote-servers" value="REMOTE_SERVERS"/>
       </properties>
-      <storage  local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7">
-        <hdfs id="logview" max-size="128M" server-uri="hdfs://192.168.56.11:9000" base-dir="/user/koqizhao/cat/logview"/>
-        <hdfs id="dump" max-size="128M" server-uri="hdfs://192.168.56.11:9000" base-dir="/user/koqizhao/cat/dump"/>
-        <hdfs id="remote" max-size="128M" server-uri="hdfs://192.168.56.11:9000" base-dir="/user/koqizhao/cat/remote"/>
+      <storage local-base-dir="/data/appdatas/cat/bucket/" max-hdfs-storage-time="15" local-report-storage-time="7" local-logivew-storage-time="7" har-mode="true" upload-thread="5">
+         <hdfs id="logview" max-size="128M" server-uri="hdfs://192.168.56.11:9000" base-dir="/user/koqizhao/cat/logview"/>
+         <hdfs id="dump" max-size="128M" server-uri="hdfs://192.168.56.11:9000" base-dir="/user/koqizhao/cat/dump"/>
+         <hdfs id="remote" max-size="128M" server-uri="hdfs://192.168.56.11:9000" base-dir="/user/koqizhao/cat/remote"/>
+         <harfs id="logview" max-size="128M" server-uri="har://hdfs-192.168.56.11:9000" base-dir="/user/koqizhao/cat/logview"/>
+         <harfs id="dump" max-size="128M" server-uri="har://hdfs-192.168.56.11:9000" base-dir="/user/koqizhao/cat/dump"/>
+         <harfs id="remote" max-size="128M" server-uri="har://hdfs-192.168.56.11:9000" base-dir="/user/koqizhao/cat/remote"/>
+         <properties>
+            <property name="hadoop.security.authentication" value="false"/>
+            <!--<property name="hadoop.security.authentication" value="kerberos"/>-->
+            <property name="dfs.namenode.kerberos.principal" value="hdfs/YYY.XXX.COM"/>
+            <property name="dfs.cat.kerberos.principal" value="cat/xx.xx.xxx.xxx@YYY.XXX.COM"/>
+            <property name="dfs.cat.keytab.file" value="/path/to/keytab/cat.keytab_xx.xx.xxx.xxx"/>
+            <property name="java.security.krb5.realm" value="YYY.XXX.COM"/>
+            <property name="java.security.krb5.kdc" value="AA.BB.CC.DD"/>
+         </properties>
       </storage>
       <consumer>
          <long-config default-url-threshold="1000" default-sql-threshold="100" default-service-threshold="50">

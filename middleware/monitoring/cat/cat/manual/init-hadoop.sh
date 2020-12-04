@@ -3,6 +3,7 @@
 name_node=192.168.56.11
 hadoop_path=/home/koqizhao/storage/hadoop/hadoop
 
+ssh $name_node "$hadoop_path/bin/hdfs dfs -rm -r -f /user/koqizhao/cat;"
 ssh $name_node "$hadoop_path/bin/hdfs dfs -mkdir -p /user/koqizhao/cat/logview;"
 ssh $name_node "$hadoop_path/bin/hdfs dfs -mkdir -p /user/koqizhao/cat/dump;"
 ssh $name_node "$hadoop_path/bin/hdfs dfs -mkdir -p /user/koqizhao/cat/remote;"
