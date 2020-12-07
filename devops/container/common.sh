@@ -5,7 +5,7 @@ deploy_path=/home/koqizhao/ops/container
 read_server_pass
 
 manager=koqizhao
-servers=`merge_array ${master_servers[@]} ${worker_servers[@]}`
+servers=(`merge_array ${master_servers[@]} ${worker_servers[@]}`)
 
 remote_status()
 {

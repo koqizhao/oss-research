@@ -42,5 +42,11 @@ remote_apt()
 
 remote_ps()
 {
-    ssh $1 "ps aux | grep $2"
+    ssh $1 "ps aux | grep $2 | grep -v grep"
+}
+
+remote_kill()
+{
+    ssh $1 "pid=(\`ps aux | grep $2 | grep -v grep | awk '{ print \$2 }'\`); \
+        for p in \${pid[@]}; do kill \$p; done; "
 }
