@@ -83,6 +83,7 @@
     - [Job](#job)
       - [xxl-job](#xxl-job)
         - [xxl-job-admin](#xxl-job-admin)
+        - [xxl-job-executor](#xxl-job-executor)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
 
@@ -513,6 +514,12 @@ port: 8000, 8443, 8001, 8444
 - 192.168.56.11
 
 [xxl-job-admin](http://192.168.56.11:8080/xxl-job-admin)
+
+##### xxl-job-executor
+
+- 192.168.56.11
+
+port: 8081, 9999
 
 ### Web Server
 
