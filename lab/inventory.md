@@ -80,6 +80,9 @@
         - [Kong Server](#kong-server)
         - [Konga](#konga)
       - [soul](#soul)
+    - [Job](#job)
+      - [xxl-job](#xxl-job)
+        - [xxl-job-admin](#xxl-job-admin)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
 
@@ -500,6 +503,16 @@ port: 8000, 8443, 8001, 8444
 
 [soul-admin](http://192.168.56.11:9095)
 [soul-gateway](http://192.168.56.11:9195)
+
+### Job
+
+#### xxl-job
+
+##### xxl-job-admin
+
+- 192.168.56.11
+
+[xxl-job-admin](http://192.168.56.11:8080/xxl-job-admin)
 
 ### Web Server
 
