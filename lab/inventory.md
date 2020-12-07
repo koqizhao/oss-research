@@ -21,6 +21,7 @@
       - [RocketMQ](#rocketmq)
         - [RocketMQ Name Server](#rocketmq-name-server)
         - [RocketMQ Broker](#rocketmq-broker)
+        - [RocketMQ Console](#rocketmq-console)
     - [Metric](#metric)
       - [Promethues](#promethues)
       - [Alert Manager](#alert-manager)
@@ -187,6 +188,12 @@ port: 9876
 - 192.168.56.12
 
 port: 10911, 10912, 11911, 11912
+
+##### RocketMQ Console
+
+- 192.168.56.11
+
+[RocketMQ Console](http://192.168.56.11:8080)
 
 ### Metric
 

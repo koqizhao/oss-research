@@ -8,16 +8,6 @@ source common.sh
 deploy_file_name=rocketmq-all-4.7.1-bin-release
 deploy_file=$deploy_file_name.zip
 
-namesrv_addr=""
-for s in ${name_servers[@]}
-do
-    if [ -z "$namesrv_addr" ]; then
-        namesrv_addr="$s:9876"
-    else
-        namesrv_addr="$namesrv_addr;$s:9876"
-    fi
-done
-
 remote_deploy()
 {
     server=$1
