@@ -57,6 +57,8 @@
         - [PostgreSQL Admin](#postgresql-admin)
       - [Hadoop](#hadoop)
       - [Redis](#redis)
+        - [Redis Server](#redis-server)
+        - [Redis Cluster Proxy](#redis-cluster-proxy)
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
@@ -391,11 +393,19 @@ port: 9000, 9870, 9864
 
 #### Redis
 
+##### Redis Server
+
 - 192.168.56.11
 - 192.168.56.12
 - 192.168.56.13
 
 port: 6379/16379
+
+##### Redis Cluster Proxy
+
+- 192.168.56.11
+
+port: 7777
 
 ### Apollo
 

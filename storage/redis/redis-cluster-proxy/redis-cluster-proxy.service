@@ -1,0 +1,24 @@
+[Unit]
+Description=Redis Cluster Proxy
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/redis-cluster-proxy.log
+StandardError=file:LOG_DIR/redis-cluster-proxy.log
+ExecStart=BASE_DIR/bin/redis-cluster-proxy -c proxy.conf
+Restart=always
+RestartSec=10
+LimitNOFILE=10032
+NoNewPrivileges=yes
+#OOMScoreAdjust=-900
+#PrivateTmp=yes
+TimeoutStartSec=infinity
+TimeoutStopSec=infinity
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
