@@ -4,8 +4,8 @@ source ../common.sh
 
 component=cat
 
-export tomcat_server_port=8005
 export tomcat_service_port=8080
+export tomcat_server_port=`expr $tomcat_service_port - 75`
 tomcat_path=~/Research/devops/web-server/tomcat/
 
 remote_status()

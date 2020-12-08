@@ -84,6 +84,9 @@
       - [xxl-job](#xxl-job)
         - [xxl-job-admin](#xxl-job-admin)
         - [xxl-job-executor](#xxl-job-executor)
+    - [SF](#sf)
+      - [Eureka](#eureka)
+        - [Eureka Server](#eureka-server)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
 
@@ -520,6 +523,16 @@ port: 8000, 8443, 8001, 8444
 - 192.168.56.11
 
 port: 8081, 9999
+
+### SF
+
+#### Eureka
+
+##### Eureka Server
+
+- 192.168.56.11
+
+[Eureka](http://192.168.56.11:8080/eureka)
 
 ### Web Server
 
