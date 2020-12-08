@@ -1,0 +1,16 @@
+
+# 本文件在application.properties之前加载，但可以被application.properties覆盖
+
+spring:
+  application:
+    name: eureka
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - enp0s3
+        - veth*
+        - cilium_*
+        - lxc*
+      preferredNetworks:  ## 优先的网段
+        - 192.168.56

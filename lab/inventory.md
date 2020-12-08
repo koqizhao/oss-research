@@ -86,7 +86,8 @@
         - [xxl-job-executor](#xxl-job-executor)
     - [SF](#sf)
       - [Eureka](#eureka)
-        - [Eureka Server](#eureka-server)
+        - [Netflix Eureka](#netflix-eureka)
+        - [Spring Cloud Eureka](#spring-cloud-eureka)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
 
@@ -528,11 +529,17 @@ port: 8081, 9999
 
 #### Eureka
 
-##### Eureka Server
+##### Netflix Eureka
 
 - 192.168.56.11
 
 [Eureka](http://192.168.56.11:8080/eureka)
+
+##### Spring Cloud Eureka
+
+- 192.168.56.11
+
+[Eureka](http://192.168.56.11:8080)
 
 ### Web Server
 

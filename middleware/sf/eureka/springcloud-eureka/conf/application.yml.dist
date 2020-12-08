@@ -1,0 +1,25 @@
+
+server:
+  port: PORT
+  servletPath: 
+
+eureka:
+  instance:
+    preferIpAddress: true
+    instanceId: ${spring.application.name}:${eureka.instance.ip-address}:${server.port}
+    statusPageUrl: http://${eureka.instance.ip-address}:${server.port}/info
+    healthCheckUrl: http://${eureka.instance.ip-address}:${server.port}/health
+    homePageUrl: http://${eureka.instance.ip-address}:${server.port}
+    metadataMap:
+      zone: zone1
+  client:
+    region: REGION
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: EUREKA_SERVICE_URL
+    healthcheck:
+      enabled: true
+    preferSameZoneEureka: true
+  server:
+    enableSelfPreservation: true

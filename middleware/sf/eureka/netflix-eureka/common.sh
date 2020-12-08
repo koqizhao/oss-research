@@ -2,7 +2,7 @@
 
 source ../common.sh
 
-component=eureka
+component=netflix-eureka
 
 export tomcat_version=8
 export tomcat_service_port=$eureka_port
