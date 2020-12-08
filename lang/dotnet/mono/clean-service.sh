@@ -7,7 +7,7 @@ source common.sh
 
 remote_clean()
 {
-    ssh $1 "echo '$PASSWORD' | sudo -S apt purge -y mono-devel"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt purge -y $package"
     ssh $1 "echo '$PASSWORD' | sudo -S apt autoremove -y --purge"
 
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository -r -y \"$deb_repo\""

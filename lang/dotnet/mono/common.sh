@@ -8,6 +8,7 @@ servers=(${dotnet_servers[@]})
 
 apt_key_hash=A6A19B38D3D831EF
 deb_repo="deb https://download.mono-project.com/repo/ubuntu stable-\$(lsb_release -cs) main"
+package=mono-complete
 
 remote_status()
 {

@@ -15,7 +15,7 @@ remote_deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint $apt_key_hash"
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"$deb_repo\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y mono-devel"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y $package"
 }
 
 batch_deploy

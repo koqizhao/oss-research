@@ -7,7 +7,7 @@ source common.sh
 
 remote_clean()
 {
-    ssh $1 "echo '$PASSWORD' | sudo -S snap remove dotnet-sdk"
+    ssh $1 "echo '$PASSWORD' | sudo -S snap remove $package"
 }
 
 batch_clean

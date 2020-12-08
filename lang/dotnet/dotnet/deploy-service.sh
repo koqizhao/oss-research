@@ -7,7 +7,7 @@ source common.sh
 
 remote_deploy()
 {
-    ssh $1 "echo '$PASSWORD' | sudo -S snap install --classic dotnet-sdk"
+    ssh $1 "echo '$PASSWORD' | sudo -S snap install --classic $package"
 }
 
 batch_deploy
