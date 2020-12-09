@@ -12,8 +12,8 @@ remote_clean()
     ssh $server "cd $deploy_path/$component; \
         bin/mysqladmin --user=root --password='$mysql_db_password' shutdown && sleep 5"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
-    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/data"
-    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/logs"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/data/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/logs/$component"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/profile.d/mysql.sh"
     ssh $server "echo '$PASSWORD' | sudo -S userdel -f mysql"
 }
