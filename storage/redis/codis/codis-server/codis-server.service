@@ -1,0 +1,24 @@
+[Unit]
+Description=Redis data structure server (Codis)
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=koqizhao
+Group=koqizhao
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/codis.log
+StandardError=file:LOG_DIR/codis.log
+ExecStart=BASE_DIR/codis-server conf/redis.conf
+Restart=always
+RestartSec=10
+LimitNOFILE=10032
+NoNewPrivileges=yes
+#OOMScoreAdjust=-900
+#PrivateTmp=yes
+TimeoutStartSec=infinity
+TimeoutStopSec=infinity
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

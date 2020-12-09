@@ -59,6 +59,11 @@
       - [Redis](#redis)
         - [Redis Server](#redis-server)
         - [Redis Cluster Proxy](#redis-cluster-proxy)
+        - [Codis](#codis)
+          - [Codis Dashboard](#codis-dashboard)
+          - [Codis Proxy](#codis-proxy)
+          - [Codis Server](#codis-server)
+          - [Codis FE](#codis-fe)
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
@@ -406,6 +411,32 @@ port: 6379/16379
 - 192.168.56.11
 
 port: 7777
+
+##### Codis
+
+###### Codis Dashboard
+
+- 192.168.56.11
+
+port: 18080
+
+###### Codis Proxy
+
+- 192.168.56.11
+
+port: 11080, 19090
+
+###### Codis Server
+
+- 192.168.56.11
+
+port: 6379
+
+###### Codis FE
+
+- 192.168.56.11
+
+port: 8080
 
 ### Apollo
 
