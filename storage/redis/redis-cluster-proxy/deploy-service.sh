@@ -70,7 +70,8 @@ remote_deploy()
 
     ssh $server "mkdir -p $deploy_path"
     ssh $server "mkdir -p $deploy_path/logs/$component"
-    ssh $server "touch $deploy_path/logs/$component/$component.log"
+    ssh $server "touch $deploy_path/logs/$component/$component.log; \
+        chmod a+w $deploy_path/logs/$component/$component.log; "
 
     scp $component.tar $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf $component.tar; rm $component.tar;"

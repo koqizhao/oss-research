@@ -40,7 +40,8 @@ remote_deploy()
 
     ssh $server "mkdir -p $deploy_path/data/$component"
     ssh $server "mkdir -p $deploy_path/logs/$component"
-    ssh $server "touch $deploy_path/logs/$component/$component.log"
+    ssh $server "touch $deploy_path/logs/$component/$component.log; \
+        chmod a+w $deploy_path/logs/$component/$component.log; "
     ssh $server "mkdir -p $deploy_path/$component/conf"
 
     ssh $server "echo '$PASSWORD' | sudo -S useradd --system --home $deploy_path/$component/conf --shell /bin/false $user"

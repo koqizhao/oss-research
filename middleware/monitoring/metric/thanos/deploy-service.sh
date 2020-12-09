@@ -20,8 +20,10 @@ remote_deploy()
     server=$1
     component=$2
 
-    ssh $server "mkdir -p $deploy_path/data/$parent_component/$component; mkdir -p $deploy_path/logs/$parent_component/$component"
-    ssh $server "touch $deploy_path/logs/$parent_component/$component/$component.log; chmod a+w $deploy_path/logs/$parent_component/$component/$component.log"
+    ssh $server "mkdir -p $deploy_path/data/$parent_component/$component; \
+        mkdir -p $deploy_path/logs/$parent_component/$component"
+    ssh $server "touch $deploy_path/logs/$parent_component/$component/$component.log; \
+        chmod a+w $deploy_path/logs/$parent_component/$component/$component.log"
     ssh $server "mkdir -p $deploy_path/$parent_component/$component"
     source $component/custom_scp_script.sh
 
