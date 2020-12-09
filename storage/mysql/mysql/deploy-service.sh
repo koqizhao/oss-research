@@ -74,17 +74,39 @@ remote_deploy()
     ssh $server "cd $deploy_path; echo '$PASSWORD' | sudo -S mv mysql.sh /etc/profile.d;"
 }
 
-init_master()
+init_master_basic()
 {
-    for master in ${master_servers[@]}
+    mysql_db_exec conf/init-master.sql ${master_servers[0]}
+}
+
+init_master_dist()
+{
+    inc_offset=0
+    for server in ${master_servers[@]}
     do
-        mysql_db_exec conf/init-master.sql $master 
+        let inc_offset+=1
+        declare dp=`escape_slash $deploy_path`
+        inc_inc=${#master_servers[@]}
+        sed "s/BASE_DIR/$dp/g" conf/defaults.cnf.dist \
+            | sed "s/SERVER_ID/`generate_server_id $server`/g" \
+            | sed "s/INC_INC/$inc_inc/g" \
+            | sed "s/INC_OFFSET/$inc_offset/g" \
+            > conf/defaults.cnf.tmp
+        scp conf/defaults.cnf.tmp $server:$deploy_path/defaults.cnf
+        ssh $server "cd $deploy_path; \
+            echo '$PASSWORD' | sudo -S chown mysql:mysql defaults.cnf; \
+            echo '$PASSWORD' | sudo -S mv defaults.cnf $component/conf; "
+        remote_stop $server
+        sleep 10
+        remote_start $server
+        rm conf/defaults.cnf.tmp
+
+        mysql_db_exec conf/init-master.sql $server
     done
 }
 
 config_master_slave()
 {
-    master=${master_servers[0]}
     master_status=`mysql_db_exec conf/reset-master.sql $master 2>/dev/null | grep mysql-binlog`
     master_log_file=`echo "$master_status" | awk '{ print $1 }'`
     master_log_pos=`echo "$master_status" | awk '{ print $2 }'`
@@ -94,15 +116,33 @@ config_master_slave()
         | sed "s/master_log_file/$master_log_file/g" \
         | sed "s/master_log_pos/$master_log_pos/g" \
         > conf/enable-slave.sql.tmp
-    for slave in ${slave_servers[@]}
+    for slave in ${slaves[@]}
     do
         mysql_db_exec conf/enable-slave.sql.tmp $slave 
     done
     rm conf/enable-slave.sql.tmp
 }
 
+config_master_slave_basic()
+{
+    master=${master_servers[0]}
+    slaves=(${slave_servers[@]})
+    config_master_slave
+}
+
+config_master_slave_dist()
+{
+    master=${master_servers[0]}
+    slaves=(${master_servers[1]} ${slave_servers[0]})
+    config_master_slave
+
+    master=${master_servers[1]}
+    slaves=(${master_servers[0]} ${slave_servers[1]})
+    config_master_slave
+}
+
 batch_deploy
 
-init_master
+init_master_$scale
 
-config_master_slave
+config_master_slave_$scale
