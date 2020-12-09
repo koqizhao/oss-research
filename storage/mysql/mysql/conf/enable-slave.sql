@@ -1,0 +1,14 @@
+
+SHOW SLAVE STATUS \G;
+
+STOP SLAVE;
+
+RESET SLAVE;
+
+CHANGE MASTER TO MASTER_HOST='master_host', MASTER_PORT=3306,
+    MASTER_USER='replicauser', MASTER_PASSWORD='master_password',
+    MASTER_LOG_FILE='master_log_file', MASTER_LOG_POS=master_log_pos;
+
+START SLAVE;
+
+SHOW SLAVE STATUS \G;

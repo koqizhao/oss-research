@@ -6,3 +6,5 @@ log-error=BASE_DIR/logs/mysql/mysql.err
 pid-file=BASE_DIR/logs/mysql/mysql.pid
 bind-address=0.0.0.0
 port=3306
+log_bin=mysql-binlog
+server-id=SERVER_ID

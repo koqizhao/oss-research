@@ -1,0 +1,2 @@
+
+SHOW SLAVE STATUS \G;

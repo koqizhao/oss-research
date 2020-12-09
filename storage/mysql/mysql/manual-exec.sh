@@ -5,4 +5,4 @@ init_scale "$1" ..
 
 source common.sh
 
-batch_start
+#mysql_db_exec conf/test.sql 192.168.56.12 root 'xx123456XX'
