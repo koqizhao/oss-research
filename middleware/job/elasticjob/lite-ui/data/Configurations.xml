@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<globalConfiguration>
+    <registryCenterConfigurations>
+        <registryCenterConfiguration name="lab" zkAddressList="ZK_CONNECT" namespace="ZK_NAMESPACE" digest="" activated="true"/>
+    </registryCenterConfigurations>
+</globalConfiguration>

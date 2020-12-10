@@ -40,7 +40,7 @@ do_clean()
     echo -e "\nshardingsphere-proxy\n"
     shardingsphere-proxy/clean-service.sh $scale
 
-    clean_all ${servers[@]}
+    clean_all ${proxy_servers[@]} ${ui_servers[@]}
 }
 
 do_status()

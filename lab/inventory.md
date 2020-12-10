@@ -94,6 +94,9 @@
       - [xxl-job](#xxl-job)
         - [xxl-job-admin](#xxl-job-admin)
         - [xxl-job-executor](#xxl-job-executor)
+      - [elasticjob](#elasticjob)
+        - [elasticjob-lite-ui](#elasticjob-lite-ui)
+        - [elasticjob-executor](#elasticjob-executor)
     - [SF](#sf)
       - [Eureka](#eureka)
         - [Netflix Eureka](#netflix-eureka)
@@ -583,6 +586,18 @@ port: 8000, 8443, 8001, 8444
 - 192.168.56.11
 
 port: 8081, 9999
+
+#### elasticjob
+
+##### elasticjob-lite-ui
+
+- 192.168.56.11
+
+[lite-ui](http://192.168.56.11:8899)
+
+##### elasticjob-executor
+
+- 192.168.56.11
 
 ### SF
 

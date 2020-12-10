@@ -2,8 +2,8 @@
 
 source ../common.sh
 
-component=shardingsphere-ui
-servers=(${ui_servers[@]})
+component=lite-ui
+servers=(${lite_ui_servers[@]})
 
 remote_start()
 {

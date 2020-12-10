@@ -3,6 +3,7 @@
 source ../common.sh
 
 component=shardingsphere-proxy
+servers=(${proxy_servers[@]})
 
 remote_start()
 {
