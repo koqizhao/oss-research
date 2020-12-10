@@ -69,6 +69,8 @@
           - [Codis FE](#codis-fe)
       - [mongodb](#mongodb)
         - [mongodb server](#mongodb-server)
+      - [tidb](#tidb)
+        - [tidb tiup](#tidb-tiup)
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
@@ -468,6 +470,22 @@ port: 8080
 - 192.168.56.11
 
 port: 27017
+
+#### tidb
+
+##### tidb tiup
+
+- 192.168.56.11
+
+[prometheus](http://192.168.56.11:9090)
+
+[grafana](http://192.168.56.11:3000)
+
+pd/etcd: 2379, 2380, 33759, 43983
+
+tikv: 20160, 20180
+
+tidb: 4000, 10080
 
 ### Apollo
 

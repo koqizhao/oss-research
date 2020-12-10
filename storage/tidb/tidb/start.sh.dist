@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd BASE_DIR
+tiup playground --host HOST > LOG_DIR/playground.out 2>&1 &
