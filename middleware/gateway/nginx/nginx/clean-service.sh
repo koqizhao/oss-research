@@ -21,6 +21,8 @@ remote_clean()
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf /usr/share/nginx"
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf /var/log/nginx"
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
+
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -f nginx"
 }
 
 batch_clean

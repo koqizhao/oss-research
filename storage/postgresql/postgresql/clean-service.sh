@@ -29,6 +29,8 @@ remote_clean()
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /usr/lib/postgresql"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/postgresql"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/log/postgresql"
+
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -f postgres"
 }
 
 batch_clean

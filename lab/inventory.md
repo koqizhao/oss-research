@@ -67,6 +67,8 @@
           - [Codis Proxy](#codis-proxy)
           - [Codis Server](#codis-server)
           - [Codis FE](#codis-fe)
+      - [mongodb](#mongodb)
+        - [mongodb server](#mongodb-server)
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
@@ -458,6 +460,14 @@ port: 6379
 - 192.168.56.11
 
 port: 8080
+
+#### mongodb
+
+##### mongodb server
+
+- 192.168.56.11
+
+port: 27017
 
 ### Apollo
 
