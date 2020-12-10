@@ -30,3 +30,9 @@ restore_newline()
 {
     sed 's/NEW_LINE/\n/g' $1
 }
+
+uppercase_first()
+{
+    declare foo=$1
+    echo $(tr '[:lower:]' '[:upper:]' <<< ${foo:0:1})${foo:1}
+}

@@ -1,0 +1,11 @@
+centerConfigs:
+- activated: false
+  additionalConfigCenterServerList: null
+  additionalConfigCenterType: null
+  additionalDigest: null
+  digest: ''
+  governanceName: governance_ds
+  instanceType: REGISTRY_CENTER_TYPE
+  name: lab
+  props: {}
+  serverLists: REGISTRY_CENTER_ADDRESS

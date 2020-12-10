@@ -55,6 +55,9 @@
       - [PostgreSQL](#postgresql)
         - [PostgreSQL Server](#postgresql-server)
         - [PostgreSQL Admin](#postgresql-admin)
+      - [ShardingSphere](#shardingsphere)
+        - [ShardingSphere-Proxy](#shardingsphere-proxy)
+        - [ShardingSphere-UI](#shardingsphere-ui)
       - [Hadoop](#hadoop)
       - [Redis](#redis)
         - [Redis Server](#redis-server)
@@ -386,6 +389,20 @@ port: 5432
 - 192.168.56.1
 
 [pgadmin](http://localhost:5480/pgadmin4)
+
+#### ShardingSphere
+
+##### ShardingSphere-Proxy
+
+- 192.168.56.11
+
+port: 3307
+
+##### ShardingSphere-UI
+
+- 192.168.56.11
+
+[ui](http://192.168.56.11:8088)
 
 #### Hadoop
 
