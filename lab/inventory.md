@@ -22,6 +22,8 @@
         - [RocketMQ Name Server](#rocketmq-name-server)
         - [RocketMQ Broker](#rocketmq-broker)
         - [RocketMQ Console](#rocketmq-console)
+      - [RabbitMQ](#rabbitmq)
+        - [RabbitMQ Server](#rabbitmq-server)
     - [Metric](#metric)
       - [Promethues](#promethues)
       - [Alert Manager](#alert-manager)
@@ -219,6 +221,16 @@ port: 10911, 10912, 11911, 11912
 - 192.168.56.11
 
 [RocketMQ Console](http://192.168.56.11:8080)
+
+#### RabbitMQ
+
+##### RabbitMQ Server
+
+- 192.168.56.11
+
+[management ui](http://192.168.56.11:15672/)
+
+port: 25672, 5672, 15672
 
 ### Metric
 
