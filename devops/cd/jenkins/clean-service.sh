@@ -11,7 +11,7 @@ remote_clean()
     ssh $1 "echo '$PASSWORD' | sudo -S apt autoremove -y --purge"
 
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
-    ssh $1 "echo '$PASSWORD' | sudo -S userdel jenkins"
+    ssh $1 "echo '$PASSWORD' | sudo -S userdel -rf jenkins"
 }
 
 batch_clean

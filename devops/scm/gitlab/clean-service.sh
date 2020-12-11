@@ -28,12 +28,12 @@ remote_clean()
         if [ -n \"\$clease\" ]; then echo '$PASSWORD' | sudo -S rm -rf /root/\$clease; fi;"
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
 
-    ssh $server "echo '$PASSWORD' | sudo -S userdel -f gitlab-www"
-    ssh $server "echo '$PASSWORD' | sudo -S userdel -f git"
-    ssh $server "echo '$PASSWORD' | sudo -S userdel -f gitlab-redis"
-    ssh $server "echo '$PASSWORD' | sudo -S userdel -f gitlab-psql"
-    ssh $server "echo '$PASSWORD' | sudo -S userdel -f registry"
-    ssh $server "echo '$PASSWORD' | sudo -S userdel -f gitlab-prometheus"
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -rf gitlab-www"
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -rf git"
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -rf gitlab-redis"
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -rf gitlab-psql"
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -rf registry"
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -rf gitlab-prometheus"
 }
 
 batch_clean

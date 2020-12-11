@@ -22,7 +22,7 @@ remote_clean()
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/mongodb"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/log/mongodb"
 
-    ssh $server "echo '$PASSWORD' | sudo -S userdel -f mongodb"
+    ssh $server "echo '$PASSWORD' | sudo -S userdel -rf mongodb"
 }
 
 batch_clean

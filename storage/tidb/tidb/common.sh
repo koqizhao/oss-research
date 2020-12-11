@@ -10,7 +10,7 @@ remote_status()
     remote_ps $1 tiup
 
     echo -e "\ntidb\n"
-    remote_ps $1 tidb-server
+    remote_ps $1 tidb
 }
 
 remote_start()
@@ -20,5 +20,9 @@ remote_start()
 
 remote_stop()
 {
-    remote_kill $1 tiup
+    if [ $scale == "dist" ]; then
+        ssh $1 "cd $deploy_path/$component; tiup cluster stop lab;"
+    else
+        remote_kill $1 tiup
+    fi
 }
