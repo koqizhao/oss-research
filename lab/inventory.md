@@ -48,7 +48,6 @@
       - [kubectl proxy](#kubectl-proxy)
     - [Dubbo](#dubbo)
       - [dubbo admin](#dubbo-admin)
-      - [nacos](#nacos)
       - [sentinel](#sentinel)
     - [Storage](#storage)
       - [MySql](#mysql)
@@ -107,6 +106,7 @@
       - [Eureka](#eureka)
         - [Netflix Eureka](#netflix-eureka)
         - [Spring Cloud Eureka](#spring-cloud-eureka)
+      - [Nacos](#nacos)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
 
@@ -366,12 +366,6 @@ vip: 10.0.2.100:16443
 - 192.168.56.11
 
 [dubbo-admin](http://192.168.56.11:20881)
-
-#### nacos
-
-- 192.168.56.11
-
-[nacos console](http://192.168.56.11:8848/nacos/index.html)
 
 #### sentinel
 
@@ -658,6 +652,17 @@ port: 8081, 9999
 - 192.168.56.11
 
 [Eureka](http://192.168.56.11:8080)
+
+#### Nacos
+
+- 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
+
+[Nacos Console](http://192.168.56.11:8848/nacos/index.html)
+user/pass: nacos/nacos
+
+port: 8848, 9848, 9849, 7848, 59081
 
 ### Web Server
 

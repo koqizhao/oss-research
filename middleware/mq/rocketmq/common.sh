@@ -2,6 +2,8 @@
 
 deploy_path=/home/koqizhao/middleware/mq/rocketmq
 
+read_server_pass
+
 namesrv_addr=""
 for s in ${name_servers[@]}
 do

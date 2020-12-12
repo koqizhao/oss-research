@@ -1,0 +1,8 @@
+#!/bin/bash
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+export JAVA_OPT="-Xms512m -Xmx512m -Xmn256m \
+    -Dnacos.server.ip=SERVER_IP"
+
+bin/startup.sh -m standalone

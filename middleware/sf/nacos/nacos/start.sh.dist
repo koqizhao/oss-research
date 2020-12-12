@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+
+export JAVA_OPT=" -server -Xms512m -Xmx1g -Xmn256m -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=320m \
+    -Dnacos.server.ip=SERVER_IP"
+
+# Using built-in data sources
+#sh startup.sh -p embedded
+
+bin/startup.sh
