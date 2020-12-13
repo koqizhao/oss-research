@@ -7,7 +7,6 @@
       - [Zookeeper](#zookeeper)
         - [zk](#zk)
         - [zkui](#zkui)
-      - [Consul](#consul)
       - [ETCD](#etcd)
         - [ETCD Server](#etcd-server)
         - [ETCD Keeper](#etcd-keeper)
@@ -107,6 +106,7 @@
         - [Netflix Eureka](#netflix-eureka)
         - [Spring Cloud Eureka](#spring-cloud-eureka)
       - [Nacos](#nacos)
+      - [Consul](#consul)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
 
@@ -137,16 +137,6 @@ port: 2181, 2888, 3888, 21811, 21812
 - 192.168.56.11
 
 [zkui](http://192.168.56.11:2190)
-
-#### Consul
-
-- 192.168.56.11
-- 192.168.56.12
-- 192.168.56.13
-
-port: 8300, 8301, 8302, 8500, 8600
-
-[ui](http://192.168.56.11:8500)
 
 #### ETCD
 
@@ -663,6 +653,16 @@ port: 8081, 9999
 user/pass: nacos/nacos
 
 port: 8848, 9848, 9849, 7848, 59081
+
+#### Consul
+
+- 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
+
+port: 8300, 8301, 8302, 8500, 8600
+
+[ui](http://192.168.56.11:8500)
 
 ### Web Server
 
