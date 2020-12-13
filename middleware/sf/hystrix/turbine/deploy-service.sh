@@ -43,13 +43,14 @@ remote_deploy()
     server=$1
     component=$2
 
-    ssh $server "mkdir -p $deploy_path/$component/conf"
-    scp conf/config.properties $server:$deploy_path/$component/conf
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop $component"
 
-    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop tomcat"
     sleep $stop_start_interval
-    scp ~/Software/hystrix/$deploy_file $server:$deploy_path/data/tomcat/$component.war
-    ssh $server "echo '$PASSWORD' | sudo -S systemctl start tomcat"
+
+    scp conf/config.properties $server:$deploy_path/$component/conf
+    scp ~/Software/hystrix/$deploy_file $server:$deploy_path/$component/webapps/$component.war
+
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start $component"
 }
 
 echo -e "\ndeploy tomcat\n"

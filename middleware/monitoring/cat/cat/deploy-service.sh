@@ -145,8 +145,6 @@ init_server()
 
 deploy_tomcat()
 {
-    export tomcat_version=8
-
     cp tomcat/server.xml $tomcat_path/conf.$tomcat_version
     cp tomcat/start.sh $tomcat_path
     cp tomcat/setenv.sh $tomcat_path
@@ -166,8 +164,6 @@ deploy_tomcat()
     $tomcat_path/deploy-service.sh $scale
 
     git checkout -- $tomcat_path/../
-
-    unset tomcat_version
 }
 
 remote_deploy()
@@ -175,12 +171,13 @@ remote_deploy()
     server=$1
     component=$2
 
-    ssh $server "mkdir -p $deploy_path/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop $component"
 
-    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop tomcat"
     sleep $stop_start_interval
-    scp $project_path/cat-home/target/cat*.war $server:$deploy_path/data/tomcat/cat.war
-    ssh $server "echo '$PASSWORD' | sudo -S systemctl start tomcat"
+
+    scp $project_path/cat-home/target/cat*.war $server:$deploy_path/$component/webapps/cat.war
+
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start $component"
 }
 
 echo -e "\ngenerate conf\n"

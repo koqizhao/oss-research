@@ -2,7 +2,7 @@
 
 source ../common.sh
 
-component=tomcat
+component=${component:=tomcat}
 servers=(${tomcat_servers[@]})
 
 remote_status()

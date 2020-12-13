@@ -1,5 +1,5 @@
 [Unit]
-Description=Tomcat service
+Description=COMPONENT service
 After=network.target
 
 [Service]
@@ -7,8 +7,8 @@ Group=koqizhao
 User=koqizhao
 LimitNOFILE=65536
 WorkingDirectory=BASE_DIR
-StandardOutput=file:LOG_DIR/tomcat.log
-StandardError=file:LOG_DIR/tomcat.log
+StandardOutput=file:LOG_DIR/COMPONENT.log
+StandardError=file:LOG_DIR/COMPONENT.log
 ExecStart=BASE_DIR/start.sh
 ExecStop=BASE_DIR/bin/catalina.sh stop
 Restart=always

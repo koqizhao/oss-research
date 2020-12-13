@@ -60,13 +60,14 @@ remote_deploy()
     server=$1
     component=$2
 
-    ssh $server "mkdir -p $deploy_path/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop $component"
 
-    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop tomcat"
     sleep $stop_start_interval
+
     scp $project_path/$project/build/libs/eureka-server*.war \
-        $server:$deploy_path/data/tomcat/eureka.war
-    ssh $server "echo '$PASSWORD' | sudo -S systemctl start tomcat"
+        $server:$deploy_path/$component/webapps/eureka.war
+
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start $component"
 }
 
 build

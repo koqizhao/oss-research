@@ -8,6 +8,7 @@ source common.sh
 tomcat_version=${tomcat_version:=8}
 tomcat_server_port=${tomcat_server_port:=8005}
 tomcat_service_port=${tomcat_service_port:=8080}
+tomcat_app_base=${tomcat_app_base:=$deploy_path/$component/webapps}
 
 case $tomcat_version in
     7)
@@ -42,11 +43,11 @@ remote_deploy()
     base_dir=`escape_slash $deploy_path/$component`
     data_dir=`escape_slash $deploy_path/data/$component`
     log_dir=`escape_slash $deploy_path/logs/$component`
+    app_base=`escape_slash $tomcat_app_base`
 
     scp ~/Software/tomcat/$deploy_file $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf $deploy_file; \
-        mv $deploy_file_name $component; rm $deploy_file; \
-        mv $component/webapps/ROOT data/$component; "
+        mv $deploy_file_name $component; rm $deploy_file; "
 
     scp start.sh $server:$deploy_path/$component
     scp setenv.sh $server:$deploy_path/$component/bin
@@ -58,14 +59,15 @@ remote_deploy()
 
     sed "s/SERVER_PORT/$tomcat_server_port/g" $conf_d/server.xml \
         | sed "s/SERVICE_PORT/$tomcat_service_port/g" \
-        | sed "s/APP_BASE/$data_dir/g" \
+        | sed "s/APP_BASE/$app_base/g" \
         | sed "s/LOG_DIR/$log_dir/g" \
         > server.xml.tmp
     scp server.xml.tmp $server:$deploy_path/$component/conf/server.xml
     rm server.xml.tmp
 
-    sed "s/BASE_DIR/$base_dir/g" $component.service \
+    sed "s/BASE_DIR/$base_dir/g" tomcat.service \
         | sed "s/LOG_DIR/$log_dir/g" \
+        | sed "s/COMPONENT/$component/g" \
         > $component.service.tmp
     scp $component.service.tmp $server:$deploy_path/$component.service
     rm $component.service.tmp
