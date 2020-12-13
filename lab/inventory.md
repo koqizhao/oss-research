@@ -10,7 +10,8 @@
       - [ETCD](#etcd)
         - [ETCD Server](#etcd-server)
         - [ETCD Keeper](#etcd-keeper)
-        - [Tinyid](#tinyid)
+      - [Tinyid](#tinyid)
+      - [Leaf](#leaf)
     - [MQ](#mq)
       - [Kafka](#kafka)
         - [Kafka Server](#kafka-server)
@@ -158,11 +159,22 @@ port: 2379, 2380
 
 [etcdkeeper](http://192.168.56.11:12380/etcdkeeper)
 
-##### Tinyid
+#### Tinyid
 
 - 192.168.56.11
 
 [nextid](http://192.168.56.11:9999/tinyid/id/nextId?bizType=test&token=0f673adf80504e2eaa552f5d791b644c)
+
+#### Leaf
+
+- 192.168.56.11
+- 192.168.56.12
+
+[segment](http://192.168.56.11:8081/api/segment/get/leaf-segment-test)
+
+[snowflake](http://192.168.56.11:8081/api/snowflake/get/test)
+
+port: 8081, 8082
 
 ### MQ
 
