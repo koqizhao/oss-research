@@ -107,6 +107,9 @@
         - [Spring Cloud Eureka](#spring-cloud-eureka)
       - [Nacos](#nacos)
       - [Consul](#consul)
+      - [Hystrix](#hystrix)
+        - [Hystrix Dashboard](#hystrix-dashboard)
+        - [Turbine](#turbine)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
 
@@ -663,6 +666,24 @@ port: 8848, 9848, 9849, 7848, 59081
 port: 8300, 8301, 8302, 8500, 8600
 
 [ui](http://192.168.56.11:8500)
+
+#### Hystrix
+
+##### Hystrix Dashboard
+
+- 192.168.56.11
+
+port: 8080
+
+[hystrix-dashboard](http://192.168.56.11:8080/hystrix-dashboard)
+
+##### Turbine
+
+- 192.168.56.11
+
+port: 18080
+
+[turbine](http://192.168.56.11:18080/turbine/turbine.stream)
 
 ### Web Server
 
