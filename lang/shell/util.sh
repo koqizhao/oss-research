@@ -36,3 +36,38 @@ uppercase_first()
     declare foo=$1
     echo $(tr '[:lower:]' '[:upper:]' <<< ${foo:0:1})${foo:1}
 }
+
+is_empty_dir()
+{
+    if [ -z "$1" ] || [ ! -d "$1" ]; then
+        echo -e "\nusage: is_empty_dir <dir>\n" >&2
+        echo 0
+    fi
+
+    declare c="`ls -A $1`"
+    if [ -z "$c" ]; then
+        echo 1
+    else
+        echo 0
+    fi
+}
+
+clean_empty_folder()
+{
+    if [ ! -d "$1" ]; then
+        return
+    fi
+
+    declare content=(`ls -A $1`)
+    declare i
+    for i in ${content[@]}
+    do
+        clean_empty_folder $1/$i
+    done
+
+    declare is_empty=`is_empty_dir $1`
+    if [ "$is_empty" == 1 ]; then
+        echo -e "\nrm -rf $1\n" >&2
+        rm -rf $1
+    fi
+}

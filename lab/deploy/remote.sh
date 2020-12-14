@@ -50,3 +50,9 @@ remote_kill()
     ssh $1 "pid=(\`ps aux | grep $2 | grep -v grep | awk '{ print \$2 }'\`); \
         for p in \${pid[@]}; do kill \$p; done; "
 }
+
+remote_clean_empty_folder()
+{
+    scp ~/Research/lang/shell/util.sh $1:./
+    ssh $1 "source ~/util.sh; clean_empty_folder $2; rm ~/util.sh; "
+}
