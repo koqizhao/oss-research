@@ -109,6 +109,7 @@
         - [Spring Cloud Eureka](#spring-cloud-eureka)
       - [Nacos](#nacos)
       - [Consul](#consul)
+      - [Artemis](#artemis)
       - [Hystrix](#hystrix)
         - [Hystrix Dashboard](#hystrix-dashboard)
         - [Turbine](#turbine)
@@ -685,6 +686,16 @@ port: 8848, 9848, 9849, 7848, 59081
 port: 8300, 8301, 8302, 8500, 8600
 
 [ui](http://192.168.56.11:8500)
+
+#### Artemis
+
+- 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
+
+[Swagger](http://192.168.56.11:8080/artemis/swagger-ui.html)
+
+[Status](http://192.168.56.11:8080/artemis/api/status/cluster.json)
 
 #### Hystrix
 
