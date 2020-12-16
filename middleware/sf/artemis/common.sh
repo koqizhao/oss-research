@@ -2,6 +2,8 @@
 
 deploy_path=/home/koqizhao/middleware/sf/artemis
 
+read_server_pass
+
 export stop_start_interval=10
 
 artemis_port=8080
