@@ -35,6 +35,11 @@ build()
         | sed "s/MYSQL_DB_PASSWORD/$mysql_db_password/g" \
         > conf/data-source.properties.tmp
 
+    declare origin_packaging="`escape_slash \"<packaging>jar</packaging>\"`"
+    declare packaging="`escape_slash \"<packaging>war</packaging>\"`"
+    sed "s/$origin_packaging/$packaging/g" $project_path/$project/pom.xml \
+        > conf/pom.xml.tmp
+
     cd $project_path
     git checkout -- .
     git pull
@@ -45,15 +50,40 @@ build()
         $project/src/main/resources/application.properties
     cp -f $work_path/conf/data-source.properties.tmp \
         $project/src/main/resources/data-source.properties
+    cp -f $work_path/conf/pom.xml.tmp \
+        $project/pom.xml
 
     mvn clean package -Dmaven.test.skip=true
-    rm -f $project/target/*sources.jar
     git checkout -- .
 
     cd $work_path
     rm conf/artemis.properties.tmp
     rm conf/application.properties.tmp
     rm conf/data-source.properties.tmp
+    rm conf/pom.xml.tmp
+}
+
+deploy_tomcat()
+{
+    cp tomcat/server.xml $tomcat_path/conf.$tomcat_version
+    cp tomcat/start.sh $tomcat_path
+    cp tomcat/setenv.sh $tomcat_path
+
+    sed "s/servers/tomcat_servers/g" ../servers-$scale.sh \
+        > servers-$scale.sh.tmp
+    chmod a+x servers-$scale.sh.tmp
+    cp servers-$scale.sh.tmp $tomcat_path/../servers-$scale.sh
+    rm servers-$scale.sh.tmp
+
+    dp=`escape_slash $deploy_path`
+    sed "s/DEPLOY_PATH/$dp/g" tomcat/common.sh \
+        > tomcat/common.sh.tmp
+    cp tomcat/common.sh.tmp $tomcat_path/../common.sh
+    rm tomcat/common.sh.tmp
+
+    $tomcat_path/deploy-service.sh $scale
+
+    git checkout -- $tomcat_path/../
 }
 
 remote_deploy()
@@ -61,19 +91,14 @@ remote_deploy()
     zone=$1
     server=$2
 
-    ssh $server "mkdir -p $deploy_path/$component"
-    ssh $server "mkdir -p $deploy_path/logs/$component"
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop $component"
 
-    scp $project_path/$project/target/artemis*.jar \
-        $server:$deploy_path/$component/artemis.jar
+    build $zone $server
 
-    declare log_dir=`escape_slash "$deploy_path/logs/$component"`
-    sed "s/LOG_DIR/$log_dir/g" start.sh \
-        | sed "s/PORT/$artemis_port/g" \
-        > start.sh.tmp
-    chmod a+x start.sh.tmp
-    scp start.sh.tmp $server:$deploy_path/$component/start.sh
-    rm start.sh.tmp
+    scp $project_path/$project/target/artemis*.war \
+        $server:$deploy_path/$component/webapps/artemis.war
+
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start $component"
 }
 
 batch_deploy()
@@ -88,14 +113,17 @@ batch_deploy()
 
         for node in ${zone_nodes[@]}
         do
-            build $zone $node
             remote_deploy $zone $node
         done
     done
 }
 
+cp -r ../artemis/conf ./
+
 init_db
+
+deploy_tomcat
 
 batch_deploy
 
-batch_start
+rm -rf conf

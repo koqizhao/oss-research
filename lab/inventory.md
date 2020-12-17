@@ -693,7 +693,7 @@ port: 8300, 8301, 8302, 8500, 8600
 - 192.168.56.12
 - 192.168.56.13
 
-[Swagger](http://192.168.56.11:8080/artemis/swagger-ui/)
+[Swagger](http://192.168.56.11:8080/swagger-ui/)
 
 [Status](http://192.168.56.11:8080/artemis/api/status/cluster.json)
 

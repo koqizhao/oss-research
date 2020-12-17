@@ -12,9 +12,9 @@ artemis_service_url=""
 for s in ${servers[@]}
 do
     if [ -z "$artemis_service_url" ]; then
-        artemis_service_url="http://$s:$artemis_port/artemis"
+        artemis_service_url="http://$s:$artemis_port"
     else
-        artemis_service_url="$artemis_service_url,http://$s:$artemis_port/artemis"
+        artemis_service_url="$artemis_service_url,http://$s:$artemis_port"
     fi
 done
 
@@ -31,9 +31,9 @@ do
     for node in ${zone_nodes[@]}
     do
         if [ -z "$zone_node_setting" ]; then
-            zone_node_setting="$zone:http://$node:$artemis_port/artemis"
+            zone_node_setting="$zone:http://$node:$artemis_port"
         else
-            zone_node_setting="$zone_node_setting,http://$node:$artemis_port/artemis"
+            zone_node_setting="$zone_node_setting,http://$node:$artemis_port"
         fi
     done
 
