@@ -48,6 +48,7 @@ build()
 
     mvn clean package -Dmaven.test.skip=true
     rm -f $project/target/*sources.jar
+    rm -f $project/target/*javadoc.jar
     git checkout -- .
 
     cd $work_path
