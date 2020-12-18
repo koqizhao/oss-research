@@ -95,10 +95,13 @@ remote_deploy()
 
     build $zone $server
 
+    ssh $server "cd $deploy_path/$component/webapps; rm -rf ROOT; "
     scp $project_path/$project/target/artemis*.war \
-        $server:$deploy_path/$component/webapps/artemis.war
+        $server:$deploy_path/$component/webapps/ROOT.war
 
     ssh $server "echo '$PASSWORD' | sudo -S systemctl start $component"
+
+    echo
 }
 
 batch_deploy()

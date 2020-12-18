@@ -7,7 +7,7 @@ source common.sh
 
 clean_db()
 {
-    mysql_db_exec ../artemis/conf/clean.sql
+    mysql_db_exec conf/clean.sql
 }
 
 remote_clean()

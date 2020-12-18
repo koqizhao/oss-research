@@ -34,8 +34,12 @@ remote_clean()
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
 }
 
+cp -r ../artemis/conf ./
+
 clean_tomcat
 
 batch_clean
 
 clean_db
+
+rm -rf conf
