@@ -2,8 +2,13 @@
 
 set -e
 
-apt update
-apt upgrade -y
-apt autoremove --purge -y
+source ~/Research/lab/env/env.sh
+read_server_pass
 
-snap refresh
+echo "$PASSWORD" | sudo -S su -c "apt update && apt update && apt upgrade -y && apt autoremove --purge -y"
+
+echo
+
+echo "$PASSWORD" | sudo -S snap refresh
+
+echo
