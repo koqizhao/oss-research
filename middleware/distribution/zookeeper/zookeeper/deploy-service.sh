@@ -31,7 +31,7 @@ remote_deploy()
 
     ssh $server "mkdir -p $deploy_path/data"
 
-    scp ~/Software/${zk_file}.tar.gz $server:$deploy_path
+    scp ~/Software/zookeeper/${zk_file}.tar.gz $server:$deploy_path
     ssh $server "cd $deploy_path; tar xf ${zk_file}.tar.gz; mv $zk_file $component; rm ${zk_file}.tar.gz"
 
     data_dir=`escape_slash $deploy_path/data`
