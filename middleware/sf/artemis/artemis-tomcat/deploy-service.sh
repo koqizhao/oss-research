@@ -91,6 +91,8 @@ remote_deploy()
     zone=$1
     server=$2
 
+    ssh $server "echo '$PASSWORD' | sudo -S apt install -y openjdk-8-jdk"
+
     ssh $server "echo '$PASSWORD' | sudo -S systemctl stop $component"
 
     build $zone $server
