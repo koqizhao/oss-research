@@ -1,0 +1,19 @@
+[Unit]
+Description=COMPONENT service
+After=network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+LimitNOFILE=65536
+WorkingDirectory=BASE_DIR
+StandardOutput=file:LOG_DIR/COMPONENT.log
+StandardError=file:LOG_DIR/COMPONENT.log
+ExecStart=BASE_DIR/sbin/nginx -c conf/nginx.conf
+ExecReload=BASE_DIR/sbin/nginx -s reload
+ExecStop=BASE_DIR/sbin/nginx -s stop
+Restart=always
+RestartSec=30
+TimeoutSec=600
+
+[Install]
+WantedBy=multi-user.target
