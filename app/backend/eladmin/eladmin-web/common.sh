@@ -2,9 +2,9 @@
 
 source ../common.sh
 
-component=eladmin
-servers=(${admin_servers[@]})
-server_port=$admin_server_port
+component=eladmin-web
+servers=(${web_servers[@]})
+server_port=$web_server_port
 
 remote_status()
 {

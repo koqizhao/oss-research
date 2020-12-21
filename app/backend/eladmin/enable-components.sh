@@ -29,7 +29,7 @@ do_clean()
     echo -e "\neladmin\n"
     eladmin/clean-service.sh $scale
 
-    clean_all ${servers[@]}
+    clean_all ${admin_servers[@]} ${web_servers[@]}
 }
 
 do_status()
