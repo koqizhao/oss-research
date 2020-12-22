@@ -115,6 +115,10 @@
         - [Turbine](#turbine)
     - [Web Server](#web-server)
       - [Tomcat](#tomcat)
+  - [App](#app)
+    - [eladmin](#eladmin)
+      - [eladmin-server](#eladmin-server)
+      - [eladmin-web](#eladmin-web)
 
 ## Machines
 
@@ -722,3 +726,23 @@ port: 18080
 - 192.168.56.11
 
 port: 8080
+
+## App
+
+### eladmin
+
+#### eladmin-server
+
+- 192.168.56.11
+
+port: 8000
+
+[eladmin](http://192.168.56.11:8000/swagger-ui.html)
+
+#### eladmin-web
+
+- 192.168.56.11
+
+port: 8013
+
+[eladmin-web](http://192.168.56.11:8013/)

@@ -5,11 +5,12 @@ init_scale "$1" ..
 
 source common.sh
 
+nginx_version=${nginx_version:=1.19.6}
 nginx_user=${nginx_user:=koqizhao}
 nginx_server_port=${nginx_server_port:=80}
 nginx_server_name=${nginx_server_name:=localhost}
 
-deploy_version=1.19.6
+deploy_version=$nginx_version
 deploy_file_name=nginx-$deploy_version
 deploy_file=$deploy_file_name.tar.gz
 
@@ -71,6 +72,7 @@ remote_deploy()
 
     sed "s/SERVER_PORT/$nginx_server_port/g" conf/nginx.conf \
         | sed "s/SERVER_NAME/$nginx_server_name/g" \
+        | sed "s/DATA_DIR/$data_dir/g" \
         | sed "s/LOG_DIR/$log_dir/g" \
         | sed "s/USER/$nginx_user/g" \
         > conf/nginx.conf.tmp

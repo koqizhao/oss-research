@@ -8,7 +8,7 @@ server_port=$admin_server_port
 
 remote_status()
 {
-    remote_ps $1 $component
+    remote_ps $1 $component.jar
 }
 
 remote_start()
@@ -18,5 +18,5 @@ remote_start()
 
 remote_stop()
 {
-    remote_kill $1 $component
+    remote_kill $1 $component.jar
 }

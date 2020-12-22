@@ -17,38 +17,62 @@ build()
 
     cd $project_path
     git checkout -- .
-    #git pull
+    git pull
 
     cp -f $work_path/conf/.env.production.tmp ./.env.production
 
     npm run build:prod
     git checkout -- .
 
+    tar cf $component.dist.tar dist
+
     cd $work_path
+    rm -f $component.dist.tar
+    mv $project_path/$component.dist.tar ./
     rm conf/.env.production.tmp
+}
+
+deploy_nginx()
+{
+    cp nginx/nginx.conf $nginx_path/conf
+
+    sed "s/web_servers/nginx_servers/g" ../servers-$scale.sh \
+        > servers-$scale.sh.tmp
+    chmod a+x servers-$scale.sh.tmp
+    cp servers-$scale.sh.tmp $nginx_path/../servers-$scale.sh
+    rm servers-$scale.sh.tmp
+
+    dp=`escape_slash $deploy_path`
+    sed "s/DEPLOY_PATH/$dp/g" nginx/common.sh \
+        > nginx/common.sh.tmp
+    cp nginx/common.sh.tmp $nginx_path/../common.sh
+    rm nginx/common.sh.tmp
+
+    $nginx_path/deploy-service.sh $scale
+
+    git checkout -- $nginx_path/../
 }
 
 remote_deploy()
 {
     server=$1
 
-    ssh $server "mkdir -p $deploy_path/$component"
-    ssh $server "mkdir -p $deploy_path/logs/$component"
-    ssh $server "mkdir -p $deploy_path/data/$component"
+    scp $component.dist.tar $server:$deploy_path/data/$component
 
-    scp $project_path/$project/target/eladmin*.jar \
-        $server:$deploy_path/$component/eladmin.jar
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl stop $component"
 
-    declare log_dir=`escape_slash "$deploy_path/logs/$component"`
-    sed "s/LOG_DIR/$log_dir/g" start.sh \
-        > start.sh.tmp
-    chmod a+x start.sh.tmp
-    scp start.sh.tmp $server:$deploy_path/$component/start.sh
-    rm start.sh.tmp
+    ssh $server "cd $deploy_path/data/$component; \
+        tar xf $component.dist.tar; \
+        rm $component.dist.tar; \
+        mv dist webapp; "
+
+    ssh $server "echo '$PASSWORD' | sudo -S systemctl start $component"
+
+    echo
 }
 
 build
 
-batch_deploy
+deploy_nginx
 
-batch_start
+batch_deploy

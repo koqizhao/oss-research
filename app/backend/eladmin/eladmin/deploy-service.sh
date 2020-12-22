@@ -6,7 +6,7 @@ init_scale "$1" ..
 source common.sh
 
 project_path=~/Projects/misc/eladmin/eladmin
-project=eladmin-system
+project=artemis-admin
 
 init_db()
 {
@@ -33,7 +33,7 @@ build()
 
     cd $project_path
     git checkout -- .
-    #git pull
+    git pull
 
     cp -f $work_path/conf/application.yml.tmp \
         $project/src/main/resources/config/application.yml
@@ -60,11 +60,12 @@ remote_deploy()
     ssh $server "mkdir -p $deploy_path/logs/$component"
     ssh $server "mkdir -p $deploy_path/data/$component"
 
-    scp $project_path/$project/target/eladmin*.jar \
-        $server:$deploy_path/$component/eladmin.jar
+    scp $project_path/$project/target/$project*.jar \
+        $server:$deploy_path/$component/$component.jar
 
     declare log_dir=`escape_slash "$deploy_path/logs/$component"`
     sed "s/LOG_DIR/$log_dir/g" start.sh \
+        | sed "s/COMPONENT/$component/g" \
         > start.sh.tmp
     chmod a+x start.sh.tmp
     scp start.sh.tmp $server:$deploy_path/$component/start.sh

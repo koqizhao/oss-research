@@ -3,7 +3,7 @@
 source ~/Research/lang/shell/util.sh
 source ~/Research/lab/deploy/remote.sh
 
-declare folders=("~/middleware" "~/storage" "ops")
+declare folders=("~/middleware" "~/storage" "ops" "app")
 
 for folder in ${folders[@]}
 do

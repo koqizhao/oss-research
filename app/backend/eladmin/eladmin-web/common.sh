@@ -6,17 +6,20 @@ component=eladmin-web
 servers=(${web_servers[@]})
 server_port=$web_server_port
 
+export component
+export nginx_server_port=$server_port
+
 remote_status()
 {
-    remote_ps $1 $component
+    remote_systemctl $1 status $component $PASSWORD
 }
 
 remote_start()
 {
-    ssh $1 "cd $deploy_path/$component; ./start.sh; "
+    remote_enable $1 $component $PASSWORD
 }
 
 remote_stop()
 {
-    remote_kill $1 $component
+    remote_disable $1 $component $PASSWORD
 }
