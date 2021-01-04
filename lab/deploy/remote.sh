@@ -54,5 +54,5 @@ remote_kill()
 remote_clean_empty_folder()
 {
     scp ~/Research/lang/shell/util.sh $1:./
-    ssh $1 "source ~/util.sh; clean_empty_folder $2; rm ~/util.sh; "
+    ssh $1 "echo '$PASSWORD' | sudo -S su -c 'cd ~koqizhao; source util.sh; clean_empty_folder $2; rm util.sh;'"
 }

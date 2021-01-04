@@ -18,7 +18,7 @@ remote_deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"deb $mirror_site $artifact main\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
     ssh $1 "echo '$PASSWORD' | sudo -S apt install -y kubelet kubectl kubeadm"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-mark hold kubelet kubectl kubeadm"
+    #ssh $1 "echo '$PASSWORD' | sudo -S apt-mark hold kubelet kubectl kubeadm"
     ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"
 
     scp k8s.conf $1:$deploy_path/$component

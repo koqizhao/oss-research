@@ -82,7 +82,7 @@ remote_clean()
 {
     for i in ${kubernetes_packages[@]}
     do
-        ssh $1 "echo '$PASSWORD' | sudo -S apt-mark unhold $i"
+        #ssh $1 "echo '$PASSWORD' | sudo -S apt-mark unhold $i"
         ssh $1 "echo '$PASSWORD' | sudo -S apt purge -y $i"
     done
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
