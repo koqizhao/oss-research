@@ -4,12 +4,12 @@ deploy_path=/home/koqizhao/middleware/monitoring/trace/skywalking
 
 #es_type=
 es_type=-es7
-deploy_file=apache-skywalking-apm${es_type}-8.2.0.tar.gz
+deploy_file=apache-skywalking-apm${es_type}-8.4.0.tar.gz
 deploy_folder=apache-skywalking-apm-bin${es_type}
 
 remote_status()
 {
-    remote_ps $1 $2
+    remote_ps $1 skywalking/$2
 }
 
 remote_start()
