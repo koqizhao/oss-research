@@ -29,3 +29,6 @@ kubectl -n kubernetes-dashboard get service kubernetes-dashboard
 3 通过主机端口访问，如：https://192.168.56.13:30672/
 
 注意：chrome无法访问https，需要换成firefox浏览器。
+
+chrome页面提示不安全连接时，可在当前页面用键盘输入：thisisunsafe
+然后chrome放行访问！
