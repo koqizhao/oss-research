@@ -16,5 +16,5 @@ execute_ops()
 enable_api_proxy()
 {
     ssh $1 "cd $deploy_path/$component; kubectl proxy --address=$1 --port=8001 \
-        --accept-hosts=192.168.56.1 > kube-proxy.log 2>&1 &"
+        --accept-hosts=192.168.56.1,192.168.56.10 > kube-proxy.log 2>&1 &"
 }

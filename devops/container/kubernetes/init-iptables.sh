@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo iptables-persistent iptables-persistent/autosave_v6 boolean true \
+    | debconf-set-selections
+echo iptables-persistent iptables-persistent/autosave_v4 boolean true \
+    | debconf-set-selections
 apt install -y -q iptables arptables ebtables iptables-persistent
 
 update-alternatives --set iptables /usr/sbin/iptables-legacy

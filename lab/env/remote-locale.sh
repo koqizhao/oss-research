@@ -10,7 +10,7 @@ source ~/Research/lab/deploy/remote.sh
 
 for i in ${servers[@]}
 do
-    echo "\nserver: $i\n"
+    echo -e "\nserver: $i\n"
     ssh $i "echo '$PASSWORD' | sudo -S locale-gen zh_CN.utf8; \
         echo '$PASSWORD' | sudo -S update-locale LANG=zh_CN.UTF-8; \
         echo '$PASSWORD' | sudo -S rm -f /etc/localtime;

@@ -6,6 +6,8 @@ comment /swap in /etc/fstab
 
 echo "vm.swappiness=0" >> /etc/sysctl.conf
 
+reboot
+
 ## 访问dashboard
 
 https://github.com/kubernetes/dashboard/tree/master/docs/user/accessing-dashboard
