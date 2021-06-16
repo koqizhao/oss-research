@@ -21,6 +21,7 @@ build()
 
     cp -f $work_path/conf/.env.production.tmp ./.env.production
 
+    npm install
     npm run build:prod
     git checkout -- .
 

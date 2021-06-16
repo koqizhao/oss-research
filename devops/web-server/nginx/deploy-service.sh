@@ -5,7 +5,7 @@ init_scale "$1" ..
 
 source common.sh
 
-nginx_version=${nginx_version:=1.19.6}
+nginx_version=${nginx_version:=1.20.1}
 nginx_user=${nginx_user:=koqizhao}
 nginx_server_port=${nginx_server_port:=80}
 nginx_server_name=${nginx_server_name:=localhost}
@@ -14,7 +14,7 @@ deploy_version=$nginx_version
 deploy_file_name=nginx-$deploy_version
 deploy_file=$deploy_file_name.tar.gz
 
-dep_packages="gcc make libpcre3-dev libssl-dev libperl-dev zlib1g-dev"
+dep_packages="gcc make libc6=2.31-0ubuntu9.2 libpcre3-dev libssl-dev libperl-dev zlib1g-dev"
 
 build()
 {
@@ -47,7 +47,6 @@ build()
 
     ssh $server "rm -rf $deploy_path/$component; \
         rm -f $deploy_path/$component.tar; \
-        echo '$PASSWORD' | sudo -S apt purge -y $dep_packages; \
         echo '$PASSWORD' | sudo -S apt update; \
         echo '$PASSWORD' | sudo -S apt autoremove -y --purge; "
 }
