@@ -2,7 +2,22 @@
 
 - [Inventory](#inventory)
   - [Machines](#machines)
-  - [Apps](#apps)
+  - [OPS](#ops)
+    - [DNS](#dns)
+      - [bind9](#bind9)
+    - [scm](#scm)
+      - [gitlab](#gitlab)
+    - [repo-manager](#repo-manager)
+      - [nexus](#nexus)
+    - [cd](#cd)
+      - [jenkins](#jenkins)
+    - [Web Server](#web-server)
+      - [Tomcat](#tomcat)
+    - [Kubernetes](#kubernetes)
+      - [master](#master)
+      - [worker](#worker)
+      - [kubectl proxy](#kubectl-proxy)
+  - [Middleware](#middleware)
     - [Distribution](#distribution)
       - [Zookeeper](#zookeeper)
         - [zk](#zk)
@@ -43,49 +58,13 @@
       - [FileBeat](#filebeat)
       - [Kibana](#kibana)
     - [CAT](#cat)
-    - [Kubernetes](#kubernetes)
-      - [master](#master)
-      - [worker](#worker)
-      - [kubectl proxy](#kubectl-proxy)
     - [Dubbo](#dubbo)
       - [dubbo admin](#dubbo-admin)
       - [sentinel](#sentinel)
-    - [Storage](#storage)
-      - [MySql](#mysql)
-        - [MySql Server](#mysql-server)
-        - [MySql Workbench](#mysql-workbench)
-      - [PostgreSQL](#postgresql)
-        - [PostgreSQL Server](#postgresql-server)
-        - [PostgreSQL Admin](#postgresql-admin)
-      - [ShardingSphere](#shardingsphere)
-        - [ShardingSphere-Proxy](#shardingsphere-proxy)
-        - [ShardingSphere-UI](#shardingsphere-ui)
-      - [Hadoop](#hadoop)
-      - [Redis](#redis)
-        - [Redis Server](#redis-server)
-        - [Redis Cluster Proxy](#redis-cluster-proxy)
-        - [Codis](#codis)
-          - [Codis Dashboard](#codis-dashboard)
-          - [Codis Proxy](#codis-proxy)
-          - [Codis Server](#codis-server)
-          - [Codis FE](#codis-fe)
-      - [mongodb](#mongodb)
-        - [mongodb server](#mongodb-server)
-      - [tidb](#tidb)
-        - [tidb tiup](#tidb-tiup)
     - [Apollo](#apollo)
       - [portal](#portal)
       - [config-service](#config-service)
       - [admin-service](#admin-service)
-    - [Ops](#ops)
-      - [DNS](#dns)
-        - [bind9](#bind9)
-      - [scm](#scm)
-        - [gitlab](#gitlab)
-      - [repo-manager](#repo-manager)
-        - [nexus](#nexus)
-      - [cd](#cd)
-        - [jenkins](#jenkins)
     - [Gateway](#gateway)
       - [Nginx](#nginx)
       - [OpenResty](#openresty)
@@ -113,8 +92,29 @@
       - [Hystrix](#hystrix)
         - [Hystrix Dashboard](#hystrix-dashboard)
         - [Turbine](#turbine)
-    - [Web Server](#web-server)
-      - [Tomcat](#tomcat)
+  - [Storage](#storage)
+    - [MySql](#mysql)
+      - [MySql Server](#mysql-server)
+      - [MySql Workbench](#mysql-workbench)
+    - [PostgreSQL](#postgresql)
+      - [PostgreSQL Server](#postgresql-server)
+      - [PostgreSQL Admin](#postgresql-admin)
+    - [ShardingSphere](#shardingsphere)
+      - [ShardingSphere-Proxy](#shardingsphere-proxy)
+      - [ShardingSphere-UI](#shardingsphere-ui)
+    - [Hadoop](#hadoop)
+    - [Redis](#redis)
+      - [Redis Server](#redis-server)
+      - [Redis Cluster Proxy](#redis-cluster-proxy)
+      - [Codis](#codis)
+        - [Codis Dashboard](#codis-dashboard)
+        - [Codis Proxy](#codis-proxy)
+        - [Codis Server](#codis-server)
+        - [Codis FE](#codis-fe)
+    - [mongodb](#mongodb)
+      - [mongodb server](#mongodb-server)
+    - [tidb](#tidb)
+      - [tidb tiup](#tidb-tiup)
   - [App](#app)
     - [eladmin](#eladmin)
       - [eladmin-server](#eladmin-server)
@@ -128,7 +128,81 @@
 - 192.168.56.14, 10.0.2.14, 4C 1G
 - 192.168.56.15, 10.0.2.15, 4C 1G
 
-## Apps
+## OPS
+
+### DNS
+
+#### bind9
+
+- 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
+- 192.168.56.14
+
+port: 53
+
+### scm
+
+#### gitlab
+
+- 192.168.56.11
+
+port: 80, 8080等多个端口
+
+[gitlab](https://gitlab.mydotey.com)
+
+### repo-manager
+
+#### nexus
+
+- 192.168.56.11
+
+[nexus](https://192.168.56.11:8081)
+
+### cd
+
+#### jenkins
+
+- 192.168.56.11
+
+[jenkins](https://192.168.56.11:18080)
+
+### Web Server
+
+#### Tomcat
+
+- 192.168.56.11
+
+port: 8080
+
+### Kubernetes
+
+#### master
+
+- 192.168.56.13
+- 192.168.56.14
+- 192.168.56.15
+
+port: 6443
+vip: 10.0.2.100:16443
+
+#### worker
+
+- 192.168.56.11
+- 192.168.56.12
+
+#### kubectl proxy
+
+[kubectl-proxy](http://192.168.56.13:8001/)
+
+[kube-dashboard](http://192.168.56.13:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
+need ssh port forwarding to localhost:
+
+```sh
+ssh -L localhost:8001:localhost:8001 -NT koqizhao@192.168.56.13 &
+```
+
+## Middleware
 
 ### Distribution
 
@@ -355,27 +429,6 @@ port: 8080, 8005, 2280
 
 [cat](http://192.168.56.11:8080)
 
-### Kubernetes
-
-#### master
-
-- 192.168.56.13
-- 192.168.56.14
-- 192.168.56.15
-
-port: 6443
-vip: 10.0.2.100:16443
-
-#### worker
-
-- 192.168.56.11
-- 192.168.56.12
-
-#### kubectl proxy
-
-[kubectl-proxy](http://192.168.56.13:8001/)
-[kube-dashboard](http://192.168.56.13:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
-
 ### Dubbo
 
 #### dubbo admin
@@ -390,129 +443,6 @@ vip: 10.0.2.100:16443
 
 [sentinel-dashboard](http://192.168.56.11:8085)
 [sentinel-transport](http://192.168.56.11:8719)
-
-### Storage
-
-#### MySql
-
-##### MySql Server
-
-- 192.168.56.11, master
-- 192.168.56.12, slave
-
-port: 3306
-
-##### MySql Workbench
-
-- 192.168.56.1
-
-#### PostgreSQL
-
-##### PostgreSQL Server
-
-- 192.168.56.11
-
-port: 5432
-
-##### PostgreSQL Admin
-
-- 192.168.56.1
-
-[pgadmin](http://localhost:5480/pgadmin4)
-
-#### ShardingSphere
-
-##### ShardingSphere-Proxy
-
-- 192.168.56.11
-
-port: 3307
-
-##### ShardingSphere-UI
-
-- 192.168.56.11
-
-[ui](http://192.168.56.11:8088)
-
-#### Hadoop
-
-- 192.168.56.11, name node
-- 192.168.56.12
-- 192.168.56.13
-
-port: 9000, 9870, 9864
-
-[name-node](http://192.168.56.11:9870/)
-
-#### Redis
-
-##### Redis Server
-
-- 192.168.56.11
-- 192.168.56.12
-- 192.168.56.13
-
-port: 6379/16379
-
-##### Redis Cluster Proxy
-
-- 192.168.56.11
-
-port: 7777
-
-##### Codis
-
-###### Codis Dashboard
-
-- 192.168.56.11
-
-port: 18080
-
-###### Codis Proxy
-
-- 192.168.56.11
-
-port: 11080, 19090
-
-###### Codis Server
-
-- 192.168.56.11
-
-port: 6379
-
-###### Codis FE
-
-- 192.168.56.11
-
-port: 8080
-
-#### mongodb
-
-##### mongodb server
-
-- 192.168.56.11
-
-port: 27017
-
-#### tidb
-
-##### tidb tiup
-
-- 192.168.56.11
-
-[dashboard](http://192.168.11:2379/dashboard)
-
-[prometheus](http://192.168.56.11:9090)
-
-[grafana](http://192.168.56.11:3000)
-
-pd/etcd: 2379, 2380, 33759, 43983
-
-tikv: 20160, 20180
-
-tidb: 4000, 10080
-
-默认用户：root，无密码
 
 ### Apollo
 
@@ -535,45 +465,6 @@ port: 38080
 - 192.168.56.12
 
 port: 38090
-
-### Ops
-
-#### DNS
-
-##### bind9
-
-- 192.168.56.11
-- 192.168.56.12
-- 192.168.56.13
-- 192.168.56.14
-
-port: 53
-
-#### scm
-
-##### gitlab
-
-- 192.168.56.11
-
-port: 80, 8080等多个端口
-
-[gitlab](https://gitlab.mydotey.com)
-
-#### repo-manager
-
-##### nexus
-
-- 192.168.56.11
-
-[nexus](https://192.168.56.11:8081)
-
-#### cd
-
-##### jenkins
-
-- 192.168.56.11
-
-[jenkins](https://192.168.56.11:18080)
 
 ### Gateway
 
@@ -719,13 +610,128 @@ port: 18080
 
 [turbine](http://192.168.56.11:18080/turbine/turbine.stream)
 
-### Web Server
+## Storage
 
-#### Tomcat
+### MySql
+
+#### MySql Server
+
+- 192.168.56.11, master
+- 192.168.56.12, slave
+
+port: 3306
+
+#### MySql Workbench
+
+- 192.168.56.1
+
+### PostgreSQL
+
+#### PostgreSQL Server
+
+- 192.168.56.11
+
+port: 5432
+
+#### PostgreSQL Admin
+
+- 192.168.56.1
+
+[pgadmin](http://localhost:5480/pgadmin4)
+
+### ShardingSphere
+
+#### ShardingSphere-Proxy
+
+- 192.168.56.11
+
+port: 3307
+
+#### ShardingSphere-UI
+
+- 192.168.56.11
+
+[ui](http://192.168.56.11:8088)
+
+### Hadoop
+
+- 192.168.56.11, name node
+- 192.168.56.12
+- 192.168.56.13
+
+port: 9000, 9870, 9864
+
+[name-node](http://192.168.56.11:9870/)
+
+### Redis
+
+#### Redis Server
+
+- 192.168.56.11
+- 192.168.56.12
+- 192.168.56.13
+
+port: 6379/16379
+
+#### Redis Cluster Proxy
+
+- 192.168.56.11
+
+port: 7777
+
+#### Codis
+
+##### Codis Dashboard
+
+- 192.168.56.11
+
+port: 18080
+
+##### Codis Proxy
+
+- 192.168.56.11
+
+port: 11080, 19090
+
+##### Codis Server
+
+- 192.168.56.11
+
+port: 6379
+
+##### Codis FE
 
 - 192.168.56.11
 
 port: 8080
+
+### mongodb
+
+#### mongodb server
+
+- 192.168.56.11
+
+port: 27017
+
+### tidb
+
+#### tidb tiup
+
+- 192.168.56.11
+
+[dashboard](http://192.168.11:2379/dashboard)
+
+[prometheus](http://192.168.56.11:9090)
+
+[grafana](http://192.168.56.11:3000)
+
+pd/etcd: 2379, 2380, 33759, 43983
+
+tikv: 20160, 20180
+
+tidb: 4000, 10080
+
+默认用户：root，无密码
 
 ## App
 
