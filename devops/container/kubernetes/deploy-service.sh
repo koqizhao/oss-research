@@ -8,6 +8,8 @@ source common.sh
 #gpg_site=https://packages.cloud.google.com/apt/doc/apt-key.gpg
 gpg_site=https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg
 
+kube_version=1.20.10-00
+
 remote_deploy()
 {
     ssh $1 "mkdir -p $deploy_path/$component"
@@ -18,7 +20,7 @@ remote_deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"deb $mirror_site $artifact main\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
     ssh $1 "echo '$PASSWORD' | sudo -S apt install -y debconf-utils"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y kubelet kubectl kubeadm"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y kubelet=$kube_version kubectl=$kube_version kubeadm=$kube_version"
     ssh $1 "echo '$PASSWORD' | sudo -S apt-mark hold kubelet kubectl kubeadm"
     ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"
 
