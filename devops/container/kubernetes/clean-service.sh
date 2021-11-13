@@ -91,7 +91,8 @@ remote_clean()
     ssh $1 "echo '$PASSWORD' | sudo -S apt autoremove -y --purge"
 
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository -r -y \"deb $mirror_site $artifact main\""
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-key del BA07F4FB"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-key del $apt_hash"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-key del $apt_hash2"
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
 
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/kubelet"

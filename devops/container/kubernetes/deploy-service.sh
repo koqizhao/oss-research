@@ -16,7 +16,8 @@ remote_deploy()
 
     ssh $1 "echo '$PASSWORD' | sudo -S apt install -y curl apt-transport-https"
     ssh $1 "curl -fsSL $gpg_site > gpg; echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg;"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint BA07F4FB"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint $apt_hash"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint $apt_hash2"
     ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"deb $mirror_site $artifact main\""
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
     ssh $1 "echo '$PASSWORD' | sudo -S apt install -y debconf-utils"

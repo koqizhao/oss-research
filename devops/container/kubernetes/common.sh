@@ -7,6 +7,8 @@ artifact=kubernetes-xenial
 
 #mirror_site=https://apt.kubernetes.io
 mirror_site=https://mirrors.aliyun.com/kubernetes/apt
+apt_hash=836F4BEB
+apt_hash2=307EA071
 
 execute_ops()
 {
