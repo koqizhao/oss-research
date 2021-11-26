@@ -1,0 +1,33 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: <deployment>-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: <deployment>
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - <deployment>-gateway
+  http:
+  - match:
+    - uri:
+        exact: <api-path>
+    route:
+    - destination:
+        host: <deployment>
+        port:
+          number: <deployment-port>

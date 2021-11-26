@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <deployment>
+  labels:
+    app: <deployment>
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: <deployment>
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: <deployment>
+        version: v1
+    spec:
+      serviceAccountName: default
+      hostAliases:
+        - ip: <ip>
+          hostnames:
+            - <hostname>
+      containers:
+        - name: <deployment>
+          image: <image>
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: <port>
+              protocol: TCP
+          securityContext:
+            runAsUser: 1000
+          env:
+          - name: <env-name>
+            value: <env-value>
+          livenessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 100
+            periodSeconds: 10
+            successThreshold: 1
+            tcpSocket:
+              port: <port>
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 3
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            successThreshold: 2
+            tcpSocket:
+              port: <port>
+            timeoutSeconds: 2
