@@ -1,6 +1,6 @@
 #!/bin/bash
 
-deploy_path=/home/koqizhao/ops/container
+deploy_path=/home/koqizhao/ops/cloud
 
 read_server_pass
 
