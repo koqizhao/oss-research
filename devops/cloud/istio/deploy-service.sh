@@ -5,12 +5,12 @@ init_scale "$1" ..
 
 source common.sh
 
-deploy_file_name=istio-1.12.0
-deploy_file=$deploy_file_name-linux-amd64.tar.gz
-
 tag=1.12.0
 profile=demo
 hub=docker.mirrors.ustc.edu.cn/istio
+
+deploy_file_name=istio-$tag
+deploy_file=$deploy_file_name-linux-amd64.tar.gz
 
 remote_deploy()
 {
