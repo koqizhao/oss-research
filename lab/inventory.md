@@ -12,6 +12,7 @@
     - [jenkins](#jenkins)
   - [Web Server](#web-server)
     - [Tomcat](#tomcat)
+  - [docker-registry](#docker-registry)
   - [Kubernetes](#kubernetes)
     - [master](#master)
     - [worker](#worker)
@@ -175,6 +176,10 @@ port: 80, 8080等多个端口
 - 192.168.56.11
 
 port: 8080
+
+### docker-registry
+
+[registry](http://192.168.56.11:5000/v2)
 
 ### Kubernetes
 
