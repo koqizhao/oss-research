@@ -13,6 +13,7 @@
   - [Web Server](#web-server)
     - [Tomcat](#tomcat)
   - [docker-registry](#docker-registry)
+  - [docker-registry-frontend](#docker-registry-frontend)
   - [Kubernetes](#kubernetes)
     - [master](#master)
     - [worker](#worker)
@@ -180,6 +181,10 @@ port: 8080
 ### docker-registry
 
 [registry](http://192.168.56.11:5000/v2)
+
+### docker-registry-frontend
+
+[registry-frontend](http://192.168.56.11:5080)
 
 ### Kubernetes
 
