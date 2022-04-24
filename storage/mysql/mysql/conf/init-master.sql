@@ -1,7 +1,7 @@
 
-CREATE USER 'replicauser'@'%' IDENTIFIED BY 'xx123456XX';
+CREATE USER 'replicauser'@'%' IDENTIFIED WITH mysql_native_password BY 'xx123456XX';
 
-GRANT REPLICATION SLAVE ON *.* TO 'replicauser'@'%' IDENTIFIED BY 'xx123456XX';
+GRANT REPLICATION SLAVE ON *.* TO 'replicauser'@'%';
 FLUSH PRIVILEGES;
 
 SHOW MASTER STATUS;
