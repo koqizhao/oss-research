@@ -4,6 +4,9 @@
         "https://docker.mirrors.ustc.edu.cn",
         "https://registry.docker-cn.com"
     ],
+    "insecure-registries": [
+        "192.168.56.11:5000"
+    ],
     "exec-opts": [
         "native.cgroupdriver=systemd"
     ],
