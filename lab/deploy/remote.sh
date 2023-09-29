@@ -29,8 +29,8 @@ remote_systemctl()
 
 remote_update()
 {
-    ssh $1 "echo '$2' | sudo -S apt update --fix-missing"
-    ssh $1 "echo '$2' | sudo -S apt upgrade -y"
+    ssh $1 "echo '$2' | sudo -S apt update"
+    ssh $1 "echo '$2' | sudo -S apt upgrade -y --fix-missing"
     ssh $1 "echo '$2' | sudo -S apt autoremove --purge -y"
     ssh $1 "echo '$2' | sudo -S reboot" || echo
 }
