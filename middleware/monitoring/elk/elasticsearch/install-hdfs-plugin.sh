@@ -13,4 +13,4 @@ install_plugin()
 }
 
 install_plugin 192.168.56.11
-install_plugin 192.168.56.14
+install_plugin 192.168.56.12

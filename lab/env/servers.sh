@@ -2,7 +2,7 @@
 
 set -e
 
-server_count=5
+server_count=3
 for i in `seq 1 $server_count`
 do
     let "index=i-1" || index=0
