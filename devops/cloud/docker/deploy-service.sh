@@ -19,13 +19,17 @@ remote_deploy()
 {
     ssh $1 "mkdir -p $deploy_path/$component"
 
-    ssh $1 "echo '$PASSWORD' | sudo -S apt remove -y docker docker-engine docker.io containerd runc"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y apt-transport-https ca-certificates curl gnupg-agent software-properties-common"
-    ssh $1 "curl -fsSL $mirror_site/gpg > gpg; echo '$PASSWORD' | sudo -S apt-key add gpg; rm gpg;"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-key fingerprint 0EBFCD88"
-    ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository \"deb [arch=amd64] $mirror_site \$(lsb_release -cs) stable\""
+    ssh $1 "echo '$PASSWORD' | sudo -S apt remove -y docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y ca-certificates curl"
+    ssh $1 "echo '$PASSWORD' | sudo -S install -m 0755 -d /etc/apt/keyrings"
+    ssh $1 "echo '$PASSWORD' | sudo -S curl -fsSL $mirror_site/gpg -o /etc/apt/keyrings/docker.asc"
+    ssh $1 "echo '$PASSWORD' | sudo -S chmod a+r /etc/apt/keyrings/docker.asc"
+    ssh $1 "echo '$PASSWORD' | sudo -S echo \
+        \"deb [arch=\$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] $mirror_site \
+        \$(. /etc/os-release && echo \"\${UBUNTU_CODENAME:-\$VERSION_CODENAME}\") stable\" > docker.list"
+    ssh $1 "echo '$PASSWORD' | sudo -S mv docker.list /etc/apt/sources.list.d/docker.list"
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
-    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y docker-ce docker-ce-cli containerd.io"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin"
 
     ssh $1 "echo '$PASSWORD' | sudo -S sudo usermod -aG docker $manager"
 

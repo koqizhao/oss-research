@@ -7,17 +7,17 @@ source common.sh
 
 remote_clean()
 {
-    ssh $1 "echo '$PASSWORD' | sudo -S apt purge -y docker-ce docker-ce-cli containerd.io"
+    ssh $1 "echo '$PASSWORD' | sudo -S apt purge -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras"
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
     ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"
     ssh $1 "echo '$PASSWORD' | sudo -S apt autoremove -y --purge"
 
-    ssh $1 "echo '$PASSWORD' | sudo -S add-apt-repository -r -y \"deb [arch=amd64] $mirror_site \$(lsb_release -cs) stable\""
-    ssh $1 "echo '$PASSWORD' | sudo -S apt-key del 0EBFCD88"
+    ssh $1 "echo '$PASSWORD' | sudo -S rm -f /etc/apt/sources.list.d/docker.list"
+    ssh $1 "echo '$PASSWORD' | sudo -S rm -f /etc/apt/keyrings/docker.asc"
     ssh $1 "echo '$PASSWORD' | sudo -S apt update"
 
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/docker"
-    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/dockershim"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -rf /var/lib/containerd"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/docker"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/systemd/system/docker.service"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /etc/systemd/system/docker.socket"
