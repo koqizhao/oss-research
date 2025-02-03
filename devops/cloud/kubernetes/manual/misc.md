@@ -2,11 +2,14 @@
 
 ## 机器初始化
 
-comment /swap in /etc/fstab
+1. comment /swap in /etc/fstab
+2. edit /etc/sysctl.conf
 
-echo "vm.swappiness=0" >> /etc/sysctl.conf
+    ```shell
+    echo "vm.swappiness=0" >> /etc/sysctl.conf
+    ```
 
-reboot
+3. reboot
 
 ## 访问dashboard
 

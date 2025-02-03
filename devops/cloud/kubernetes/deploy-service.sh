@@ -25,6 +25,11 @@ remote_deploy()
     ssh $1 "echo '$PASSWORD' | sudo -S apt-mark hold kubelet kubectl kubeadm"
     ssh $1 "echo '$PASSWORD' | sudo -S apt upgrade -y"
 
+    scp module-load-k8s.conf $1:$deploy_path/$component
+    ssh $1 "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S chown root:root module-load-k8s.conf"
+    ssh $1 "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S mv module-load-k8s.conf /etc/modules-load.d/"
+    ssh $1 "echo '$PASSWORD' | sudo -S modprobe br_netfilter"
+
     scp k8s.conf $1:$deploy_path/$component
     ssh $1 "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S chown root:root k8s.conf"
     ssh $1 "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S mv k8s.conf /etc/sysctl.d/"
