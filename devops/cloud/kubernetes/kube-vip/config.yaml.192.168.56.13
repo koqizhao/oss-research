@@ -3,16 +3,16 @@ localPeer:
   address: 10.0.2.13
   port: 10000
 remotePeers:
-- id: server4
-  address: 10.0.2.14
+- id: server1
+  address: 10.0.2.11
   port: 10000
-- id: server5
-  address: 10.0.2.15
+- id: server2
+  address: 10.0.2.12
   port: 10000
 vip: 10.0.2.100
 gratuitousARP: true
 singleNode: false
-startAsLeader: true
+startAsLeader: false
 interface: enp0s3
 loadBalancers:
 - name: API Server Load Balancer
@@ -21,8 +21,8 @@ loadBalancers:
   bindToVip: false
   backends:
   - port: 6443
+    address: 10.0.2.11
+  - port: 6443
+    address: 10.0.2.12
+  - port: 6443
     address: 10.0.2.13
-  - port: 6443
-    address: 10.0.2.14
-  - port: 6443
-    address: 10.0.2.15

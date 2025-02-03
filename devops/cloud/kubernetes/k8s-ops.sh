@@ -28,13 +28,13 @@ export KUBECONFIG=/etc/kubernetes/admin.conf
 pull_images()
 {
     kubeadm config images pull \
-        --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers
+        --image-repository registry.aliyuncs.com/google_containers
 }
 
 init_cluster()
 {
     kubeadm init \
-        --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers \
+        --image-repository registry.aliyuncs.com/google_containers \
         --pod-network-cidr=$pod_network_cidr \
         --apiserver-advertise-address $internal_ip
 
@@ -120,7 +120,7 @@ prepare_ha_cluster_vip()
 init_ha_cluster()
 {
     kubeadm init --control-plane-endpoint "$master_vip:16443" --upload-certs \
-        --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers \
+        --image-repository registry.aliyuncs.com/google_containers \
         --pod-network-cidr=$pod_network_cidr \
         --apiserver-advertise-address $internal_ip
 
