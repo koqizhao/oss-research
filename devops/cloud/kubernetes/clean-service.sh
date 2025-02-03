@@ -106,7 +106,7 @@ remote_clean()
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf /opt/cni"
 
     ssh $1 "echo '$PASSWORD' | sudo -S rm -f /etc/sysctl.d/k8s.conf"
-    ssh $1 "echo '$PASSWORD' | sudo -S rm -f /etc/modules-load.d/module-load-k8s.sh"
+    ssh $1 "echo '$PASSWORD' | sudo -S rm -f /etc/modules-load.d/module-load-k8s.conf"
     ssh $1 "echo '$PASSWORD' | sudo -S sysctl --system"
 
     ssh $1 "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
