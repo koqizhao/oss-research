@@ -1,6 +1,7 @@
 {
     "registry-mirrors": [
         "https://docker.m.daocloud.io",
+        "https://docker.1ms.run",
         "https://registry.aliyuncs.com"
     ],
     "insecure-registries": [
