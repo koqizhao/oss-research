@@ -145,4 +145,10 @@ deploy_cluster_dist()
 
 deploy_cluster_$scale
 
+# create pods on master nodes
 ssh ${master_servers[0]} "kubectl taint nodes --all node-role.kubernetes.io/master-"
+
+# apply local-path-storage
+scp local-path-provisioner/local-path-storage.yaml ${master_servers[0]}:$deploy_path/$component
+ssh ${master_servers[0]} "kubectl apply -f $deploy_path/$component/local-path-storage.yaml"
+ssh ${master_servers[0]} "kubectl patch storageclass local-path -p '{\"metadata\": {\"annotations\":{\"storageclass.kubernetes.io/is-default-class\":\"true\"}}}'"
