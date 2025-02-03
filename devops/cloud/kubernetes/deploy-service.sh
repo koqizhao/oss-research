@@ -144,3 +144,5 @@ deploy_cluster_dist()
 }
 
 deploy_cluster_$scale
+
+ssh ${master_servers[0]} "kubectl taint nodes --all node-role.kubernetes.io/master-"
