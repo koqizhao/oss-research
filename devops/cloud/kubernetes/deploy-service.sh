@@ -77,6 +77,8 @@ deploy_cluster_basic()
     join_hash=`execute_ops get_join_hash`
     echo "join hash: $join_hash"
 
+    sleep 10
+
     for s in ${worker_servers[@]}
     do
         echo -e "join worker node: $s\n"
@@ -116,6 +118,8 @@ deploy_cluster_dist()
     echo "join token: $join_token"
     join_hash=`execute_ops get_join_hash`
     echo "join hash: $join_hash"
+
+    sleep 10
 
     for s in ${master_servers[@]}
     do
