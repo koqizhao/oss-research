@@ -199,24 +199,25 @@ vip: 10.0.2.100:16443
 
 #### kubectl proxy
 
-[kubectl-proxy](http://192.168.56.13:8001/)
-
-[kube-dashboard](http://192.168.56.13:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
-need ssh port forwarding to localhost:
+need ssh port forwarding to localhost: (have to log in with url localhost:8001)
 
 ```sh
-ssh -L localhost:8001:localhost:8001 -NT koqizhao@192.168.56.13 &
+ssh -L localhost:8001:localhost:8001 -NT koqizhao@192.168.56.11 &
 ```
+
+[kubectl-proxy](http://localhost:8001/)
+
+[kube-dashboard](http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/)
 
 ### istio
 
 #### kiali
 
-[kiali](http://192.168.56.13:8001)
-
 ```sh
-ssh -L localhost:20001:localhost:20001 -NT koqizhao@192.168.56.13 &
+ssh -L localhost:20001:localhost:20001 -NT koqizhao@192.168.56.11 &
 ```
+
+[kiali](http://localhost:20001)
 
 ## Middleware
 
