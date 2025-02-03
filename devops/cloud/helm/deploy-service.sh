@@ -8,7 +8,8 @@ source common.sh
 deploy_file_name=helm-v3.8.2
 deploy_file=$deploy_file_name-linux-amd64.tar.gz
 
-helm_repo=https://charts.bitnami.com/bitnami
+#helm_repo=https://charts.bitnami.com/bitnami
+helm_repo=https://mirror.azure.cn/kubernetes/charts
 
 remote_deploy()
 {
@@ -30,7 +31,7 @@ remote_deploy()
     ssh $server "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S chown root:root profile-helm.sh"
     ssh $server "cd $deploy_path/$component; echo '$PASSWORD' | sudo -S mv profile-helm.sh /etc/profile.d/"
 
-    ssh $server "cd $deploy_path/$component; ./helm repo add bitnami $helm_repo;"
+    ssh $server "cd $deploy_path/$component; ./helm repo add stable $helm_repo; ./helm repo update;"
 }
 
 batch_deploy
