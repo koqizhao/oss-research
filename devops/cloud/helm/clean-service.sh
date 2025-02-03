@@ -9,6 +9,7 @@ remote_clean()
 {
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf $deploy_path/$component"
     ssh $server "echo '$PASSWORD' | sudo -S rm -rf ~/.config/helm"
+    ssh $server "echo '$PASSWORD' | sudo -S rm -f /etc/profile.d/profile-helm.sh"
 }
 
 batch_clean
