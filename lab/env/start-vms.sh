@@ -1,7 +1,7 @@
 #!/bin/bash
 
 action=$1
-machine_count=1
+machine_count=3
 
 if [ -n "$2" ]
 then
